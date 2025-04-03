@@ -1,0 +1,73 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main", "chat", "settings"],
+  "permissions": [
+    "core:default",
+    "core:event:allow-emit",
+    "core:event:allow-listen",
+    "core:webview:allow-create-webview",
+    "core:webview:allow-create-webview-window",
+    "core:webview:allow-get-all-webviews",
+    "core:webview:allow-webview-close",
+    "core:webview:allow-webview-hide",
+    "core:webview:allow-webview-show",
+    "core:webview:allow-webview-size",
+    "core:webview:allow-set-webview-size",
+    "core:webview:allow-set-webview-zoom",
+    "core:window:default",
+    "core:window:allow-center",
+    "core:window:allow-close",
+    "core:window:allow-hide",
+    "core:window:allow-show",
+    "core:window:allow-create",
+    "core:window:allow-destroy",
+    "core:window:allow-start-dragging",
+    "core:window:allow-set-size",
+    "core:window:allow-get-all-windows",
+    "core:window:allow-set-focus",
+    "core:window:allow-set-always-on-top",
+    "core:window:deny-internal-toggle-maximize",
+    "core:app:allow-set-app-theme",
+    "shell:default",
+    "http:default",
+    "http:allow-fetch",
+    "http:allow-fetch-cancel",
+    "http:allow-fetch-read-body",
+    "http:allow-fetch-send",
+    "websocket:default",
+    "websocket:allow-connect",
+    "websocket:allow-send",
+    "autostart:allow-enable",
+    "autostart:allow-disable",
+    "autostart:allow-is-enabled",
+    "global-shortcut:allow-is-registered",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister",
+    "global-shortcut:allow-unregister-all",
+    "core:event:default",
+    "deep-link:allow-get-current",
+    "deep-link:default",
+    "deep-link:allow-register",
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "https://coco.infini.cloud"
+        },
+        {
+          "url": "http://localhost:9000"
+        }
+      ],
+      "deny": []
+    },
+    "dialog:default",
+    "fs-pro:default",
+    "macos-permissions:default",
+    "screenshots:default",
+    "core:window:allow-set-theme",
+    "process:default",
+    "updater:default"
+  ]
+}

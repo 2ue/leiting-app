@@ -1,0 +1,322 @@
+{
+  "settings": {
+    "general": "General Settings",
+    "startup": {
+      "title": "Startup",
+      "description": "Automatically start Coco when you login",
+      "toggle": "Launch at login"
+    },
+    "hotkey": {
+      "title": "Coco Hotkey",
+      "description": "Global shortcut to open Coco"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Choose your preferred theme",
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Auto"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language",
+      "english": "English",
+      "chinese": "简体中文"
+    },
+    "tooltip": {
+      "title": "Tooltip",
+      "description": "Tooltip display for shortcut keys",
+      "toggle": "Tooltip display"
+    },
+    "shortcut": {
+      "pressKeys": "Press keys...",
+      "save": "Save",
+      "edit": "Edit"
+    },
+    "about": {
+      "logo": "Coco Logo",
+      "slogan": "Search, Connect, Collaborate—All in one place",
+      "website": "Visit Website",
+      "github": "Visit GitHub",
+      "version": "Version {{version}}",
+      "copyright": "©{{year}} INFINI Labs, All Rights Reserved."
+    },
+    "advanced": {
+      "title": "Advanced Settings",
+      "endpoint": {
+        "title": "API Endpoint",
+        "description": "Domain name for interface and websocket"
+      },
+      "startup": {
+        "title": "Startup Settings",
+        "defaultStartupWindow": {
+          "title": "Default Startup Window",
+          "description": "Set whether Coco opens in Search or Chat mode.",
+          "select": {
+            "searchMode": "Search Mode",
+            "chatMode": "Chat Mode"
+          }
+        },
+        "defaultContentForSearchWindow": {
+          "title": "Default Content for Search Window",
+          "description": "Set what shows by default in Search mode.",
+          "select": {
+            "systemDefault": "System Default"
+          }
+        },
+        "defaultContentForChatWindow": {
+          "title": "Default Content for Chat Window",
+          "description": "Set what shows by default in Chat mode.",
+          "select": {
+            "newChat": "Start new chat",
+            "oldChat": "Continue previous chat"
+          }
+        }
+      },
+      "shortcuts": {
+        "title": "Keyboard Shortcuts",
+        "modifierKey": {
+          "title": "Modifier Key",
+          "description": "Set the primary modifier key for custom shortcuts."
+        },
+        "modeSwitch": {
+          "title": "Mode Switch",
+          "description": "Shortcut to toggle between Search and Chat modes."
+        },
+        "returnToInput": {
+          "title": "Return to Input",
+          "description": "Shortcut to go back to the input area in both Search and Chat modes."
+        },
+        "voiceInput": {
+          "title": "Voice Input",
+          "description": "Shortcut to activate voice input function in Search mode."
+        },
+        "addImage": {
+          "title": "Add Image",
+          "description": "Shortcut to quickly add images in Search mode."
+        },
+        "selectLlmModel": {
+          "title": "Select LLM Model",
+          "description": "Shortcut to select the desired LLM model in Chat mode."
+        },
+        "addFile": {
+          "title": "Add File",
+          "description": "Shortcut to add files conveniently in Chat mode."
+        }
+      },
+      "connect": {
+        "title": "Connection Settings",
+        "connectionTimeout": {
+          "title": "Connection Timeout",
+          "description": "Retries the connection if no response is received within this time. Default: 120s."
+        }
+      }
+    },
+    "tabs": {
+      "general": "General",
+      "extensions": "Extensions",
+      "connect": "Connect",
+      "advanced": "Advanced",
+      "about": "About",
+      "extensionsContent": "Extensions settings content",
+      "advancedContent": "Advanced Settings content"
+    }
+  },
+  "search": {
+    "textarea": {
+      "placeholder": "Ask whatever you want ...",
+      "ariaLabel": "Ask whatever you want"
+    },
+    "document": {
+      "details": "Details",
+      "name": "Name",
+      "source": "Source",
+      "updatedAt": "Updated at",
+      "updatedBy": "Updated by",
+      "createdBy": "Created by",
+      "type": "Type",
+      "size": "Size"
+    },
+    "list": {
+      "loading": "Loading...",
+      "noResults": "No Results",
+      "noDataAlt": "No data image"
+    },
+    "footer": {
+      "logoAlt": "Coco Logo",
+      "version": "{{version}}",
+      "updateAvailable": "Update available",
+      "select": "Select",
+      "open": "Open"
+    },
+    "input": {
+      "searchPlaceholder": "Search whatever you want ...",
+      "connectionError": "Unable to connect to the server",
+      "reconnect": "Reconnect",
+      "connecting": "Connecting",
+      "deepThink": "Deep Think",
+      "search": "Search",
+      "uploadFile": "Upload File",
+      "screenshot": "Screenshot",
+      "screenshotType": {
+        "screen": "Screen",
+        "window": "Window"
+      },
+      "searchPopover": {
+        "title": "Search Scope",
+        "allScope": "All Scope"
+      }
+    },
+    "main": {
+      "noDataAlt": "No data image",
+      "noResults": "No Results",
+      "askCoco": "Ask Coco AI"
+    },
+    "header": {
+      "found": "Found",
+      "results": "results"
+    },
+    "contextMenu": {
+      "open": "Open",
+      "copyLink": "Copy Link"
+    }
+  },
+  "assistant": {
+    "chat": {
+      "openChat": "Open Chat Window",
+      "newChat": "New Chat",
+      "connectionError": "Unable to connect to the server",
+      "reconnect": "Reconnect",
+      "greetings": "Hi! I’m Coco, nice to meet you. I can help answer your questions by tapping into the internet and your data sources. How can I assist you today?",
+      "timedout": "Request timed out. Please try again later.",
+      "noServers": "No servers found",
+      "addServer": "Add Server",
+      "error": "Request error. Please try again later.",
+      "logo_alt": "Login Logo",
+      "welcome": "Welcome to Coco AI",
+      "connect_tip": "To start a conversation, please connect to the service and log in to your account.",
+      "connect": "Connect"
+    },
+    "input": {
+      "stopMessage": "Stop message",
+      "deepThink": "Deep Think",
+      "deepThinkTooltip": "Enable deep thinking mode",
+      "search": "Search",
+      "searchTooltip": "Enable search mode"
+    },
+    "message": {
+      "logo": "Coco AI Logo",
+      "aiName": "Coco AI",
+      "thinkingButton": "View thinking process",
+      "steps": {
+        "query_intent": "Understand the query",
+        "source_zero": "Searching for relevant documents",
+        "fetch_source": "Retrieve {{count}} documents",
+        "pick_source": "Intelligent pick {{count}} results",
+        "pick_source_start": "Intelligently pre-selecting",
+        "deep_read": "Deep reading",
+        "think": "AI is thinking...",
+        "thoughtTime": "Thought for a few seconds",
+        "keywords": "Keywords",
+        "questionType": "Query Type",
+        "userIntent": "User Intent",
+        "relatedQuestions": "Query",
+        "suggestion": "Suggestion",
+        "informationSeeking": "Information Seeking"
+      }
+    },
+    "sidebar": {
+      "newChat": "New Chat",
+      "newChatTooltip": "Create a new chat",
+      "selectChat": "Select this chat",
+      "untitledChat": "Untitled Chat"
+    },
+    "source": {
+      "fetch_source": "Found {{count}} results",
+      "pick_source": "{{count}} results"
+    },
+    "fileList": {
+      "uploading": "Uploading...",
+      "uploaded": "Uploaded"
+    },
+    "sessionFile": {
+      "title": "Files in the conversation",
+      "description": "Only the selected files will participate in the current conversation"
+    }
+  },
+  "cloud": {
+    "banner": "Banner Image",
+    "accountInfo": "Account Information",
+    "login": "Login",
+    "cancel": "Cancel",
+    "copyUrl": "Copy URL",
+    "privacyPolicy": "EULA | Privacy Policy",
+    "connect": {
+      "back": "Back",
+      "title": "Connecting to Your Coco-Server",
+      "description": "Running your own private instance of coco-server ensures complete control over your data, keeping it secure and accessible only within your environment. Enjoy enhanced privacy, better performance, and seamless integration with your internal systems.",
+      "serverAddress": "Server address",
+      "serverPlaceholder": "For example: https://coco.infini.cloud/",
+      "connecting": "Connecting...",
+      "connect": "Connect",
+      "closeError": "Close error message"
+    },
+    "dataSource": {
+      "title": "Data Source",
+      "refresh": "Refresh data source list"
+    },
+    "sidebar": {
+      "selectServer": "Select Server",
+      "serverLogo": "Server Logo",
+      "serverOnline": "Server Online",
+      "serverOffline": "Server Offline",
+      "yourServers": "Your Coco-Servers",
+      "addServer": "Add New Server"
+    },
+    "enable_server": "Enable Server",
+    "disable_server": "Disable Server"
+  },
+  "tray": {
+    "showCoco": "Show Coco",
+    "settings": "Settings...",
+    "quitCoco": "Quit Coco"
+  },
+  "update": {
+    "title": "New update available for Coco AI.",
+    "optional_description": "New update available for Coco AI.",
+    "force_description1": "Coco AI update required.",
+    "force_description2": "Please install the latest version to continue.",
+    "releaseNotes": "Release Notes",
+    "button": {
+      "download": "Download"
+    },
+    "skip_version": "Skip this version"
+  },
+  "error": {
+    "message": "Sorry, there is an error in your Coco App. Please contact the administrator."
+  },
+  "history_list": {
+    "search": {
+      "placeholder": "Search"
+    },
+    "date": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days"
+    },
+    "menu": {
+      "share": "Share",
+      "rename": "Rename",
+      "delete": "Delete"
+    },
+    "delete_modal": {
+      "title": "Delete chat?",
+      "description": "This will delete \"{{0}}\"",
+      "button": {
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
+    }
+  }
+}

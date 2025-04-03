@@ -1,0 +1,321 @@
+{
+  "settings": {
+    "general": "通用设置",
+    "startup": {
+      "title": "启动项",
+      "description": "登录时自动启动 Coco",
+      "toggle": "开机自启"
+    },
+    "hotkey": {
+      "title": "快捷键",
+      "description": "打开 Coco 的全局快捷键"
+    },
+    "appearance": {
+      "title": "外观",
+      "description": "选择您喜欢的主题",
+      "light": "浅色",
+      "dark": "深色",
+      "auto": "自动"
+    },
+    "language": {
+      "title": "语言",
+      "description": "选择您的首选语言",
+      "english": "English",
+      "chinese": "简体中文"
+    },
+    "tooltip": {
+      "title": "提示",
+      "description": "快捷键提示显示",
+      "toggle": "显示提示"
+    },
+    "shortcut": {
+      "pressKeys": "请按键...",
+      "save": "保存",
+      "edit": "编辑"
+    },
+    "about": {
+      "logo": "Coco 标志",
+      "slogan": "搜索、连接、协作 — 一站式解决方案",
+      "website": "访问官网",
+      "github": "访问 GitHub",
+      "version": "版本 {{version}}",
+      "copyright": "©{{year}} INFINI Labs，保留所有权利。"
+    },
+    "advanced": {
+      "title": "高级设置",
+      "endpoint": {
+        "title": "API 接口",
+        "description": "接口和 WebSocket 的域名"
+      },
+      "startup": {
+        "title": "启动设置",
+        "defaultStartupWindow": {
+          "title": "默认启动窗口",
+          "description": "设置 Coco 是以搜索模式还是聊天模式打开。",
+          "select": {
+            "searchMode": "搜索模式",
+            "chatMode": "聊天模式"
+          }
+        },
+        "defaultContentForSearchWindow": {
+          "title": "搜索窗口的默认内容",
+          "description": "设置搜索模式下默认显示的内容。",
+          "select": {
+            "systemDefault": "系统默认"
+          }
+        },
+        "defaultContentForChatWindow": {
+          "title": "聊天窗口的默认内容",
+          "description": "设置聊天模式下默认显示的内容。",
+          "select": {
+            "newChat": "开启新聊天",
+            "oldChat": "继续之前的聊天"
+          }
+        }
+      },
+      "shortcuts": {
+        "title": "键盘快捷键",
+        "modifierKey": {
+          "title": "修饰键",
+          "description": "为自定义快捷键设置主修饰键。"
+        },
+        "modeSwitch": {
+          "title": "模式切换",
+          "description": "在搜索和聊天模式之间切换的快捷按键。"
+        },
+        "returnToInput": {
+          "title": "返回输入",
+          "description": "在搜索和聊天模式下返回输入区域的快捷按键。"
+        },
+        "voiceInput": {
+          "title": "语音输入",
+          "description": "在搜索和聊天模式下激活语音输入功能的快捷按键。"
+        },
+        "addImage": {
+          "title": "添加图片",
+          "description": "在搜索模式下快速添加图片的快捷按键。"
+        },
+        "selectLlmModel": {
+          "title": "选择 LLM 模型",
+          "description": "在聊天模式下选择所需 LLM 模型的快捷按键。"
+        },
+        "addFile": {
+          "title": "添加文件",
+          "description": "在聊天模式下方便地添加文件的快捷按键。"
+        }
+      },
+      "connect": {
+        "title": "连接设置",
+        "connectionTimeout": {
+          "title": "连接超时",
+          "description": "如果在此时间内未收到响应，则重试连接。默认值：120 秒。"
+        }
+      }
+    },
+    "tabs": {
+      "general": "通用",
+      "extensions": "扩展",
+      "connect": "连接",
+      "advanced": "高级",
+      "about": "关于",
+      "extensionsContent": "扩展设置内容",
+      "advancedContent": "高级设置内容"
+    }
+  },
+  "search": {
+    "textarea": {
+      "placeholder": "尝试问我任何问题...",
+      "ariaLabel": "输入你想问的问题"
+    },
+    "document": {
+      "details": "详细信息",
+      "name": "名称",
+      "source": "来源",
+      "updatedAt": "更新时间",
+      "updatedBy": "更新者",
+      "createdBy": "创建者",
+      "type": "类型",
+      "size": "大小"
+    },
+    "list": {
+      "loading": "加载中...",
+      "noResults": "暂无结果",
+      "noDataAlt": "无数据图片"
+    },
+    "footer": {
+      "logoAlt": "Coco 图标",
+      "version": "{{version}}",
+      "updateAvailable": "有可用更新",
+      "select": "选择",
+      "open": "打开"
+    },
+    "input": {
+      "searchPlaceholder": "搜索任何内容...",
+      "connectionError": "无法连接到服务器",
+      "reconnect": "重新连接",
+      "connecting": "连接中",
+      "deepThink": "深度思考",
+      "search": "联网搜索",
+      "uploadFile": "上传文件",
+      "screenshot": "截取屏幕截图",
+      "screenshotType": {
+        "screen": "屏幕",
+        "window": "窗口"
+      },
+      "searchPopover": {
+        "title": "搜索范围",
+        "allScope": "所有范围"
+      }
+    },
+    "main": {
+      "noDataAlt": "无数据图片",
+      "noResults": "暂无结果",
+      "askCoco": "询问 Coco AI"
+    },
+    "header": {
+      "found": "找到",
+      "results": "个结果"
+    },
+    "contextMenu": {
+      "open": "打开",
+      "copyLink": "复制链接"
+    }
+  },
+  "assistant": {
+    "chat": {
+      "openChat": "打开聊天窗口",
+      "newChat": "新建对话",
+      "connectionError": "无法连接到服务器",
+      "reconnect": "重新连接",
+      "greetings": "嗨！我是 Coco，很高兴认识你。我可以利用互联网和你的数据源来回答你的问题。我今天能为你提供什么帮助？",
+      "timedout": "请求超时，请稍后再试。",
+      "noServers": "暂无可用服务器",
+      "addServer": "添加服务器",
+      "error": "请求错误，请稍后再试。",
+      "logo_alt": "登录图标",
+      "welcome": "欢迎使用 Coco AI",
+      "connect_tip": "要开始对话，请连接服务并登录您的账户。",
+      "connect": "连接"
+    },
+    "input": {
+      "stopMessage": "停止生成",
+      "deepThink": "深度思考",
+      "deepThinkTooltip": "启用深度思考模式",
+      "search": "联网搜索",
+      "searchTooltip": "启用搜索模式"
+    },
+    "message": {
+      "logo": "Coco AI 图标",
+      "aiName": "Coco AI",
+      "thinkingButton": "查看思考过程",
+      "steps": {
+        "query_intent": "理解查询",
+        "source_zero": "正在搜索相关文档",
+        "fetch_source": "检索 {{count}} 份文档",
+        "pick_source": "智能预选 {{count}} 个结果",
+        "pick_source_start": "正在智能预选",
+        "deep_read": "深度阅读",
+        "think": "AI 正在思考...",
+        "thoughtTime": "思考了数秒",
+        "keywords": "关键词",
+        "questionType": "查询类型",
+        "userIntent": "用户意图",
+        "relatedQuestions": "查询",
+        "suggestion": "建议",
+        "informationSeeking": "信息查询"
+      }
+    },
+    "sidebar": {
+      "newChat": "新建对话",
+      "newChatTooltip": "创建新的对话",
+      "selectChat": "选择此对话",
+      "untitledChat": "未命名对话"
+    },
+    "source": {
+      "fetch_source": "找到 {{count}} 个结果",
+      "pick_source": "{{count}} 个结果"
+    },
+    "fileList": {
+      "uploading": "上传中...",
+      "uploaded": "已上传"
+    },
+    "sessionFile": {
+      "title": "对话中的文件",
+      "description": "只有选中的文件才会参与当前对话"
+    }
+  },
+  "cloud": {
+    "banner": "横幅图片",
+    "accountInfo": "账户信息",
+    "login": "登录",
+    "cancel": "取消",
+    "copyUrl": "复制链接",
+    "privacyPolicy": "用户协议 | 隐私政策",
+    "connect": {
+      "back": "返回",
+      "title": "连接到您的 Coco-Server",
+      "description": "运行您自己的私有 coco-server 实例可以确保对数据的完全控制，使其在您的环境中保持安全且仅可访问。享受增强的隐私保护、更好的性能和与内部系统的无缝集成。",
+      "serverAddress": "服务器地址",
+      "serverPlaceholder": "例如：https://coco.infini.cloud/",
+      "connecting": "连接中...",
+      "connect": "连接",
+      "closeError": "关闭错误提示"
+    },
+    "dataSource": {
+      "title": "数据源",
+      "refresh": "刷新数据源列表"
+    },
+    "sidebar": {
+      "selectServer": "选择服务器",
+      "serverLogo": "服务器图标",
+      "serverOnline": "服务器在线",
+      "serverOffline": "服务器离线",
+      "yourServers": "您的 Coco-Servers",
+      "addServer": "添加新服务器"
+    },
+    "enable_server": "启用服务",
+    "disable_server": "禁用服务"
+  },
+  "tray": {
+    "showCoco": "显示 Coco",
+    "settings": "偏好设置",
+    "quitCoco": "退出 Coco"
+  },
+  "update": {
+    "optional_description": "Coco AI 有新的可用更新。",
+    "force_description1": "Coco Al 需要更新。",
+    "force_description2": "请安装最新版本后继续使用。",
+    "releaseNotes": "更新日志",
+    "button": {
+      "download": "下载"
+    },
+    "skip_version": "跳过此版本"
+  },
+  "error": {
+    "message": "抱歉，Coco 应用出现了错误。请联系管理员。"
+  },
+  "history_list": {
+    "search": {
+      "placeholder": "搜索"
+    },
+    "date": {
+      "today": "今天",
+      "yesterday": "昨天",
+      "last7Days": "最近 7 天",
+      "last30Days": "最近 30 天"
+    },
+    "menu": {
+      "share": "分享",
+      "rename": "重命名",
+      "delete": "删除"
+    },
+    "delete_modal": {
+      "title": "删除聊天？",
+      "description": "这将删除“{{0}}”",
+      "button": {
+        "delete": "删除",
+        "cancel": "取消"
+      }
+    }
+  }
+}
