@@ -5,10 +5,58 @@ use crate::common::search::{
 use crate::common::traits::SearchError;
 use futures::stream::FuturesUnordered;
 use futures::StreamExt;
+use fuzzy_matcher::skim::SkimMatcherV2;
+use fuzzy_matcher::FuzzyMatcher;
+use rayon::prelude::*; // 并行处理
 use std::collections::HashMap;
 use std::collections::HashSet;
+use std::process::Command;
+use std::sync::{Arc, Mutex};
 use tauri::{AppHandle, Manager, Runtime};
 use tokio::time::{timeout, Duration};
+use walkdir::WalkDir;
+
+#[tauri::command]
+pub fn search_files(root: String, keyword: String) -> Vec<String> {
+    let matcher = SkimMatcherV2::default();
+    let result = Arc::new(Mutex::new(Vec::new()));
+
+    WalkDir::new(root)
+        .into_iter()
+        .par_bridge() // 并行遍历
+        .filter_map(|entry| entry.ok())
+        .for_each(|entry| {
+            let path = entry.path().display().to_string();
+            if let Some(score) = matcher.fuzzy_match(&path.to_lowercase(), &keyword.to_lowercase())
+            {
+                if score > 0 {
+                    result.lock().unwrap().push(path);
+                }
+            }
+        });
+
+    Arc::try_unwrap(result).unwrap().into_inner().unwrap()
+}
+
+#[tauri::command]
+pub fn open_file(path: String) {
+    if cfg!(target_os = "windows") {
+        Command::new("cmd")
+            .args(&["/C", "start", "", &path])
+            .spawn()
+            .expect("Failed to open file");
+    } else if cfg!(target_os = "macos") {
+        Command::new("open")
+            .arg(&path)
+            .spawn()
+            .expect("Failed to open file");
+    } else if cfg!(target_os = "linux") {
+        Command::new("xdg-open")
+            .arg(&path)
+            .spawn()
+            .expect("Failed to open file");
+    }
+}
 
 #[tauri::command]
 pub async fn query_coco_fusion<R: Runtime>(
