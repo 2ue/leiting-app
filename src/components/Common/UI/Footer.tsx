@@ -50,7 +50,7 @@ export default function Footer({
   return (
     <div
       data-tauri-drag-region={isTauri}
-      className="px-4 z-999 mx-[1px] h-8 absolute bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between rounded-xl rounded-t-none overflow-hidden"
+      className="px-4 z-999 mx-[1px] h-8 absolute bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between rounded-md rounded-t-none overflow-hidden"
     >
       {isTauri ? (
         <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function Footer({
                 "pl-2": updateInfo?.available,
               })}
             >
-              <VisibleKey shortcut={fixedWindow} onKeypress={togglePin}>
+              <VisibleKey shortcut={fixedWindow} onKeyPress={togglePin}>
                 {isPinned ? <PinIcon /> : <PinOffIcon />}
               </VisibleKey>
             </button>
@@ -100,7 +100,7 @@ export default function Footer({
       )}
 
       <div
-        className={`${isTauri ? "flex" : "hidden md:flex"} items-center gap-3`}
+        className={`flex mobile:hidden items-center gap-3`}
       >
         <div className="gap-1 flex items-center text-[#666] dark:text-[#666] text-xs">
           <span className="mr-1.5">{t("search.footer.select")}:</span>

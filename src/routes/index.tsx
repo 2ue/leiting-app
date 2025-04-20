@@ -8,17 +8,28 @@ import ChatAI from "@/pages/chat/index";
 import WebPage from "@/pages/web/index";
 import ToolBar from "@/pages/tool-bar/index";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      { path: "/ui", element: <DesktopApp /> },
-      { path: "/ui/settings", element: <SettingsPage /> },
-      { path: "/ui/chat", element: <ChatAI /> },
-      { path: "/web", element: <WebPage /> },
-      { path: "/toolbar", element: <ToolBar /> },
-    ],
+const routerOptions = {
+  basename: "/",
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
   },
-]);
+} as const;
+
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        { path: "/ui", element: <DesktopApp /> },
+        { path: "/ui/settings", element: <SettingsPage /> },
+        { path: "/ui/chat", element: <ChatAI /> },
+        { path: "/web", element: <WebPage /> },
+        { path: "/toolbar", element: <ToolBar />,
+      ],
+    },
+  ],
+  routerOptions
+);

@@ -132,7 +132,9 @@ pub fn run() {
             server::attachment::get_attachment,
             server::attachment::delete_attachment,
             server::transcription::transcription,
-            local::application::get_default_search_paths
+            local::application::get_default_search_paths,
+            local::application::list_app_with_metadata_in,
+            util::open
         ])
         .setup(|app| {
             let registry = SearchSourceRegistry::default();

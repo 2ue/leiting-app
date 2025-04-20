@@ -10,6 +10,7 @@ import TypeIcon from "@/components/Common/Icons/TypeIcon";
 import SearchListItem from "./SearchListItem";
 import { metaOrCtrlKey, isMetaOrCtrlKey } from "@/utils/keyboardUtils";
 import { OpenURLWithBrowser } from "@/utils/index";
+import VisibleKey from "@/components/Common/VisibleKey";
 
 type ISearchData = Record<string, any[]>;
 
@@ -112,8 +113,12 @@ function DropdownList({
       }
 
       if (e.key >= "0" && e.key <= "9" && showIndex) {
-        // console.log(`number ${e.key}`);
-        const item = globalItemIndexMap[parseInt(e.key, 10)];
+        let index = parseInt(e.key, 10);
+
+        index = index === 0 ? 9 : index - 1;
+
+        const item = globalItemIndexMap[index];
+
         if (item?.url) {
           OpenURLWithBrowser(item?.url);
         }
@@ -132,6 +137,8 @@ function DropdownList({
   }, []);
 
   useEffect(() => {
+    if (isChatMode) return;
+
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 
@@ -158,7 +165,7 @@ function DropdownList({
     <div
       ref={containerRef}
       data-tauri-drag-region
-      className="h-[458px] w-full p-2 flex flex-col overflow-y-auto custom-scrollbar focus:outline-none"
+      className="h-full w-full p-2 flex flex-col overflow-y-auto custom-scrollbar focus:outline-none"
       tabIndex={0}
     >
       {showError ? (
@@ -190,7 +197,9 @@ function DropdownList({
                 <ThemedIcon component={ArrowBigRight} className="w-4 h-4" />
               </IconWrapper>
               {showIndex && sourceName === selectedName ? (
-                <div className={`bg-[#ccc] dark:bg-[#6B6B6B] `}>→</div>
+                <div className="absolute top-1 right-4">
+                  <VisibleKey shortcut="→" />
+                </div>
               ) : null}
             </div>
           ) : null}

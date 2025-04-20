@@ -18,6 +18,7 @@ import {
 } from "@headlessui/react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
+import { useKeyPress } from "ahooks";
 
 import logoImg from "@/assets/icon.svg";
 import HistoryIcon from "@/icons/History";
@@ -32,7 +33,7 @@ import { useConnectStore } from "@/stores/connectStore";
 import platformAdapter from "@/utils/platformAdapter";
 import VisibleKey from "../Common/VisibleKey";
 import { useShortcutsStore } from "@/stores/shortcutsStore";
-import { useKeyPress } from "ahooks";
+import { HISTORY_PANEL_ID } from "@/constants";
 
 interface ChatHeaderProps {
   onCreateNewChat: () => void;
@@ -41,6 +42,7 @@ interface ChatHeaderProps {
   isSidebarOpen: boolean;
   activeChat: Chat | undefined;
   reconnect: (server?: IServer) => void;
+  isLogin: boolean;
   setIsLogin: (isLogin: boolean) => void;
   isChatPage?: boolean;
   showChatHistory?: boolean;
@@ -49,12 +51,14 @@ interface ChatHeaderProps {
 export function ChatHeader({
   onCreateNewChat,
   onOpenChatAI,
+  isSidebarOpen,
   setIsSidebarOpen,
   activeChat,
   reconnect,
+  isLogin,
   setIsLogin,
   isChatPage = false,
-  showChatHistory,
+  showChatHistory = true,
 }: ChatHeaderProps) {
   const { t } = useTranslation();
 
@@ -118,7 +122,10 @@ export function ChatHeader({
     isTauri && fetchServers(true);
 
     const unlisten = platformAdapter.listenEvent("login_or_logout", (event) => {
-      console.log("Login or Logout:", currentService, event);
+      console.log("Login or Logout:", currentService, event.payload);
+      if (event.payload !== isLogin) {
+        setIsLogin(!!event.payload);
+      }
       fetchServers(true);
     });
 
@@ -199,20 +206,21 @@ export function ChatHeader({
       data-tauri-drag-region
     >
       <div className="flex items-center gap-2">
-        {isTauri && (
+        {showChatHistory && (
           <button
             data-sidebar-button
             onClick={(e) => {
               e.stopPropagation();
               setIsSidebarOpen();
             }}
-            className="inline-flex size-[34px] p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+            aria-controls={isSidebarOpen ? HISTORY_PANEL_ID : void 0}
+            className="py-1 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <VisibleKey
               shortcut={historicalRecords}
-              onKeypress={setIsSidebarOpen}
+              onKeyPress={setIsSidebarOpen}
             >
-              <HistoryIcon />
+              <HistoryIcon className="h-4 w-4" />
             </VisibleKey>
           </button>
         )}
@@ -250,13 +258,13 @@ export function ChatHeader({
           ) : null}
         </Menu>
 
-        {showChatHistory && isTauri ? (
+        {showChatHistory ? (
           <button
             onClick={onCreateNewChat}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="p-2 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
           >
-            <VisibleKey shortcut={newSession} onKeypress={onCreateNewChat}>
-              <MessageSquarePlus className="h-4 w-4" />
+            <VisibleKey shortcut={newSession} onKeyPress={onCreateNewChat}>
+              <MessageSquarePlus className="h-4 w-4 relative top-0.5" />
             </VisibleKey>
           </button>
         ) : null}
@@ -278,7 +286,7 @@ export function ChatHeader({
               "text-blue-500": isPinned,
             })}
           >
-            <VisibleKey shortcut={fixedWindow} onKeypress={togglePin}>
+            <VisibleKey shortcut={fixedWindow} onKeyPress={togglePin}>
               {isPinned ? <PinIcon /> : <PinOffIcon />}
             </VisibleKey>
           </button>
@@ -290,7 +298,7 @@ export function ChatHeader({
             >
               <VisibleKey
                 shortcut={serviceList}
-                onKeypress={() => {
+                onKeyPress={() => {
                   serverListButtonRef.current?.click();
                 }}
               >
@@ -318,7 +326,7 @@ export function ChatHeader({
                       className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400"
                       disabled={isRefreshing}
                     >
-                      <VisibleKey shortcut="R" onKeypress={handleRefresh}>
+                      <VisibleKey shortcut="R" onKeyPress={handleRefresh}>
                         <RefreshCw
                           className={`h-4 w-4 text-[#0287FF] transition-transform duration-1000 ${
                             isRefreshing ? "animate-spin" : ""
@@ -355,7 +363,7 @@ export function ChatHeader({
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-col items-center gap-2">
                           <span
                             className={`w-3 h-3 rounded-full ${
                               server.health?.status
@@ -363,9 +371,14 @@ export function ChatHeader({
                                 : "bg-gray-400 dark:bg-gray-600"
                             }`}
                           />
-                          <div className="w-4 h-4">
+                          <div className="size-4 flex justify-end">
                             {currentService?.id === server.id && (
-                              <Check className="w-full h-full text-gray-500 dark:text-gray-400" />
+                              <VisibleKey
+                                shortcut="↓↑"
+                                shortcutClassName="w-6 -translate-x-4"
+                              >
+                                <Check className="w-full h-full text-gray-500 dark:text-gray-400" />
+                              </VisibleKey>
                             )}
                           </div>
                         </div>
@@ -392,7 +405,7 @@ export function ChatHeader({
 
           {isChatPage ? null : (
             <button className="inline-flex" onClick={onOpenChatAI}>
-              <VisibleKey shortcut={external} onKeypress={onOpenChatAI}>
+              <VisibleKey shortcut={external} onKeyPress={onOpenChatAI}>
                 <WindowsFullIcon className="rotate-30 scale-x-[-1]" />
               </VisibleKey>
             </button>

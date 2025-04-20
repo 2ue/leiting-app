@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { useWebSocket as useWebSocketAHook } from "ahooks";
 
 import { useAppStore, IServer } from "@/stores/appStore";
@@ -30,6 +30,7 @@ export default function useWebSocket({
 }: WebSocketProps) {
   const isTauri = useAppStore((state) => state.isTauri);
   const endpoint_websocket = useAppStore((state) => state.endpoint_websocket);
+  const addError = useAppStore((state) => state.addError);
 
   const websocketIdRef = useRef<string>("");
   const messageQueue = useRef<string[]>([]);
@@ -81,7 +82,7 @@ export default function useWebSocket({
     while (messageQueue.current.length > 0) {
       const msg = messageQueue.current.shift();
       if (msg) {
-        console.log("处理消息:", msg.substring(0, 100));
+        console.log("Processing message:", msg.substring(0, 100));
         processMessage(msg);
       }
     }
@@ -93,8 +94,6 @@ export default function useWebSocket({
       setConnected(false);
     }
   }, [readyState]);
-
-  const [errorShow, setErrorShow] = useState(false);
 
   // 1. WebSocket connects when loading or switching services
   // src/components/Assistant/ChatHeader.tsx
@@ -148,8 +147,6 @@ export default function useWebSocket({
     let unlisten_error = null;
     let unlisten_message = null;
 
-    setErrorShow(false);
-
     if (!isTauri) return;
     unlisten_error = platformAdapter.listenEvent(`ws-error-${clientId}`, (event) => {
       // {
@@ -158,16 +155,16 @@ export default function useWebSocket({
       //   },
       //   "status": 401
       // }
-      console.error(`ws-error-${clientId}`, event.payload);
+      console.error(`ws-error-${clientId}`, event);
+      if(!connected) return;
       setConnected(false);
-      setErrorShow(true);
+      addError("WebSocket connection failed.");
     });
 
     unlisten_message = platformAdapter.listenEvent(`ws-message-${clientId}`, (event) => {
       const msg = event.payload as string;
       console.log(`ws-message-${clientId}`, msg);
       if (msg.includes("websocket-session-id")) {
-        console.log("websocket-session-id:", msg);
         const sessionId = msg.split(":")[1].trim();
         websocketIdRef.current = sessionId;
         console.log("sessionId:", sessionId);
@@ -180,12 +177,11 @@ export default function useWebSocket({
       dealMsgRef.current && dealMsgRef.current(msg);
     });
 
-
     return () => {
       unlisten_error?.then((fn: any) => fn());
       unlisten_message?.then((fn: any) => fn());
     };
   }, [dealMsgRef]);
 
-  return { errorShow, setErrorShow, reconnect, disconnectWS, updateDealMsg };
+  return { reconnect, disconnectWS, updateDealMsg };
 }
