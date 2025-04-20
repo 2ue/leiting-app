@@ -114,6 +114,8 @@ pub fn run() {
             server::datasource::get_datasources_by_server,
             server::connector::get_connectors_by_server,
             search::query_coco_fusion,
+            search::search_files,
+            search::open_file,
             assistant::chat_history,
             assistant::new_chat,
             assistant::send_message,
