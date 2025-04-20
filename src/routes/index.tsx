@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
         { path: "/ui/settings", element: <SettingsPage /> },
         { path: "/ui/chat", element: <ChatAI /> },
         { path: "/web", element: <WebPage /> },
-        { path: "/toolbar", element: <ToolBar />,
+        { path: "/toolbar", element: <ToolBar /> },
       ],
     },
   ],
