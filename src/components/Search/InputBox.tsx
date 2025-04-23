@@ -366,11 +366,10 @@ export default function ChatInput({
 
         {isChatMode && curChatEnd ? (
           <button
-            className={`ml-1 p-1 ${
-              inputValue
-                ? "bg-[#0072FF]"
-                : "bg-[#E4E5F0] dark:bg-[rgb(84,84,84)]"
-            } rounded-full transition-colors`}
+            className={`ml-1 p-1 ${inputValue
+              ? "bg-[#0072FF]"
+              : "bg-[#E4E5F0] dark:bg-[rgb(84,84,84)]"
+              } rounded-full transition-colors`}
             type="submit"
             onClick={() => onSend(inputValue.trim())}
           >
@@ -455,18 +454,16 @@ export default function ChatInput({
               >
                 <VisibleKey shortcut={deepThinking} onKeyPress={DeepThinkClick}>
                   <Brain
-                    className={`size-3 ${
-                      isDeepThinkActive
-                        ? "text-[#0072FF] dark:text-[#0072FF]"
-                        : "text-[#333] dark:text-white"
-                    }`}
+                    className={`size-3 ${isDeepThinkActive
+                      ? "text-[#0072FF] dark:text-[#0072FF]"
+                      : "text-[#333] dark:text-white"
+                      }`}
                   />
                 </VisibleKey>
                 {isDeepThinkActive && (
                   <span
-                    className={`${
-                      isDeepThinkActive ? "text-[#0072FF]" : "dark:text-white"
-                    }`}
+                    className={`${isDeepThinkActive ? "text-[#0072FF]" : "dark:text-white"
+                      }`}
                   >
                     {t("search.input.deepThink")}
                   </span>
@@ -483,7 +480,7 @@ export default function ChatInput({
             )}
 
             {!currentAssistant?._source?.datasource?.visible &&
-            !currentAssistant?._source?.config?.visible ? (
+              !currentAssistant?._source?.config?.visible ? (
               <div className="px-[9px]">
                 <Copyright />
               </div>
@@ -504,12 +501,12 @@ export default function ChatInput({
               </div>
             )}
 
-            <ChatSwitch
+            {/* <ChatSwitch
               isChatMode={isChatMode}
               onChange={(value: boolean) => {
                 changeMode && changeMode(value);
               }}
-            />
+            /> */}
           </div>
         )}
       </div>
