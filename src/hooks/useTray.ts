@@ -7,7 +7,7 @@ import { exit } from "@tauri-apps/plugin-process";
 
 import { isMac } from "@/utils/platform";
 import { useAppStore } from "@/stores/appStore";
-import { show_coco, show_settings } from "@/commands";
+import { show_coco, show_settings, show_chat } from "@/commands";
 
 const TRAY_ID = "COCO_TRAY";
 
@@ -60,6 +60,14 @@ export const useTray = () => {
         // accelerator: "CommandOrControl+,",
         action: () => {
           show_settings()
+        },
+      }),
+      PredefinedMenuItem.new({ item: "Separator" }),
+      MenuItem.new({
+        text: t("tray.chat"),
+        // accelerator: "CommandOrControl+,",
+        action: () => {
+          show_chat()
         },
       }),
       PredefinedMenuItem.new({ item: "Separator" }),

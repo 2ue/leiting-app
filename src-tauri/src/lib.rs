@@ -101,6 +101,7 @@ pub fn run() {
             show_coco,
             hide_coco,
             show_settings,
+            show_chat,
             server::servers::get_server_token,
             server::servers::add_coco_server,
             server::servers::remove_coco_server,
@@ -407,6 +408,37 @@ fn open_settings(app: &tauri::AppHandle) {
             .unwrap();
     }
 }
+#[allow(dead_code)]
+fn open_chat(app: &tauri::AppHandle) {
+    use tauri::webview::WebviewBuilder;
+    println!("settings menu item was clicked");
+    let window = app.get_webview_window("chat");
+    if let Some(window) = window {
+        let _ = window.show();
+        let _ = window.unminimize();
+        let _ = window.set_focus();
+    } else {
+        let window = tauri::window::WindowBuilder::new(app, "chat")
+            .title("chat")
+            .fullscreen(false)
+            .resizable(false)
+            .minimizable(false)
+            .maximizable(false)
+            .inner_size(800.0, 600.0)
+            .build()
+            .unwrap();
+
+        let webview_builder =
+            WebviewBuilder::new("chat", tauri::WebviewUrl::App("/".into()));
+        let _webview = window
+            .add_child(
+                webview_builder,
+                tauri::LogicalPosition::new(0, 0),
+                window.inner_size().unwrap(),
+            )
+            .unwrap();
+    }
+}
 
 #[tauri::command]
 async fn get_app_search_source<R: Runtime>(app_handle: AppHandle<R>) -> Result<(), String> {
@@ -420,4 +452,9 @@ async fn get_app_search_source<R: Runtime>(app_handle: AppHandle<R>) -> Result<(
 #[tauri::command]
 async fn show_settings(app_handle: AppHandle) {
     open_settings(&app_handle);
+}
+
+#[tauri::command]
+async fn show_chat(app_handle: AppHandle) {
+  open_chat(&app_handle);
 }

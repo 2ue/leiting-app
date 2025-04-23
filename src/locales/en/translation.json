@@ -351,6 +351,7 @@
   "tray": {
     "showCoco": "Show Coco",
     "settings": "Settings...",
+    "LeiTing Chat": "open chat",
     "quitCoco": "Quit Coco"
   },
   "update": {

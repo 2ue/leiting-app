@@ -27,3 +27,7 @@ export function show_coco(): Promise<void> {
 export function show_settings(): Promise<void> {
   return invoke('show_settings');
 }
+
+export function show_chat(): Promise<void> {
+  return invoke('show_chat');
+}

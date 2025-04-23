@@ -163,7 +163,6 @@
     },
     "extensions": {
       "title": "扩展",
-
       "application": {
         "name": "名称",
         "where": "来源",
@@ -353,6 +352,7 @@
   "tray": {
     "showCoco": "显示 Coco",
     "settings": "偏好设置",
+    "chat": "打开雷霆AI对话",
     "quitCoco": "退出 Coco"
   },
   "update": {

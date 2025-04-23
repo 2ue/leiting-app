@@ -50,7 +50,29 @@
         "hiddenTitle": true,
         "visible": false,
         "windowEffects": {
-          "effects": ["sidebar"],
+          "effects": [
+            "sidebar"
+          ],
+          "state": "active"
+        }
+      },
+      {
+        "label": "chat",
+        "title": "chat",
+        "url": "http://129.226.167.149:36058/#/chat",
+        "width": 1000,
+        "height": 700,
+        "center": true,
+        "transparent": true,
+        "maximizable": false,
+        "skipTaskbar": false,
+        "dragDropEnabled": false,
+        "hiddenTitle": true,
+        "visible": false,
+        "windowEffects": {
+          "effects": [
+            "sidebar"
+          ],
           "state": "active"
         }
       }
@@ -61,7 +83,9 @@
       "assetProtocol": {
         "enable": true,
         "scope": {
-          "allow": ["**/*"],
+          "allow": [
+            "**/*"
+          ],
           "requireLiteralLeadingDot": false
         }
       }
@@ -70,7 +94,14 @@
   "bundle": {
     "active": true,
     "createUpdaterArtifacts": true,
-    "targets": ["nsis", "dmg", "app", "appimage", "deb", "rpm"],
+    "targets": [
+      "nsis",
+      "dmg",
+      "app",
+      "appimage",
+      "deb",
+      "rpm"
+    ],
     "category": "Utility",
     "shortDescription": "Coco AI",
     "icon": [
@@ -105,11 +136,16 @@
         }
       }
     },
-    "resources": ["assets", "icons"]
+    "resources": [
+      "assets",
+      "icons"
+    ]
   },
   "plugins": {
     "features": {
-      "protocol": ["all"]
+      "protocol": [
+        "all"
+      ]
     },
     "window": {},
     "updater": {
@@ -126,11 +162,15 @@
       "mobile": [
         {
           "host": "app.infini.cloud",
-          "pathPrefix": ["/open"]
+          "pathPrefix": [
+            "/open"
+          ]
         }
       ],
       "desktop": {
-        "schemes": ["coco"]
+        "schemes": [
+          "coco"
+        ]
       }
     },
     "os": {}
