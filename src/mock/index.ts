@@ -16,7 +16,7 @@ export const res_search = {
     max_score: 32.709457,
     hits: [
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "3ac857ef30d101b1e5880b53b1438b1a",
         _score: 32.709457,
@@ -41,7 +41,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "2485a744c5dae1278a01c04d39bf60a6",
         _score: 32.37022,
@@ -60,7 +60,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "15aa340fa9ddfcfbf793b8707a4fa16b",
         _score: 21.983166,
@@ -84,7 +84,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "f96b1af318d62a43a44f54731409ff52",
         _score: 21.887964,
@@ -96,12 +96,12 @@ export const res_search = {
             type: "connector"
           },
           type: "web_page",
-          title: "Introducing Coco AI in Two Minutes - A Quick Start Video 🥥",
+          title: "Introducing Leiting AI in Two Minutes - A Quick Start Video 🥥",
           content: "",
           author: "yangfan",
-          url: "https://blog.infinilabs.com/posts/2024/a-quick-start-viideo-to-introduce-coco-ai-in-two-minutes/",
+          url: "https://blog.infinilabs.com/posts/2024/a-quick-start-viideo-to-introduce-leiting-ai-in-two-minutes/",
           tags: [
-            "Coco AI",
+            "Leiting AI",
             "Search",
             "Gen-AI",
             "Enterprise"
@@ -109,7 +109,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "3a806937f9e7fe55905a7f71d111e523",
         _score: 21.286049,
@@ -134,7 +134,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "04f48643c2c52b872c149e077765f8cb",
         _score: 21.286049,
@@ -159,7 +159,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "d101818b1e6d2eb23ca2f813ef3a9648",
         _score: 21.213268,
@@ -184,7 +184,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "ee2228755039808c199e6812d09c745e",
         _score: 20.967154,
@@ -209,7 +209,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "60584d12aba0ff569e7b79a7be168810",
         _score: 20.967154,
@@ -234,7 +234,7 @@ export const res_search = {
         }
       },
       {
-        _index: "coco_document",
+        _index: "leiting_document",
         _type: "_doc",
         _id: "73e31d0feeb8d3d97e4b06a98de54672",
         _score: 20.934437,

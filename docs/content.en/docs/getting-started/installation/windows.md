@@ -6,9 +6,9 @@ asciinema: true
 
 # Windows
 
-## Download Coco AI
+## Download Leiting AI
 
-Goto [https://coco.rs/](https://coco.rs/)
+Goto [https://leiting.rs/](https://leiting.rs/)
 
 ## Install Wizard
 

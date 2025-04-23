@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{html,js,jsx,ts,tsx}",
     "./src/**/*.css",
   ],
-  important: ".coco-container",
+  important: ".leiting-container",
   theme: {
     extend: {
       backgroundColor: {
@@ -56,7 +56,7 @@ export default {
         2000: "2000",
       },
       screens: {
-        'mobile': {'max': '679px'},
+        'mobile': { 'max': '679px' },
       },
     },
   },

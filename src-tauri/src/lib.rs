@@ -24,7 +24,7 @@ use tauri_plugin_autostart::MacosLauncher;
 use tokio::runtime::Runtime as RT;
 
 /// Tauri store name
-pub(crate) const COCO_TAURI_STORE: &str = "coco_tauri_store";
+pub(crate) const LEITING_TAURI_STORE: &str = "leiting_tauri_store";
 
 lazy_static! {
     static ref PREVIOUS_MONITOR_NAME: Mutex<Option<String>> = Mutex::new(None);
@@ -98,23 +98,23 @@ pub fn run() {
             shortcut::unregister_shortcut,
             shortcut::get_current_shortcut,
             change_autostart,
-            show_coco,
-            hide_coco,
+            show_leiting,
+            hide_leiting,
             show_settings,
             show_chat,
             server::servers::get_server_token,
-            server::servers::add_coco_server,
-            server::servers::remove_coco_server,
-            server::servers::list_coco_servers,
-            server::servers::logout_coco_server,
-            server::servers::refresh_coco_server_info,
+            server::servers::add_leiting_server,
+            server::servers::remove_leiting_server,
+            server::servers::list_leiting_servers,
+            server::servers::logout_leiting_server,
+            server::servers::refresh_leiting_server_info,
             server::servers::enable_server,
             server::servers::disable_server,
             server::auth::handle_sso_callback,
             server::profile::get_user_profiles,
             server::datasource::get_datasources_by_server,
             server::connector::get_connectors_by_server,
-            search::query_coco_fusion,
+            search::query_leiting_fusion,
             search::search_files,
             search::open_file,
             assistant::chat_history,
@@ -127,8 +127,8 @@ pub fn run() {
             assistant::delete_session_chat,
             assistant::update_session_chat,
             assistant::assistant_search,
-            // server::get_coco_server_datasources,
-            // server::get_coco_server_connectors,
+            // server::get_leiting_server_datasources,
+            // server::get_leiting_server_connectors,
             server::websocket::connect_to_server,
             server::websocket::disconnect,
             get_app_search_source,
@@ -177,7 +177,7 @@ pub fn run() {
             {
                 #[cfg(any(windows, target_os = "linux"))]
                 {
-                    app.deep_link().register("coco")?;
+                    app.deep_link().register("leiting")?;
                     use tauri_plugin_deep_link::DeepLinkExt;
                     app.deep_link().register_all()?;
                 }
@@ -234,12 +234,12 @@ pub async fn init<R: Runtime>(app_handle: &AppHandle<R>) {
         eprintln!("Failed to load server tokens: {}", err);
     }
 
-    let coco_servers = server::servers::get_all_servers();
+    let leiting_servers = server::servers::get_all_servers();
 
     // Get the registry from Tauri's state
     // let registry: State<SearchSourceRegistry> = app_handle.state::<SearchSourceRegistry>();
 
-    for server in coco_servers {
+    for server in leiting_servers {
         crate::server::servers::try_register_server_to_search_source(app_handle.clone(), &server)
             .await;
     }
@@ -259,9 +259,9 @@ async fn init_app_search_source<R: Runtime>(app_handle: &AppHandle<R>) -> Result
 }
 
 #[tauri::command]
-async fn show_coco<R: Runtime>(app_handle: AppHandle<R>) {
+async fn show_leiting<R: Runtime>(app_handle: AppHandle<R>) {
     if let Some(window) = app_handle.get_window(MAIN_WINDOW_LABEL) {
-        let _ = app_handle.emit("show-coco", ());
+        let _ = app_handle.emit("show-leiting", ());
 
         move_window_to_active_monitor(&window);
 
@@ -272,7 +272,7 @@ async fn show_coco<R: Runtime>(app_handle: AppHandle<R>) {
 }
 
 #[tauri::command]
-async fn hide_coco<R: Runtime>(app: AppHandle<R>) {
+async fn hide_leiting<R: Runtime>(app: AppHandle<R>) {
     if let Some(window) = app.get_window(MAIN_WINDOW_LABEL) {
         if let Err(err) = window.hide() {
             eprintln!("Failed to hide the window: {}", err);

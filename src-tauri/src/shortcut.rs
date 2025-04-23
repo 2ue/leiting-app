@@ -1,4 +1,4 @@
-use crate::{hide_coco, show_coco, COCO_TAURI_STORE};
+use crate::{hide_leiting, show_leiting, LEITING_TAURI_STORE};
 use tauri::{async_runtime, App, AppHandle, Manager, Runtime};
 use tauri_plugin_global_shortcut::{GlobalShortcutExt, Shortcut, ShortcutState};
 use tauri_plugin_store::{JsonValue, StoreExt};
@@ -7,7 +7,7 @@ use tauri_plugin_store::{JsonValue, StoreExt};
 /// global shortcut.
 ///
 /// This is the key we use to store it.
-const COCO_GLOBAL_SHORTCUT: &str = "coco_global_shortcut";
+const LEITING_GLOBAL_SHORTCUT: &str = "leiting_global_shortcut";
 
 #[cfg(target_os = "macos")]
 const DEFAULT_SHORTCUT: &str = "command+shift+space";
@@ -18,14 +18,14 @@ const DEFAULT_SHORTCUT: &str = "ctrl+shift+space";
 /// Set up the shortcut upon app start.
 pub fn enable_shortcut(app: &App) {
     let store = app
-        .store(COCO_TAURI_STORE)
+        .store(LEITING_TAURI_STORE)
         .expect("creating a store should not fail");
 
-    if let Some(stored_shortcut) = store.get(COCO_GLOBAL_SHORTCUT) {
+    if let Some(stored_shortcut) = store.get(LEITING_GLOBAL_SHORTCUT) {
         let stored_shortcut_str = match stored_shortcut {
             JsonValue::String(str) => str,
             unexpected_type => panic!(
-                "COCO shortcut should be stored as a string, found: {} ",
+                "LEITING shortcut should be stored as a string, found: {} ",
                 unexpected_type
             ),
         };
@@ -35,7 +35,7 @@ pub fn enable_shortcut(app: &App) {
         _register_shortcut_upon_start(app, stored_shortcut);
     } else {
         store.set(
-            COCO_GLOBAL_SHORTCUT,
+            LEITING_GLOBAL_SHORTCUT,
             JsonValue::String(DEFAULT_SHORTCUT.to_string()),
         );
         let default_shortcut = DEFAULT_SHORTCUT
@@ -81,9 +81,9 @@ pub async fn change_shortcut<R: Runtime>(
 
     // Store it
     let store = app
-        .get_store(COCO_TAURI_STORE)
+        .get_store(LEITING_TAURI_STORE)
         .expect("store should be loaded or created");
-    store.set(COCO_GLOBAL_SHORTCUT, JsonValue::String(key));
+    store.set(LEITING_GLOBAL_SHORTCUT, JsonValue::String(key));
 
     // Register it
     _register_shortcut(&app, shortcut);
@@ -102,11 +102,11 @@ fn _register_shortcut<R: Runtime>(app: &AppHandle<R>, shortcut: Shortcut) {
                     let app_handle = app.clone();
                     if main_window.is_visible().unwrap() {
                         async_runtime::spawn(async move {
-                            hide_coco(app_handle).await;
+                            hide_leiting(app_handle).await;
                         });
                     } else {
                         async_runtime::spawn(async move {
-                            show_coco(app_handle).await;
+                            show_leiting(app_handle).await;
                         });
                     }
                 }
@@ -132,11 +132,11 @@ fn _register_shortcut_upon_start(app: &App, shortcut: Shortcut) {
 
                             if window.is_visible().unwrap() {
                                 async_runtime::spawn(async move {
-                                    hide_coco(app_handle).await;
+                                    hide_leiting(app_handle).await;
                                 });
                             } else {
                                 async_runtime::spawn(async move {
-                                    show_coco(app_handle).await;
+                                    show_leiting(app_handle).await;
                                 });
                             }
                         }
@@ -151,16 +151,16 @@ fn _register_shortcut_upon_start(app: &App, shortcut: Shortcut) {
 /// Helper function to get the stored global shortcut, as a string.
 pub fn _get_shortcut<R: Runtime>(app: &AppHandle<R>) -> String {
     let store = app
-        .get_store(COCO_TAURI_STORE)
+        .get_store(LEITING_TAURI_STORE)
         .expect("store should be loaded or created");
 
     match store
-        .get(COCO_GLOBAL_SHORTCUT)
+        .get(LEITING_GLOBAL_SHORTCUT)
         .expect("shortcut should be stored")
     {
         JsonValue::String(str) => str,
         unexpected_type => panic!(
-            "COCO shortcut should be stored as a string, found: {} ",
+            "LEITING shortcut should be stored as a string, found: {} ",
             unexpected_type
         ),
     }

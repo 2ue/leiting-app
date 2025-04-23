@@ -1,42 +1,42 @@
-# Coco AI - Connect & Collaborate
+# Leiting AI - Connect & Collaborate
 
 <div align="center">
 
-**Tagline**: _"Coco AI - search, connect, collaborate – all in one place."_
+**Tagline**: _"Leiting AI - search, connect, collaborate – all in one place."_
 
-Visit our website: [https://coco.rs](https://coco.rs)
+Visit our website: [https://leiting.rs](https://leiting.rs)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Tauri 2.0](https://img.shields.io/badge/Tauri-2.0-blue)](https://tauri.app/) [![React](https://img.shields.io/badge/React-18-blue)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/) [![Rust](https://img.shields.io/badge/Rust-latest-orange)](https://www.rust-lang.org/) [![Node](https://img.shields.io/badge/Node-%3E%3D18.12-green)](https://nodejs.org/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/infinilabs/coco-app/pulls) [![Version](https://img.shields.io/github/v/release/infinilabs/coco-app)](https://github.com/infinilabs/coco-app/releases) [![Build Status](https://img.shields.io/github/actions/workflow/status/infinilabs/coco-app/ci.yml)](https://github.com/infinilabs/coco-app/actions) [![Discord](https://img.shields.io/discord/1122384609359966313)](https://discord.com/invite/4tKTMkkvVX)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Tauri 2.0](https://img.shields.io/badge/Tauri-2.0-blue)](https://tauri.app/) [![React](https://img.shields.io/badge/React-18-blue)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/) [![Rust](https://img.shields.io/badge/Rust-latest-orange)](https://www.rust-lang.org/) [![Node](https://img.shields.io/badge/Node-%3E%3D18.12-green)](https://nodejs.org/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/infinilabs/leiting-app/pulls) [![Version](https://img.shields.io/github/v/release/infinilabs/leiting-app)](https://github.com/infinilabs/leiting-app/releases) [![Build Status](https://img.shields.io/github/actions/workflow/status/infinilabs/leiting-app/ci.yml)](https://github.com/infinilabs/leiting-app/actions) [![Discord](https://img.shields.io/discord/1122384609359966313)](https://discord.com/invite/4tKTMkkvVX)
 
 </div>
 
-Coco AI is a unified search platform that connects all your enterprise applications and data—Google Workspace, Dropbox,
-Confluent Wiki, GitHub, and more—into a single, powerful search interface. This repository contains the **Coco App**,
+Leiting AI is a unified search platform that connects all your enterprise applications and data—Google Workspace, Dropbox,
+Confluent Wiki, GitHub, and more—into a single, powerful search interface. This repository contains the **Leiting App**,
 built for both **desktop and mobile**. The app allows users to search and interact with their enterprise data across
 platforms.
 
-In addition, Coco offers a **Gen-AI Chat for Teams**—imagine **ChatGPT** but tailored to your team’s unique knowledge
-and internal resources. Coco enhances collaboration by making information instantly accessible and providing AI-driven
+In addition, Leiting offers a **Gen-AI Chat for Teams**—imagine **ChatGPT** but tailored to your team’s unique knowledge
+and internal resources. Leiting enhances collaboration by making information instantly accessible and providing AI-driven
 insights based on your enterprise's specific data.
 
 > **Note**: Backend services, including data indexing and search functionality, are handled in a
-separate [repository](https://github.com/infinilabs/coco-server).
+separate [repository](https://github.com/infinilabs/leiting-server).
 
-![Coco AI](./docs/static/img/coco-preview.gif)
+![Leiting AI](./docs/static/img/leiting-preview.gif)
 
 ## 🚀 Vision
 
-At Coco AI, we aim to streamline workplace collaboration by centralizing access to enterprise data. The Coco App provides a seamless, cross-platform experience, enabling teams to easily search, connect, and collaborate within their workspace.
+At Leiting AI, we aim to streamline workplace collaboration by centralizing access to enterprise data. The Leiting App provides a seamless, cross-platform experience, enabling teams to easily search, connect, and collaborate within their workspace.
 
 ## 💡 Use Cases
 
-- **Unified Search Across Platforms**: Coco integrates with all your enterprise apps, letting you search documents,
+- **Unified Search Across Platforms**: Leiting integrates with all your enterprise apps, letting you search documents,
   conversations, and files across Google Workspace, Dropbox, GitHub, etc.
 - **Cross-Platform Access**: The app is available for both desktop and mobile, so you can access your workspace from
   anywhere.
-- **Seamless Collaboration**: Coco's search and Gen-AI chat capabilities help teams quickly find and share information,
+- **Seamless Collaboration**: Leiting's search and Gen-AI chat capabilities help teams quickly find and share information,
   improving workplace efficiency.
-- **Simplified Data Access**: By removing the friction between various tools, Coco enhances your workflow and increases
+- **Simplified Data Access**: By removing the friction between various tools, Leiting enhances your workflow and increases
   productivity.
 
 ## ✨ Key Features
@@ -89,13 +89,13 @@ pnpm tauri build
 
 ## 📚 Documentation
 
-- [Coco App Documentation](https://docs.infinilabs.com/coco-app/main/)
-- [Coco Server Documentation](https://docs.infinilabs.com/coco-server/main/)
+- [Leiting App Documentation](https://docs.infinilabs.com/leiting-app/main/)
+- [Leiting Server Documentation](https://docs.infinilabs.com/leiting-server/main/)
 - [Tauri Documentation](https://tauri.app/)
 
 ## 📄 License
 
-Coco AI is an open-source project licensed under the [MIT License](LICENSE). You can freely use, modify, and
+Leiting AI is an open-source project licensed under the [MIT License](LICENSE). You can freely use, modify, and
 distribute the software for both personal and commercial purposes, including hosting it on your own servers.
 
 ---

@@ -105,7 +105,7 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: Coco ${{ needs.create-release.outputs.APP_VERSION }}
+          releaseName: Leiting ${{ needs.create-release.outputs.APP_VERSION }}
           releaseBody: ""
           releaseDraft: true
           prerelease: false

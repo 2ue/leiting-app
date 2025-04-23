@@ -7,19 +7,19 @@ import { exit } from "@tauri-apps/plugin-process";
 
 import { isMac } from "@/utils/platform";
 import { useAppStore } from "@/stores/appStore";
-import { show_coco, show_settings, show_chat } from "@/commands";
+import { show_leiting, show_settings, show_chat } from "@/commands";
 
-const TRAY_ID = "COCO_TRAY";
+const TRAY_ID = "LEITING_TRAY";
 
 export const useTray = () => {
   const { t, i18n } = useTranslation();
-  const showCocoShortcuts = useAppStore((state) => state.showCocoShortcuts);
+  const showLeitingShortcuts = useAppStore((state) => state.showLeitingShortcuts);
 
   useUpdateEffect(() => {
-    if (showCocoShortcuts.length === 0) return;
+    if (showLeitingShortcuts.length === 0) return;
 
     updateTrayMenu();
-  }, [i18n.language, showCocoShortcuts]);
+  }, [i18n.language, showLeitingShortcuts]);
 
   const getTrayById = () => {
     return TrayIcon.getById(TRAY_ID);
@@ -48,10 +48,10 @@ export const useTray = () => {
   const getTrayMenu = async () => {
     const items = await Promise.all([
       MenuItem.new({
-        text: t("tray.showCoco"),
-        accelerator: showCocoShortcuts.join("+"),
+        text: t("tray.showLeiting"),
+        accelerator: showLeitingShortcuts.join("+"),
         action: () => {
-          show_coco()
+          show_leiting()
         },
       }),
       PredefinedMenuItem.new({ item: "Separator" }),
@@ -72,7 +72,7 @@ export const useTray = () => {
       }),
       PredefinedMenuItem.new({ item: "Separator" }),
       MenuItem.new({
-        text: t("tray.quitCoco"),
+        text: t("tray.quitLeiting"),
         accelerator: "CommandOrControl+Q",
         action: () => {
           exit(0);

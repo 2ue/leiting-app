@@ -23,7 +23,7 @@ const useEscape = () => {
         }
 
         // Hide the Tauri app window when 'Esc' is pressed
-        await platformAdapter.invokeBackend("hide_coco");
+        await platformAdapter.invokeBackend("hide_leiting");
 
         console.log("App window hidden successfully.");
       }

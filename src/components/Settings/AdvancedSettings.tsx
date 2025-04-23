@@ -7,7 +7,7 @@ import { useAppStore } from "@/stores/appStore";
 import { AppEndpoint } from "@/types/index";
 
 const ENDPOINTS = [
-  { value: "https://coco.infini.cloud", label: "https://coco.infini.cloud" },
+  { value: "https://leiting.infini.cloud", label: "https://leiting.infini.cloud" },
   { value: "http://localhost:9000", label: "http://localhost:9000" },
   { value: "http://infini.tpddns.cn:27200", label: "http://infini.tpddns.cn:27200" },
 ];
@@ -17,7 +17,7 @@ export default function AdvancedSettings() {
   const endpoint = useAppStore(state => state.endpoint);
   const setEndpoint = useAppStore(state => state.setEndpoint);
 
-  useEffect(() => {}, [endpoint]);
+  useEffect(() => { }, [endpoint]);
 
   const onChangeEndpoint = async (newEndpoint: AppEndpoint) => {
     await setEndpoint(newEndpoint);

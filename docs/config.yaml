@@ -1,6 +1,6 @@
 # VERSIONS=latest,v1.0 hugo    --minify --baseURL="/product/v1.0/"  -d public/product/v1.0
 
-title: Coco AI App
+title: Leiting AI App
 theme: book
 
 # Book configuration
@@ -37,7 +37,7 @@ menu:
   before: []
   after:
     - name: "Github"
-      url: "https://github.com/infinilabs/coco-app"
+      url: "https://github.com/infinilabs/leiting-app"
       weight: 10
 
 params:
@@ -65,7 +65,7 @@ params:
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo: https://github.com/infinilabs/coco-app
+  BookRepo: https://github.com/infinilabs/leiting-app
 
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.

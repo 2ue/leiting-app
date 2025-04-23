@@ -15,7 +15,7 @@ export function useWindowEvents() {
       }
 
       await platformAdapter.hideWindow();
-      console.log("Hide Coco");
+      console.log("Hide Leiting");
     };
 
     window.addEventListener("blur", handleBlur);

@@ -47,7 +47,7 @@ export const useConnectStore = create<IConnectStore>()(
             })
           );
         },
-        currentService: "default_coco_server",
+        currentService: "default_leiting_server",
         setCurrentService: (server: any) => {
           console.log("set default server:", server);
           set(

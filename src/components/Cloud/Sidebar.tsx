@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { forwardRef } from "react";
 import { Plus } from "lucide-react";
 
-import cocoLogoImg from "@/assets/app-icon.png";
+import leitingLogoImg from "@/assets/app-icon.png";
 import { useConnectStore } from "@/stores/connectStore";
 
 interface SidebarProps {
@@ -27,15 +27,14 @@ export const Sidebar = forwardRef<{ refreshData: () => void }, SidebarProps>(
       return (
         <div
           key={item?.id}
-          className={`flex cursor-pointer items-center space-x-2 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg mb-2 whitespace-nowrap ${
-            currentService?.id === item?.id
+          className={`flex cursor-pointer items-center space-x-2 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg mb-2 whitespace-nowrap ${currentService?.id === item?.id
               ? "dark:bg-blue-900/20 dark:bg-blue-900 border border-[#0087ff]"
               : "bg-gray-50 dark:bg-gray-900 border border-[#e6e6e6] dark:border-gray-700"
-          }`}
+            }`}
           onClick={() => setCurrentService(item)}
         >
           <img
-            src={item?.provider?.icon || cocoLogoImg}
+            src={item?.provider?.icon || leitingLogoImg}
             alt="LogoImg"
             className="w-5 h-5 flex-shrink-0"
           />

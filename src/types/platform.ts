@@ -23,7 +23,7 @@ export interface EventPayloads {
   open_settings: string | "";
   tab_index: string | "";
   login_or_logout: unknown;
-  "show-coco": void;
+  "show-leiting": void;
   connector_data_change: void;
   datasourceData_change: void;
   "ws-error": void;
@@ -104,5 +104,5 @@ export interface SystemOperations {
 // Base platform adapter interface
 export interface BasePlatformAdapter
   extends WindowOperations,
-    ThemeAndEvents,
-    SystemOperations {}
+  ThemeAndEvents,
+  SystemOperations { }

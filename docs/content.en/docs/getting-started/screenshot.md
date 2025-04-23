@@ -11,9 +11,9 @@ asciinema: true
 Here are some screenshots showcasing the user interface:
 
 **Search Local Desktop Applications**
-      Seamlessly search through your local apps directly from Coco AI.
+      Seamlessly search through your local apps directly from Leiting AI.
 
-{{% load-img "/img/screenshot/coco-search-local-apps.png" "" %}}
+{{% load-img "/img/screenshot/leiting-search-local-apps.png" "" %}}
 
 
 
@@ -23,7 +23,7 @@ Here are some screenshots showcasing the user interface:
    Perform hybrid searches across multiple data sources, including personal and company knowledge bases.
 
 **Chat with Your AI Assistant**
-{{% load-img "/img/screenshot/coco-chat.png" "" %}}
+{{% load-img "/img/screenshot/leiting-chat.png" "" %}}
 
    Interact with the AI assistant, which leverages your personal knowledge base to provide detailed and intelligent answers.
 
@@ -34,7 +34,7 @@ Here are some screenshots showcasing the user interface:
    The AI Assistant allows you to review past conversations, ensuring context-aware responses.
 
 **Private Deployment Support**
-{{% load-img "/img/screenshot/coco-connector-to-your-own-server.png" "" %}}
+{{% load-img "/img/screenshot/leiting-connector-to-your-own-server.png" "" %}}
 
-   You can deploy Coco Server privately, ensuring data security and privacy.
+   You can deploy Leiting Server privately, ensuring data security and privacy.
 

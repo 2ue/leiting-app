@@ -16,12 +16,12 @@ export function unregister_shortcut(): Promise<void> {
   return invoke('unregister_shortcut');
 }
 
-export function hide_coco(): Promise<void> {
-  return invoke('hide_coco');
+export function hide_leiting(): Promise<void> {
+  return invoke('hide_leiting');
 }
 
-export function show_coco(): Promise<void> {
-  return invoke('show_coco');
+export function show_leiting(): Promise<void> {
+  return invoke('show_leiting');
 }
 
 export function show_settings(): Promise<void> {

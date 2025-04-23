@@ -43,9 +43,8 @@ const ChatSwitch: React.FC<ChatSwitchProps> = ({ isChatMode, onChange }) => {
     <div
       role="switch"
       aria-checked={isChatMode}
-      className={`relative flex items-center justify-between w-10 h-[18px] rounded-full cursor-pointer transition-colors duration-300 ${
-        isChatMode ? "bg-[#0072ff]" : "bg-[var(--coco-primary-color)]"
-      }`}
+      className={`relative flex items-center justify-between w-10 h-[18px] rounded-full cursor-pointer transition-colors duration-300 ${isChatMode ? "bg-[#0072ff]" : "bg-[var(--leiting-primary-color)]"
+        }`}
       onClick={handleToggle}
     >
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex items-center justify-between px-1">
@@ -53,9 +52,8 @@ const ChatSwitch: React.FC<ChatSwitchProps> = ({ isChatMode, onChange }) => {
         {!isChatMode ? <Search className="w-4 h-4 text-white" /> : <div></div>}
       </div>
       <div
-        className={`absolute top-[1px] h-4 w-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-          isChatMode ? "translate-x-6" : "translate-x-0"
-        }`}
+        className={`absolute top-[1px] h-4 w-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${isChatMode ? "translate-x-6" : "translate-x-0"
+          }`}
       ></div>
     </div>
   );

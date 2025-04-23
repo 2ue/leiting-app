@@ -104,7 +104,7 @@ export default function Footer({
       >
         <div className="gap-1 flex items-center text-[#666] dark:text-[#666] text-xs">
           <span className="mr-1.5">{t("search.footer.select")}:</span>
-          <kbd className="coco-modal-footer-commands-key pr-1">
+          <kbd className="leiting-modal-footer-commands-key pr-1">
             {isMac ? (
               <Command className="w-3 h-3" />
             ) : (
@@ -114,13 +114,13 @@ export default function Footer({
             )}
           </kbd>
           +
-          <kbd className="coco-modal-footer-commands-key pr-1">
+          <kbd className="leiting-modal-footer-commands-key pr-1">
             <ArrowDown01 className="w-3 h-3" />
           </kbd>
         </div>
         <div className="flex items-center text-[#666] dark:text-[#666] text-xs">
           <span className="mr-1.5">{t("search.footer.open")}: </span>
-          <kbd className="coco-modal-footer-commands-key pr-1">
+          <kbd className="leiting-modal-footer-commands-key pr-1">
             <CornerDownLeft className="w-3 h-3" />
           </kbd>
         </div>

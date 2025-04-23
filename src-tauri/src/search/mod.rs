@@ -59,7 +59,7 @@ pub fn open_file(path: String) {
 }
 
 #[tauri::command]
-pub async fn query_coco_fusion<R: Runtime>(
+pub async fn query_leiting_fusion<R: Runtime>(
     app_handle: AppHandle<R>,
     from: u64,
     size: u64,

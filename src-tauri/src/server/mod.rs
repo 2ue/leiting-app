@@ -1,4 +1,4 @@
-//! This file contains Rust APIs related to Coco Server management.
+//! This file contains Rust APIs related to Leiting Server management.
 
 pub mod attachment;
 pub mod auth;

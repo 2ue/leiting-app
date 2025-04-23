@@ -140,7 +140,7 @@ const UpdateApp = ({ checkUpdate, relaunchApp }: UpdateAppProps) => {
               className="text-xs text-[#0072FF] cursor-pointer"
               onClick={() => {
                 OpenURLWithBrowser(
-                  "https://docs.infinilabs.com/coco-app/main/docs/release-notes"
+                  "https://docs.infinilabs.com/leiting-app/main/docs/release-notes"
                 );
               }}
             >

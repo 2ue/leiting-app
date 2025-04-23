@@ -54,7 +54,7 @@ interface ChatInputProps {
   }) => Promise<string | string[] | null>;
   getFileMetadata: (path: string) => Promise<any>;
   getFileIcon: (path: string, size: number) => Promise<string>;
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
   hasModules?: string[];
   searchPlaceholder?: string;
   chatPlaceholder?: string;
@@ -76,7 +76,7 @@ export default function ChatInput({
   isChatPage = false,
   getDataSourcesByServer,
   setupWindowFocusListener,
-  hideCoco,
+  hideLeiting,
   hasModules = [],
   searchPlaceholder,
   chatPlaceholder,
@@ -173,7 +173,7 @@ export default function ChatInput({
     if (inputValue) {
       changeInput("");
     } else if (!isPinned) {
-      hideCoco && hideCoco();
+      hideLeiting && hideLeiting();
     }
   }, [inputValue, isPinned]);
 

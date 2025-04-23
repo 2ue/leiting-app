@@ -37,7 +37,7 @@ interface SearchChatProps {
   searchPlaceholder?: string;
   chatPlaceholder?: string;
 
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
   setIsPinned?: (value: boolean) => void;
   onModeChange?: (isChatMode: boolean) => void;
   isMobile?: boolean;
@@ -49,7 +49,7 @@ function SearchChat({
   hasModules = ["search", "chat"],
   defaultModule = "search",
   theme,
-  hideCoco,
+  hideLeiting,
   searchPlaceholder,
   chatPlaceholder,
   showChatHistory = true,
@@ -321,7 +321,7 @@ function SearchChat({
           hasModules={hasModules}
           searchPlaceholder={searchPlaceholder}
           chatPlaceholder={chatPlaceholder}
-          hideCoco={hideCoco}
+          hideLeiting={hideLeiting}
         />
       </div>
 
@@ -337,7 +337,7 @@ function SearchChat({
             input={input}
             isChatMode={isChatMode}
             changeInput={setInput}
-            hideCoco={hideCoco}
+            hideLeiting={hideLeiting}
             openSetting={openSetting}
             setWindowAlwaysOnTop={setWindowAlwaysOnTop}
           />

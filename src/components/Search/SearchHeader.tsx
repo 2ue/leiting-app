@@ -28,21 +28,19 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
         <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-0.5">
           <button
             onClick={() => setViewMode("list")}
-            className={`p-1 rounded ${
-              viewMode === "list"
-                ? "bg-white dark:bg-gray-700 shadow-sm text-[var(--coco-primary-color)]"
+            className={`p-1 rounded ${viewMode === "list"
+                ? "bg-white dark:bg-gray-700 shadow-sm text-[var(--leiting-primary-color)]"
                 : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
-            }`}
+              }`}
           >
             <AlignLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => setViewMode("detail")}
-            className={`p-1 rounded ${
-              viewMode === "detail"
-                ? "bg-white dark:bg-gray-700 shadow-sm text-[var(--coco-primary-color)]"
+            className={`p-1 rounded ${viewMode === "detail"
+                ? "bg-white dark:bg-gray-700 shadow-sm text-[var(--leiting-primary-color)]"
                 : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
-            }`}
+              }`}
           >
             <Columns2 className="w-4 h-4" />
           </button>

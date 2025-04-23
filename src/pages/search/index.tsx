@@ -9,7 +9,7 @@ function MainApp() {
   const setIsTauri = useAppStore((state) => state.setIsTauri);
   setIsTauri(true);
 
-  const hideCoco = useCallback(() => {
+  const hideLeiting = useCallback(() => {
     return platformAdapter.hideWindow();
   }, []);
 
@@ -18,7 +18,7 @@ function MainApp() {
   return (
     <SearchPure
       isTauri={true}
-      hideCoco={hideCoco}
+      hideLeiting={hideLeiting}
       hasModules={["search", "chat"]}
     />
   );

@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2.0.0",
-  "productName": "Coco-AI",
+  "productName": "Leiting-AI",
   "version": "../package.json",
-  "identifier": "rs.coco.app",
+  "identifier": "rs.leiting.app",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -14,7 +14,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Coco AI",
+        "title": "Leiting AI",
         "url": "/ui",
         "height": 590,
         "width": 680,
@@ -38,7 +38,7 @@
       },
       {
         "label": "settings",
-        "title": "Coco AI Settings",
+        "title": "Leiting AI Settings",
         "url": "/ui/settings",
         "width": 1000,
         "height": 700,
@@ -103,7 +103,7 @@
       "rpm"
     ],
     "category": "Utility",
-    "shortDescription": "Coco AI",
+    "shortDescription": "Leiting AI",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -151,14 +151,14 @@
     "updater": {
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlDRjNDRUU0NTdBMzdCRTMKUldUamU2Tlg1TTd6bkUwZWM0d2Zjdk0wdXJmendWVlpMMmhKN25EcmprYmIydnJ3dmFUME9QYXkK",
       "endpoints": [
-        "https://release.infinilabs.com/coco/app/.latest.json?target={{target}}&arch={{arch}}&current_version={{current_version}}"
+        "https://release.infinilabs.com/leiting/app/.latest.json?target={{target}}&arch={{arch}}&current_version={{current_version}}"
       ]
     },
     "websocket": {},
     "shell": {},
     "globalShortcut": {},
     "deep-link": {
-      "schema": "coco",
+      "schema": "leiting",
       "mobile": [
         {
           "host": "app.infini.cloud",
@@ -169,7 +169,7 @@
       ],
       "desktop": {
         "schemes": [
-          "coco"
+          "leiting"
         ]
       }
     },

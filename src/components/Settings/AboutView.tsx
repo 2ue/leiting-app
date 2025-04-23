@@ -26,7 +26,7 @@ export default function AboutView() {
       </div>
       <div className="flex justify-center items-center mt-10">
         <button
-          onClick={() => OpenURLWithBrowser("https://coco.rs")}
+          onClick={() => OpenURLWithBrowser("https://leiting.rs")}
           className="w-6 h-6 mr-2.5 flex justify-center rounded-[6px] border-[1px] gray-200 dark:border-gray-700"
           aria-label={t("settings.about.website")}
         >
@@ -34,7 +34,7 @@ export default function AboutView() {
         </button>
         <button
           onClick={() =>
-            OpenURLWithBrowser("https://github.com/infinilabs/coco-app")
+            OpenURLWithBrowser("https://github.com/infinilabs/leiting-app")
           }
           className="w-6 h-6 flex justify-center rounded-[6px] border-[1px] gray-200 dark:border-gray-700"
           aria-label={t("settings.about.github")}

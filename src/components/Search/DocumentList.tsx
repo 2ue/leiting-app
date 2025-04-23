@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { useSearchStore } from "@/stores/searchStore";
 import { SearchHeader } from "./SearchHeader";
-import noDataImg from "@/assets/coconut-tree.png";
+import noDataImg from "@/assets/leitingnut-tree.png";
 import { metaOrCtrlKey } from "@/utils/keyboardUtils";
 import SearchListItem from "./SearchListItem";
 import { OpenURLWithBrowser } from "@/utils/index";
@@ -61,7 +61,7 @@ export const DocumentList: React.FC<DocumentListProps> = ({
 
       let response: any;
       if (isTauri) {
-        response = await platformAdapter.commands("query_coco_fusion", {
+        response = await platformAdapter.commands("query_leiting_fusion", {
           from: from,
           size: PAGE_SIZE,
           queryStrings: queryStrings,
@@ -141,15 +141,15 @@ export const DocumentList: React.FC<DocumentListProps> = ({
       const handleArrowKeys = () => {
         e.preventDefault();
         setIsKeyboardMode(true);
-  
+
         setSelectedItem((prev) => {
           const isArrowUp = e.key === "ArrowUp";
-          const nextIndex = prev === null 
-            ? 0 
+          const nextIndex = prev === null
+            ? 0
             : isArrowUp
               ? Math.max(0, prev - 1)
               : Math.min(data.list.length - 1, prev + 1);
-  
+
           getDocDetail(data.list[nextIndex]?.document);
           itemRefs.current[nextIndex]?.scrollIntoView({
             behavior: "smooth",
@@ -199,9 +199,8 @@ export const DocumentList: React.FC<DocumentListProps> = ({
 
   return (
     <div
-      className={`border-r border-gray-200 dark:border-gray-700 flex flex-col h-full overflow-x-hidden ${
-        viewMode === "list" ? "w-[100%]" : "w-[50%]"
-      }`}
+      className={`border-r border-gray-200 dark:border-gray-700 flex flex-col h-full overflow-x-hidden ${viewMode === "list" ? "w-[100%]" : "w-[50%]"
+        }`}
     >
       <div className="px-2 flex-shrink-0">
         <SearchHeader

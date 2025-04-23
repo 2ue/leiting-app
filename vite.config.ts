@@ -31,10 +31,10 @@ export default defineConfig(async () => ({
     host: host || false,
     hmr: host
       ? {
-          protocol: "ws",
-          host,
-          port: 1421,
-        }
+        protocol: "ws",
+        host,
+        port: 1421,
+      }
       : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`
@@ -42,37 +42,37 @@ export default defineConfig(async () => ({
     },
     proxy: {
       "/chat": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/query": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/connector": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/integration": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/assistant": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/datasource": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },
       "/settings": {
-        target: process.env.COCO_SERVER_URL,
+        target: process.env.LEITING_SERVER_URL,
         changeOrigin: true,
         secure: false,
       },

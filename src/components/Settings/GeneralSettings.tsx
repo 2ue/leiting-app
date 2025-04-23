@@ -49,11 +49,10 @@ export function ThemeOption({
       onClick={() => {
         emit("theme-changed", theme);
       }}
-      className={`p-4 rounded-lg border-2 ${
-        isSelected
+      className={`p-4 rounded-lg border-2 ${isSelected
           ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
           : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
-      } flex flex-col items-center justify-center space-y-2 transition-all`}
+        } flex flex-col items-center justify-center space-y-2 transition-all`}
       title={title}
     >
       <Icon className={`w-6 h-6 ${isSelected ? "text-blue-500" : ""}`} />
@@ -111,12 +110,12 @@ export default function GeneralSettings() {
 
   const [shortcut, setShortcut] = useState<Shortcut>([]);
 
-  const setShowCocoShortcuts = useAppStore((state) => {
-    return state.setShowCocoShortcuts;
+  const setShowLeitingShortcuts = useAppStore((state) => {
+    return state.setShowLeitingShortcuts;
   });
 
   useEffect(() => {
-    setShowCocoShortcuts(shortcut);
+    setShowLeitingShortcuts(shortcut);
   }, [shortcut]);
 
   async function getCurrentShortcut() {

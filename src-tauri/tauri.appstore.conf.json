@@ -3,7 +3,7 @@
     "macOS": {
       "entitlements": "./Entitlements.plist",
       "files": {
-        "embedded.provisionprofile": "/Users/medcl/Coco_AI.provisionprofile"
+        "embedded.provisionprofile": "/Users/medcl/Leiting_AI.provisionprofile"
       }
     }
   }

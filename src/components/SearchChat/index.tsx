@@ -37,7 +37,7 @@ interface SearchChatProps {
   searchPlaceholder?: string;
   chatPlaceholder?: string;
 
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
   setIsPinned?: (value: boolean) => void;
   onModeChange?: (isChatMode: boolean) => void;
   isMobile?: boolean;
@@ -49,7 +49,7 @@ function SearchChat({
   hasModules = ["search", "chat"],
   defaultModule = "search",
   theme,
-  hideCoco,
+  hideLeiting,
   searchPlaceholder,
   chatPlaceholder,
   showChatHistory = true,
@@ -289,11 +289,10 @@ function SearchChat({
     >
       <div
         data-tauri-drag-region={isTauri}
-        className={`p-2 absolute w-full flex justify-center transition-all duration-500 ${
-          isTransitioned
+        className={`p-2 absolute w-full flex justify-center transition-all duration-500 ${isTransitioned
             ? "top-[calc(100%-82px)] h-[82px] border-t"
             : "top-0 h-[82px] border-b"
-        } border-[#E6E6E6] dark:border-[#272626]`}
+          } border-[#E6E6E6] dark:border-[#272626]`}
       >
         <InputBox
           isChatMode={isChatMode}
@@ -322,15 +321,14 @@ function SearchChat({
           hasModules={hasModules}
           searchPlaceholder={searchPlaceholder}
           chatPlaceholder={chatPlaceholder}
-          hideCoco={hideCoco}
+          hideLeiting={hideLeiting}
         />
       </div>
 
       <div
         data-tauri-drag-region={isTauri}
-        className={`absolute w-full transition-opacity duration-500 ${
-          isTransitioned ? "opacity-0 pointer-events-none" : "opacity-100"
-        } bottom-0 h-[calc(100%-82px)] `}
+        className={`absolute w-full transition-opacity duration-500 ${isTransitioned ? "opacity-0 pointer-events-none" : "opacity-100"
+          } bottom-0 h-[calc(100%-82px)] `}
       >
         <Suspense fallback={<LoadingFallback />}>
           <Search
@@ -339,7 +337,7 @@ function SearchChat({
             input={input}
             isChatMode={isChatMode}
             changeInput={setInput}
-            hideCoco={hideCoco}
+            hideLeiting={hideLeiting}
             openSetting={openSetting}
             setWindowAlwaysOnTop={setWindowAlwaysOnTop}
           />
@@ -348,11 +346,10 @@ function SearchChat({
 
       <div
         data-tauri-drag-region={isTauri}
-        className={`absolute w-full transition-all duration-500 select-auto ${
-          isTransitioned
+        className={`absolute w-full transition-all duration-500 select-auto ${isTransitioned
             ? "top-0 opacity-100 pointer-events-auto"
             : "-top-[506px] opacity-0 pointer-events-none"
-        } h-[calc(100%-90px)]`}
+          } h-[calc(100%-90px)]`}
       >
         <Suspense fallback={<LoadingFallback />}>
           <ChatAI

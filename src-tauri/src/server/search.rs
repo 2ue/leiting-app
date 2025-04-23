@@ -70,16 +70,16 @@ impl DocumentsSizedCollector {
     }
 }
 
-const COCO_SERVERS: &str = "coco-servers";
+const LEITING_SERVERS: &str = "leiting-servers";
 
-pub struct CocoSearchSource {
+pub struct LeitingSearchSource {
     server: Server,
     client: Client,
 }
 
-impl CocoSearchSource {
+impl LeitingSearchSource {
     pub fn new(server: Server, client: Client) -> Self {
-        CocoSearchSource { server, client }
+        LeitingSearchSource { server, client }
     }
 
     async fn build_request_from_query(
@@ -117,10 +117,10 @@ impl CocoSearchSource {
 }
 
 #[async_trait]
-impl SearchSource for CocoSearchSource {
+impl SearchSource for LeitingSearchSource {
     fn get_type(&self) -> QuerySource {
         QuerySource {
-            r#type: COCO_SERVERS.into(),
+            r#type: LEITING_SERVERS.into(),
             name: self.server.name.clone(),
             id: self.server.id.clone(),
         }

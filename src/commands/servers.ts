@@ -55,12 +55,12 @@ export function get_server_token(id: string): Promise<ServerTokenResponse> {
   return invokeWithErrorHandler(`get_server_token`, { id });
 }
 
-export function list_coco_servers(): Promise<Server[]> {
-  return invokeWithErrorHandler(`list_coco_servers`);
+export function list_leiting_servers(): Promise<Server[]> {
+  return invokeWithErrorHandler(`list_leiting_servers`);
 }
 
-export function add_coco_server(endpoint: string): Promise<Server> {
-  return invokeWithErrorHandler(`add_coco_server`, { endpoint });
+export function add_leiting_server(endpoint: string): Promise<Server> {
+  return invokeWithErrorHandler(`add_leiting_server`, { endpoint });
 }
 
 export function enable_server(id: string): Promise<void> {
@@ -71,16 +71,16 @@ export function disable_server(id: string): Promise<void> {
   return invokeWithErrorHandler(`disable_server`, { id });
 }
 
-export function remove_coco_server(id: string): Promise<void> {
-  return invokeWithErrorHandler(`remove_coco_server`, { id });
+export function remove_leiting_server(id: string): Promise<void> {
+  return invokeWithErrorHandler(`remove_leiting_server`, { id });
 }
 
-export function logout_coco_server(id: string): Promise<void> {
-  return invokeWithErrorHandler(`logout_coco_server`, { id });
+export function logout_leiting_server(id: string): Promise<void> {
+  return invokeWithErrorHandler(`logout_leiting_server`, { id });
 }
 
-export function refresh_coco_server_info(id: string): Promise<Server> {
-  return invokeWithErrorHandler(`refresh_coco_server_info`, { id });
+export function refresh_leiting_server_info(id: string): Promise<Server> {
+  return invokeWithErrorHandler(`refresh_leiting_server_info`, { id });
 }
 
 export function handle_sso_callback({
@@ -286,13 +286,13 @@ export const transcription = (payload: TranscriptionPayload) => {
   });
 };
 
-export const query_coco_fusion = (payload: {
+export const query_leiting_fusion = (payload: {
   from: number;
   size: number;
   queryStrings: Record<string, string>;
   queryTimeout: number;
 }) => {
-  return invokeWithErrorHandler<MultiSourceQueryResponse>("query_coco_fusion", {
+  return invokeWithErrorHandler<MultiSourceQueryResponse>("query_leiting_fusion", {
     ...payload,
   });
 };

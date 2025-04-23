@@ -4,8 +4,8 @@ use crate::common::server::{AuthProvider, Provider, Server, ServerAccessToken, S
 use crate::server::connector::fetch_connectors_by_server;
 use crate::server::datasource::get_datasources_by_server;
 use crate::server::http_client::HttpClient;
-use crate::server::search::CocoSearchSource;
-use crate::COCO_TAURI_STORE;
+use crate::server::search::LeitingSearchSource;
+use crate::LEITING_TAURI_STORE;
 use lazy_static::lazy_static;
 use reqwest::{Client, Method};
 use serde_json::from_value;
@@ -79,9 +79,9 @@ pub async fn persist_servers<R: Runtime>(app_handle: &AppHandle<R>) -> Result<()
 
     // Save the serialized servers to Tauri's store
     app_handle
-        .store(COCO_TAURI_STORE)
+        .store(LEITING_TAURI_STORE)
         .expect("create or load a store should never fail")
-        .set(COCO_SERVERS, json_servers);
+        .set(LEITING_SERVERS, json_servers);
 
     Ok(())
 }
@@ -108,9 +108,9 @@ pub fn persist_servers_token<R: Runtime>(app_handle: &AppHandle<R>) -> Result<()
 
     // Save the serialized servers to Tauri's store
     app_handle
-        .store(COCO_TAURI_STORE)
+        .store(LEITING_TAURI_STORE)
         .expect("create or load a store should never fail")
-        .set(COCO_SERVER_TOKENS, json_servers);
+        .set(LEITING_SERVER_TOKENS, json_servers);
 
     Ok(())
 }
@@ -118,19 +118,19 @@ pub fn persist_servers_token<R: Runtime>(app_handle: &AppHandle<R>) -> Result<()
 // Function to get the default server if the request or parsing fails
 fn get_default_server() -> Server {
     Server {
-        id: "default_coco_server".to_string(),
+        id: "default_leiting_server".to_string(),
         builtin: true,
         enabled: true,
-        name: "Coco Cloud".to_string(),
-        endpoint: "https://coco.infini.cloud".to_string(),
+        name: "Leiting Cloud".to_string(),
+        endpoint: "https://leiting.infini.cloud".to_string(),
         provider: Provider {
             name: "INFINI Labs".to_string(),
-            icon: "https://coco.infini.cloud/icon.png".to_string(),
+            icon: "https://leiting.infini.cloud/icon.png".to_string(),
             website: "http://infinilabs.com".to_string(),
             eula: "http://infinilabs.com/eula.txt".to_string(),
             privacy_policy: "http://infinilabs.com/privacy_policy.txt".to_string(),
-            banner: "https://coco.infini.cloud/banner.jpg".to_string(),
-            description: "Coco AI Server - Search, Connect, Collaborate, AI-powered enterprise search, all in one space.".to_string(),
+            banner: "https://leiting.infini.cloud/banner.jpg".to_string(),
+            description: "Leiting AI Server - Search, Connect, Collaborate, AI-powered enterprise search, all in one space.".to_string(),
         },
         version: Version {
             number: "1.0.0_SNAPSHOT".to_string(),
@@ -143,7 +143,7 @@ fn get_default_server() -> Server {
         profile: None,
         auth_provider: AuthProvider {
             sso: Sso {
-                url: "https://coco.infini.cloud/sso/login/".to_string(),
+                url: "https://leiting.infini.cloud/sso/login/".to_string(),
             },
         },
         priority: 0,
@@ -156,16 +156,16 @@ pub async fn load_servers_token<R: Runtime>(
     dbg!("Attempting to load servers token");
 
     let store = app_handle
-        .store(COCO_TAURI_STORE)
+        .store(LEITING_TAURI_STORE)
         .expect("create or load a store should not fail");
 
     // Check if the servers key exists in the store
-    if !store.has(COCO_SERVER_TOKENS) {
+    if !store.has(LEITING_SERVER_TOKENS) {
         return Err("Failed to read servers from store: No servers found".to_string());
     }
 
     // Load servers from store
-    let servers: Option<JsonValue> = store.get(COCO_SERVER_TOKENS);
+    let servers: Option<JsonValue> = store.get(LEITING_SERVER_TOKENS);
 
     // Handle the None case
     let servers =
@@ -200,16 +200,16 @@ pub async fn load_servers_token<R: Runtime>(
 
 pub async fn load_servers<R: Runtime>(app_handle: &AppHandle<R>) -> Result<Vec<Server>, String> {
     let store = app_handle
-        .store(COCO_TAURI_STORE)
+        .store(LEITING_TAURI_STORE)
         .expect("create or load a store should not fail");
 
     // Check if the servers key exists in the store
-    if !store.has(COCO_SERVERS) {
+    if !store.has(LEITING_SERVERS) {
         return Err("Failed to read servers from store: No servers found".to_string());
     }
 
     // Load servers from store
-    let servers: Option<JsonValue> = store.get(COCO_SERVERS);
+    let servers: Option<JsonValue> = store.get(LEITING_SERVERS);
 
     // Handle the None case
     let servers =
@@ -260,11 +260,11 @@ pub async fn load_or_insert_default_server<R: Runtime>(
 }
 
 #[tauri::command]
-pub async fn list_coco_servers<R: Runtime>(
+pub async fn list_leiting_servers<R: Runtime>(
     _app_handle: AppHandle<R>,
 ) -> Result<Vec<Server>, String> {
     //hard fresh all server's info, in order to get the actual health
-    refresh_all_coco_server_info(_app_handle.clone()).await;
+    refresh_all_leiting_server_info(_app_handle.clone()).await;
 
     let servers: Vec<Server> = get_all_servers();
     Ok(servers)
@@ -281,20 +281,20 @@ pub fn get_all_servers() -> Vec<Server> {
     cache.values().cloned().collect()
 }
 
-/// We store added Coco servers in the Tauri store using this key.
-pub const COCO_SERVERS: &str = "coco_servers";
+/// We store added Leiting servers in the Tauri store using this key.
+pub const LEITING_SERVERS: &str = "leiting_servers";
 
-const COCO_SERVER_TOKENS: &str = "coco_server_tokens";
+const LEITING_SERVER_TOKENS: &str = "leiting_server_tokens";
 
-pub async fn refresh_all_coco_server_info<R: Runtime>(app_handle: AppHandle<R>) {
+pub async fn refresh_all_leiting_server_info<R: Runtime>(app_handle: AppHandle<R>) {
     let servers = get_all_servers();
     for server in servers {
-        let _ = refresh_coco_server_info(app_handle.clone(), server.id.clone()).await;
+        let _ = refresh_leiting_server_info(app_handle.clone(), server.id.clone()).await;
     }
 }
 
 #[tauri::command]
-pub async fn refresh_coco_server_info<R: Runtime>(
+pub async fn refresh_leiting_server_info<R: Runtime>(
     app_handle: AppHandle<R>,
     id: String,
 ) -> Result<Server, String> {
@@ -353,7 +353,7 @@ pub async fn refresh_coco_server_info<R: Runtime>(
 }
 
 #[tauri::command]
-pub async fn add_coco_server<R: Runtime>(
+pub async fn add_leiting_server<R: Runtime>(
     app_handle: AppHandle<R>,
     endpoint: String,
 ) -> Result<Server, String> {
@@ -365,10 +365,10 @@ pub async fn add_coco_server<R: Runtime>(
 
     if check_endpoint_exists(endpoint) {
         dbg!(format!(
-            "This Coco server has already been registered: {:?}",
+            "This Leiting server has already been registered: {:?}",
             &endpoint
         ));
-        return Err("This Coco server has already been registered.".into());
+        return Err("This Leiting server has already been registered.".into());
     }
 
     let url = provider_info_url(endpoint);
@@ -390,7 +390,7 @@ pub async fn add_coco_server<R: Runtime>(
     }
 
     if server.name.is_empty() {
-        server.name = "Coco Server".to_string();
+        server.name = "Leiting Server".to_string();
     }
 
     save_server(&server);
@@ -398,14 +398,14 @@ pub async fn add_coco_server<R: Runtime>(
 
     persist_servers(&app_handle)
         .await
-        .map_err(|e| format!("Failed to persist Coco servers: {}", e))?;
+        .map_err(|e| format!("Failed to persist Leiting servers: {}", e))?;
 
     dbg!(format!("Successfully registered server: {:?}", &endpoint));
     Ok(server)
 }
 
 #[tauri::command]
-pub async fn remove_coco_server<R: Runtime>(
+pub async fn remove_leiting_server<R: Runtime>(
     app_handle: AppHandle<R>,
     id: String,
 ) -> Result<(), ()> {
@@ -447,7 +447,7 @@ pub async fn try_register_server_to_search_source(
 ) {
     if server.enabled {
         let registry = app_handle.state::<SearchSourceRegistry>();
-        let source = CocoSearchSource::new(server.clone(), Client::new());
+        let source = LeitingSearchSource::new(server.clone(), Client::new());
         registry.register_source(source).await;
     }
 }
@@ -482,7 +482,7 @@ pub async fn disable_server<R: Runtime>(app_handle: AppHandle<R>, id: String) ->
 }
 
 #[tauri::command]
-pub async fn logout_coco_server<R: Runtime>(
+pub async fn logout_leiting_server<R: Runtime>(
     app_handle: AppHandle<R>,
     id: String,
 ) -> Result<(), String> {

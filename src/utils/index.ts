@@ -62,8 +62,8 @@ export function useWindowSize() {
 export const IsTauri = () => {
   return Boolean(
     typeof window !== "undefined" &&
-      window !== undefined &&
-      (window as any).__TAURI_INTERNALS__ !== undefined
+    window !== undefined &&
+    (window as any).__TAURI_INTERNALS__ !== undefined
   );
 };
 
@@ -72,7 +72,7 @@ export const OpenURLWithBrowser = async (url: string) => {
   if (IsTauri()) {
     try {
       await platformAdapter.openExternal(url);
-      await platformAdapter.commands("hide_coco");
+      await platformAdapter.commands("hide_leiting");
       console.log("URL opened in default browser");
     } catch (error) {
       console.error("Failed to open URL:", error);

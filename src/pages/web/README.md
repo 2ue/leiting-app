@@ -32,7 +32,7 @@
 - **默认值**: `['search', 'chat']`
 - **描述**: 启用的功能模块列表，目前支持 'search' 和 'chat' 模块
 
-### `hideCoco`
+### `hideLeiting`
 - **类型**: `() => void`
 - **可选**: 是
 - **默认值**: `() => {}`
@@ -81,7 +81,7 @@ function App() {
       width={680}
       height={590}
       hasModules={['search', 'chat']}
-      hideCoco={() => console.log('hide')}
+      hideLeiting={() => console.log('hide')}
       theme="dark"
       searchPlaceholder=""
       chatPlaceholder=""

@@ -18,10 +18,10 @@ interface State {
 }
 
 interface ContextMenuProps {
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
 }
 
-const ContextMenu = ({ hideCoco }: ContextMenuProps) => {
+const ContextMenu = ({ hideLeiting }: ContextMenuProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t, i18n } = useTranslation();
   const state = useReactive<State>({
@@ -63,7 +63,7 @@ const ContextMenu = ({ hideCoco }: ContextMenuProps) => {
         clickEvent: () => {
           OpenURLWithBrowser(url);
 
-          hideCoco && hideCoco();
+          hideLeiting && hideLeiting();
         },
       },
       {

@@ -33,7 +33,7 @@ export const tauriFetch = async <T = any>({
   body,
   timeout = 30,
   parseAs = "json",
-  baseURL = clientEnv.COCO_SERVER_URL
+  baseURL = clientEnv.LEITING_SERVER_URL
 }: FetchRequestConfig): Promise<FetchResponse<T>> => {
   const addLog = useLogStore.getState().addLog;
 
@@ -61,7 +61,7 @@ export const tauriFetch = async <T = any>({
       headers["Content-Type"] = "application/json";
     }
 
-    const server_id = connectStore.state?.currentService?.id || "default_coco_server"
+    const server_id = connectStore.state?.currentService?.id || "default_leiting_server"
     const res: any = await get_server_token(server_id);
 
     headers["X-API-TOKEN"] = headers["X-API-TOKEN"] || res?.access_token || undefined;

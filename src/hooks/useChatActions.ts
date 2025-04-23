@@ -383,7 +383,7 @@ export function useChatActions(
       createWin &&
         createWin({
           label: "chat",
-          title: "Coco Chat",
+          title: "Leiting Chat",
           dragDropEnabled: true,
           center: true,
           width: 1000,

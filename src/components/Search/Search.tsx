@@ -31,7 +31,7 @@ interface SearchProps {
   changeInput: (val: string) => void;
   isChatMode: boolean;
   input: string;
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
   openSetting: () => void;
   setWindowAlwaysOnTop: (isPinned: boolean) => Promise<void>;
 }
@@ -40,7 +40,7 @@ function Search({
   isTauri,
   isChatMode,
   input,
-  hideCoco,
+  hideLeiting,
   openSetting,
   setWindowAlwaysOnTop,
 }: SearchProps) {
@@ -61,7 +61,7 @@ function Search({
 
       let response: SearchResponse;
       if (isTauri) {
-        response = await platformAdapter.commands("query_coco_fusion", {
+        response = await platformAdapter.commands("query_leiting_fusion", {
           from: 0,
           size: 10,
           queryStrings: { query: searchInput },
@@ -151,7 +151,7 @@ function Search({
         setWindowAlwaysOnTop={setWindowAlwaysOnTop}
       />
 
-      <ContextMenu hideCoco={hideCoco} />
+      <ContextMenu hideLeiting={hideLeiting} />
     </div>
   );
 }

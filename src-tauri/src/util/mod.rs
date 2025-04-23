@@ -73,7 +73,7 @@ pub async fn open<R: Runtime>(app_handle: AppHandle<R>, path: String) -> Result<
         let borrowed_path = Path::new(&path);
         if let Some(file_extension) = borrowed_path.extension() {
             if file_extension == "desktop" {
-                let desktop_environment = get_linux_desktop_environment().expect("The Linux OS is running without a desktop, Coco could never run in such a environment");
+                let desktop_environment = get_linux_desktop_environment().expect("The Linux OS is running without a desktop, Leiting could never run in such a environment");
                 return desktop_environment.launch_app_via_desktop_file(path);
             }
         }

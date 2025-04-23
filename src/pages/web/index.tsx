@@ -17,7 +17,7 @@ interface WebAppProps {
   hasModules?: string[];
   defaultModule?: "search" | "chat";
   assistantIDs?: string[];
-  hideCoco?: () => void;
+  hideLeiting?: () => void;
   theme?: "auto" | "light" | "dark";
   searchPlaceholder?: string;
   chatPlaceholder?: string;
@@ -34,11 +34,11 @@ function WebApp({
       "cvqt6r02sdb2v3bkgip0x3ixv01f3r2lhnxoz1efbn160wm9og58wtv8t6wrv1ebvnvypuc23dx9pb33aemh",
     "APP-INTEGRATION-ID": "cvkm9hmhpcemufsg3vug",
   },
-  // token = "cva1j5ehpcenic3ir7k0h8fb8qtv35iwtywze248oscrej8yoivhb5b1hyovp24xejjk27jy9ddt69ewfi3n",   // https://coco.infini.cloud
+  // token = "cva1j5ehpcenic3ir7k0h8fb8qtv35iwtywze248oscrej8yoivhb5b1hyovp24xejjk27jy9ddt69ewfi3n",   // https://leiting.infini.cloud
   // token = "cvqt6r02sdb2v3bkgip0x3ixv01f3r2lhnxoz1efbn160wm9og58wtv8t6wrv1ebvnvypuc23dx9pb33aemh",  // http://localhost:9000
   // token = "cv5djeb9om602jdvtnmg6kc1muyn2vcadr6te48j9t9pvt59ewrnwj7fwvxrw3va84j2a0lb5y8194fbr3jd",  // http://43.153.113.88:9000
   serverUrl = "http://localhost:9000",
-  hideCoco = () => {},
+  hideLeiting = () => { },
   hasModules = ["search", "chat"],
   defaultModule = "search",
   assistantIDs = [],
@@ -73,7 +73,7 @@ function WebApp({
   return (
     <div
       id="searchChat-container"
-      className={`coco-container ${theme}`}
+      className={`leiting-container ${theme}`}
       data-theme={theme}
       style={{
         maxWidth: `${width}px`,
@@ -83,9 +83,8 @@ function WebApp({
     >
       {isMobile && (
         <div
-          className={`fixed ${
-            isChatMode ? "top-1" : "top-3"
-          } right-2 flex items-center justify-center w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 cursor-pointer z-50`}
+          className={`fixed ${isChatMode ? "top-1" : "top-3"
+            } right-2 flex items-center justify-center w-8 h-8 rounded-full bg-black/10 dark:bg-white/10 cursor-pointer z-50`}
           onClick={onCancel}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -100,7 +99,7 @@ function WebApp({
       )}
       <SearchChat
         isTauri={false}
-        hideCoco={hideCoco}
+        hideLeiting={hideLeiting}
         hasModules={hasModules}
         defaultModule={defaultModule}
         theme={theme}

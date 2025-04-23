@@ -209,7 +209,7 @@ impl ApplicationSearchSource {
             let app_name = get_app_name(app).await;
             let app_icon_path = get_app_icon_path(&app_handle, app).await?;
 
-            if app_name.is_empty() || app_name.eq("Coco-AI") {
+            if app_name.is_empty() || app_name.eq("Leiting-AI") {
                 continue;
             }
 

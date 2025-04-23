@@ -5,7 +5,7 @@ title: "Release Notes"
 
 # Release Notes
 
-Information about release notes of Coco Server is provided here.
+Information about release notes of Leiting Server is provided here.
 
 ## Latest (In development)
 
@@ -43,7 +43,7 @@ Information about release notes of Coco Server is provided here.
 ### Improvements
 
 - refactor: web components #331
-- refactor: refactoring login callback, receive access_token from coco-server
+- refactor: refactoring login callback, receive access_token from leiting-server
 - chore: adjust web component styles #362
 - style: modify the style #370
 - style: search list details display #378
@@ -90,7 +90,7 @@ Information about release notes of Coco Server is provided here.
 - Refactor: chat components #273
 - Feat: add endpoint display #282
 - Chore: chat window min width & remove input bg #284
-- Chore: remove selected function & add hide_coco #286
+- Chore: remove selected function & add hide_leiting #286
 - Chore: websocket timeout increased to 2 minutes #289
 - Chore: remove chat input border & clear input #295
 
@@ -143,7 +143,7 @@ Information about release notes of Coco Server is provided here.
 - Auto Start on Startup
 - Shortcut to Features
 - Application Search for macOS
-- Option to Connect to Self-Hosted Coco Server
+- Option to Connect to Self-Hosted Leiting Server
 
 ### Breaking changes
 

@@ -58,8 +58,8 @@ export type IAppStore = {
   setIsPinned: (isPinned: boolean) => void;
   initializeListeners: () => void;
 
-  showCocoShortcuts: string[];
-  setShowCocoShortcuts: (showCocoShortcuts: string[]) => void;
+  showLeitingShortcuts: string[];
+  setShowLeitingShortcuts: (showLeitingShortcuts: string[]) => void;
 
   isTauri: boolean;
   setIsTauri: (isTauri: boolean) => void;
@@ -98,9 +98,9 @@ export const useAppStore = create<IAppStore>()(
       setSSORequestID: (ssoRequestID: string) => set({ ssoRequestID }),
       //  ssoServerID: "",
       // setSSOServerID: (ssoServerID: string) => set({ ssoServerID }),
-      endpoint: "https://coco.infini.cloud/",
-      endpoint_http: "https://coco.infini.cloud",
-      endpoint_websocket: "wss://coco.infini.cloud/ws",
+      endpoint: "https://leiting.infini.cloud/",
+      endpoint_http: "https://leiting.infini.cloud",
+      endpoint_websocket: "wss://leiting.infini.cloud/ws",
       setEndpoint: async (endpoint: AppEndpoint) => {
         const endpoint_http = endpoint;
 
@@ -132,11 +132,11 @@ export const useAppStore = create<IAppStore>()(
           set({ endpoint, endpoint_http, endpoint_websocket });
         });
       },
-      showCocoShortcuts: [],
-      setShowCocoShortcuts: (showCocoShortcuts: string[]) => {
-        console.log("set showCocoShortcuts", showCocoShortcuts);
+      showLeitingShortcuts: [],
+      setShowLeitingShortcuts: (showLeitingShortcuts: string[]) => {
+        console.log("set showLeitingShortcuts", showLeitingShortcuts);
 
-        return set({ showCocoShortcuts });
+        return set({ showLeitingShortcuts });
       },
       isTauri: true,
       setIsTauri: (isTauri: boolean) => set({ isTauri }),

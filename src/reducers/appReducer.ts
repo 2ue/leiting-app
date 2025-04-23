@@ -18,7 +18,7 @@ export type AppAction =
 
 const getCachedChatMode = (): boolean => {
   try {
-    const cached = localStorage.getItem('coco-chat-mode');
+    const cached = localStorage.getItem('leiting-chat-mode');
     return cached === 'true';
   } catch {
     return false;

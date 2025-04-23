@@ -19,7 +19,7 @@ export default function useSettingsWindow() {
     const url = tab ? `/ui/settings?tab=${tab}` : `/ui/settings`;
     const options: CreateWindowOptions = {
       label: "settings",
-      title: "Coco Settings",
+      title: "Leiting Settings",
       width: 1000,
       height: 700,
       alwaysOnTop: false,

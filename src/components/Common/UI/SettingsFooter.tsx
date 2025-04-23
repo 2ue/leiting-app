@@ -13,7 +13,7 @@ const Footer = () => {
               className="w-5 h-5 text-gray-600 dark:text-gray-400"
             />
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Coco
+              Leiting
             </span>
             {/* <ChevronUp className="w-4 h-4 text-gray-500 dark:text-gray-400" /> */}
           </MenuButton>

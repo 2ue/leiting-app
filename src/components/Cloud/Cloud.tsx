@@ -25,17 +25,17 @@ import { Connect } from "./Connect";
 import { OpenURLWithBrowser } from "@/utils";
 import { useAppStore } from "@/stores/appStore";
 import { useConnectStore } from "@/stores/connectStore";
-import bannerImg from "@/assets/images/coco-cloud-banner.jpeg";
+import bannerImg from "@/assets/images/leiting-cloud-banner.jpeg";
 import SettingsToggle from "@/components/Settings/SettingsToggle";
 import Tooltip from "@/components/Common/Tooltip";
 import {
-  list_coco_servers,
-  add_coco_server,
+  list_leiting_servers,
+  add_leiting_server,
   enable_server,
   disable_server,
-  logout_coco_server,
-  remove_coco_server,
-  refresh_coco_server_info,
+  logout_leiting_server,
+  remove_leiting_server,
+  refresh_leiting_server_info,
   handle_sso_callback,
 } from "@/commands";
 
@@ -74,7 +74,7 @@ export default function Cloud() {
   }, [JSON.stringify(currentService)]);
 
   const fetchServers = async (resetSelection: boolean) => {
-    list_coco_servers()
+    list_leiting_servers()
       .then((res: any) => {
         if (errors.length > 0) {
           res = (res || []).map((item: any) => {
@@ -87,7 +87,7 @@ export default function Cloud() {
             return item;
           });
         }
-        //console.log("list_coco_servers", res);
+        //console.log("list_leiting_servers", res);
         setServerList(res);
 
         if (resetSelection && res.length > 0) {
@@ -118,9 +118,9 @@ export default function Cloud() {
 
     setRefreshLoading(true);
 
-    return add_coco_server(endpointLink)
+    return add_leiting_server(endpointLink)
       .then((res: any) => {
-        // console.log("add_coco_server", res);
+        // console.log("add_leiting_server", res);
         fetchServers(false).then((r) => {
           console.log("fetchServers", r);
           setCurrentService(res);
@@ -198,7 +198,7 @@ export default function Cloud() {
 
     // Function to check if the pasted URL is valid for our deep link scheme
     const isValidCallbackUrl = (url: string) => {
-      return url && url.startsWith("coco://oauth_callback");
+      return url && url.startsWith("leiting://oauth_callback");
     };
 
     // Adding event listener for paste events
@@ -233,7 +233,7 @@ export default function Cloud() {
     setSSORequestID(requestID);
 
     // Generate the login URL with the current appUid
-    const url = `${currentService?.auth_provider?.sso?.url}/?provider=${currentService?.id}&product=coco&request_id=${requestID}`;
+    const url = `${currentService?.auth_provider?.sso?.url}/?provider=${currentService?.id}&product=leiting&request_id=${requestID}`;
 
     console.log("Open SSO link, requestID:", ssoRequestID, url);
 
@@ -246,9 +246,9 @@ export default function Cloud() {
 
   const refreshClick = (id: string) => {
     setRefreshLoading(true);
-    refresh_coco_server_info(id)
+    refresh_leiting_server_info(id)
       .then((res: any) => {
-        console.log("refresh_coco_server_info", id, res);
+        console.log("refresh_leiting_server_info", id, res);
         fetchServers(false).then((r) => {
           console.log("fetchServers", r);
         });
@@ -268,9 +268,9 @@ export default function Cloud() {
   function onLogout(id: string) {
     console.log("onLogout", id);
     setRefreshLoading(true);
-    logout_coco_server(id)
+    logout_leiting_server(id)
       .then((res: any) => {
-        console.log("logout_coco_server", id, JSON.stringify(res));
+        console.log("logout_leiting_server", id, JSON.stringify(res));
         refreshClick(id);
         emit("login_or_logout", false);
       })
@@ -280,15 +280,15 @@ export default function Cloud() {
   }
 
   const removeServer = (id: string) => {
-    remove_coco_server(id).then((res: any) => {
-      console.log("remove_coco_server", id, JSON.stringify(res));
+    remove_leiting_server(id).then((res: any) => {
+      console.log("remove_leiting_server", id, JSON.stringify(res));
       fetchServers(true).then((r) => {
         console.log("fetchServers", r);
       });
     });
   };
 
-  const enable_coco_server = useCallback(
+  const enable_leiting_server = useCallback(
     async (enabled: boolean) => {
       if (enabled) {
         await enable_server(currentService?.id);
@@ -340,7 +340,7 @@ export default function Cloud() {
                       ? t("cloud.enable_server")
                       : t("cloud.disable_server")
                   }
-                  onChange={enable_coco_server}
+                  onChange={enable_leiting_server}
                 />
 
                 <button
@@ -356,9 +356,8 @@ export default function Cloud() {
                   onClick={() => refreshClick(currentService?.id)}
                 >
                   <RefreshCcw
-                    className={`w-3.5 h-3.5 ${
-                      refreshLoading ? "animate-spin" : ""
-                    }`}
+                    className={`w-3.5 h-3.5 ${refreshLoading ? "animate-spin" : ""
+                      }`}
                   />
                 </button>
                 {!currentService?.builtin && (
@@ -428,7 +427,7 @@ export default function Cloud() {
                         <button
                           onClick={() => {
                             navigator.clipboard.writeText(
-                              `${currentService?.auth_provider?.sso?.url}/?provider=${currentService?.id}&product=coco&request_id=${ssoRequestID}`
+                              `${currentService?.auth_provider?.sso?.url}/?provider=${currentService?.id}&product=leiting&request_id=${ssoRequestID}`
                             );
                           }}
                           className="text-xl text-blue-500 hover:text-blue-600"

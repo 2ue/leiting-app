@@ -6,9 +6,9 @@ asciinema: true
 
 # Mac OS
 
-## Download Coco AI
+## Download Leiting AI
 
-Goto [https://coco.rs/](https://coco.rs/)
+Goto [https://leiting.rs/](https://leiting.rs/)
 
 {{% load-img "/img/download-mac-app.png" "" %}}
 

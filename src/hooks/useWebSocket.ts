@@ -38,7 +38,7 @@ export default function useWebSocket({
 
   // web
   const { readyState, connect, disconnect } = useWebSocketAHook(
-    // "wss://coco.infini.cloud/ws",
+    // "wss://leiting.infini.cloud/ws",
     // "ws://localhost:9000/ws",
     isTauri ? "" : endpoint_websocket,
     {
@@ -145,7 +145,7 @@ export default function useWebSocket({
     let unlisten_message = null;
 
     if (!isTauri) return;
-    
+
     unlisten_error = platformAdapter.listenEvent(`ws-error-${clientId}`, (event) => {
       // {
       //   "error": {
@@ -154,7 +154,7 @@ export default function useWebSocket({
       //   "status": 401
       // }
       console.error(`ws-error-${clientId}`, event, connected);
-      if(connected) {
+      if (connected) {
         addError("WebSocket connection failed.");
       }
       setConnected(false); // error
