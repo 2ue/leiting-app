@@ -125,6 +125,7 @@ pub fn run() {
             assistant::cancel_session_chat,
             assistant::delete_session_chat,
             assistant::update_session_chat,
+            assistant::assistant_search,
             // server::get_coco_server_datasources,
             // server::get_coco_server_connectors,
             server::websocket::connect_to_server,
@@ -136,7 +137,8 @@ pub fn run() {
             server::transcription::transcription,
             local::application::get_default_search_paths,
             local::application::list_app_with_metadata_in,
-            util::open
+            util::open,
+            server::system_settings::get_system_settings
         ])
         .setup(|app| {
             let registry = SearchSourceRegistry::default();
@@ -245,10 +247,12 @@ pub async fn init<R: Runtime>(app_handle: &AppHandle<R>) {
 async fn init_app_search_source<R: Runtime>(app_handle: &AppHandle<R>) -> Result<(), String> {
     let application_search =
         local::application::ApplicationSearchSource::new(app_handle.clone(), 1000f64).await?;
+    let calculator_search = local::calculator::CalculatorSource::new(2000f64);
 
     // Register the application search source
     let registry = app_handle.state::<SearchSourceRegistry>();
     registry.register_source(application_search).await;
+    registry.register_source(calculator_search).await;
 
     Ok(())
 }

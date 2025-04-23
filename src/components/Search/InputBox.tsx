@@ -15,7 +15,7 @@ import SearchPopover from "./SearchPopover";
 // import AudioRecording from "../AudioRecording";
 import { DataSource } from "@/types/commands";
 // import InputExtra from "./InputExtra";
-// import { useConnectStore } from "@/stores/connectStore";
+import { useConnectStore } from "@/stores/connectStore";
 import { useShortcutsStore } from "@/stores/shortcutsStore";
 import Copyright from "@/components/Common/Copyright";
 import VisibleKey from "@/components/Common/VisibleKey";
@@ -55,7 +55,6 @@ interface ChatInputProps {
   getFileMetadata: (path: string) => Promise<any>;
   getFileIcon: (path: string, size: number) => Promise<string>;
   hideCoco?: () => void;
-  hasFeature?: string[];
   hasModules?: string[];
   searchPlaceholder?: string;
   chatPlaceholder?: string;
@@ -77,7 +76,6 @@ export default function ChatInput({
   isChatPage = false,
   getDataSourcesByServer,
   setupWindowFocusListener,
-  hasFeature = ["think", "search", "think_icon", "search_icon"],
   hideCoco,
   hasModules = [],
   searchPlaceholder,
@@ -85,24 +83,17 @@ export default function ChatInput({
 }: ChatInputProps) {
   const { t } = useTranslation();
 
-  const showTooltip = useAppStore(
-    (state: { showTooltip: boolean }) => state.showTooltip
-  );
+  const currentAssistant = useConnectStore((state) => state.currentAssistant);
+  console.log("currentAssistant", currentAssistant);
 
+  const showTooltip = useAppStore((state) => state.showTooltip);
   const isPinned = useAppStore((state) => state.isPinned);
 
-  const sourceData = useSearchStore(
-    (state: { sourceData: any }) => state.sourceData
-  );
-  const setSourceData = useSearchStore(
-    (state: { setSourceData: any }) => state.setSourceData
-  );
+  const sourceData = useSearchStore((state) => state.sourceData);
+  const setSourceData = useSearchStore((state) => state.setSourceData);
 
   // const sessionId = useConnectStore((state) => state.currentSessionId);
-  const modifierKey = useShortcutsStore((state) => {
-    return state.modifierKey;
-  });
-
+  const modifierKey = useShortcutsStore((state) => state.modifierKey);
   const modeSwitch = useShortcutsStore((state) => state.modeSwitch);
   const returnToInput = useShortcutsStore((state) => state.returnToInput);
   const deepThinking = useShortcutsStore((state) => state.deepThinking);
@@ -140,6 +131,9 @@ export default function ChatInput({
   const setModifierKeyPressed = useShortcutsStore((state) => {
     return state.setModifierKeyPressed;
   });
+  const setVisibleStartPage = useConnectStore((state) => {
+    return state.setVisibleStartPage;
+  });
 
   useEffect(() => {
     const handleFocus = () => {
@@ -163,6 +157,8 @@ export default function ChatInput({
   }, [isChatMode, textareaRef, inputRef]);
 
   const handleSubmit = useCallback(() => {
+    setVisibleStartPage(false);
+
     const trimmedValue = inputValue.trim();
     console.log("handleSubmit", trimmedValue, disabled);
     if (trimmedValue && !disabled) {
@@ -183,13 +179,23 @@ export default function ChatInput({
 
   useKeyPress(`${modifierKey}.${returnToInput}`, handleToggleFocus);
 
+  const visibleContextMenu = useSearchStore((state) => {
+    return state.visibleContextMenu;
+  });
+  const setVisibleContextMenu = useSearchStore((state) => {
+    return state.setVisibleContextMenu;
+  });
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       // console.log("handleKeyDown", e.code, e.key);
 
       if (e.key === "Escape") {
-        handleEscapeKey();
-        return;
+        if (visibleContextMenu) {
+          return setVisibleContextMenu(false);
+        }
+
+        return handleEscapeKey();
       }
 
       pressedKeys.add(e.key);
@@ -239,6 +245,7 @@ export default function ChatInput({
       setIsCommandPressed,
       disabledChange,
       curChatEnd,
+      visibleContextMenu,
     ]
   );
 
@@ -399,7 +406,7 @@ export default function ChatInput({
         )}
 
         {!connected && isChatMode ? (
-          <div className="absolute top-0 right-0 bottom-0 left-0 px-2 py-4 bg-[rgba(255,255,255,0.9)] dark:bg-[rgba(32,33,38,0.9)] backdrop-blur-[2px] rounded-md font-normal text-xs text-gray-400 flex items-center gap-4 z-10">
+          <div className="absolute top-0 right-0 bottom-0 left-0 px-2 py-4 bg-[rgba(238,238,238,0.98)] dark:bg-[rgba(32,33,38,0.9)] backdrop-blur-[2px] rounded-md font-normal text-xs text-gray-400 flex items-center gap-4 z-10">
             {t("search.input.connectionError")}
             <div
               className="px-1 h-[24px] text-[#0061FF] font-normal text-xs flex items-center justify-center cursor-pointer underline"
@@ -436,7 +443,7 @@ export default function ChatInput({
               />
             )} */}
 
-            {hasFeature.includes("think") && (
+            {currentAssistant?._source?.config?.visible && (
               <button
                 className={clsx(
                   "flex items-center gap-1 py-[3px] pl-1 pr-1.5 rounded-md transition hover:bg-[#EDEDED] dark:hover:bg-[#202126]",
@@ -467,14 +474,16 @@ export default function ChatInput({
               </button>
             )}
 
-            {hasFeature.includes("search") && (
+            {currentAssistant?._source?.datasource?.visible && (
               <SearchPopover
                 isSearchActive={isSearchActive}
                 setIsSearchActive={setIsSearchActive}
                 getDataSourcesByServer={getDataSourcesByServer}
               />
             )}
-            {!hasFeature.includes("search") && !hasFeature.includes("think") ? (
+
+            {!currentAssistant?._source?.datasource?.visible &&
+            !currentAssistant?._source?.config?.visible ? (
               <div className="px-[9px]">
                 <Copyright />
               </div>
@@ -498,9 +507,7 @@ export default function ChatInput({
             <ChatSwitch
               isChatMode={isChatMode}
               onChange={(value: boolean) => {
-                value && disabledChange();
                 changeMode && changeMode(value);
-                setSourceData(undefined);
               }}
             />
           </div>

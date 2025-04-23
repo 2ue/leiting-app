@@ -29,7 +29,7 @@ pub struct EditorInfo {
     pub timestamp: Option<String>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct Document {
     pub id: String,
     pub created: Option<String>,
@@ -55,8 +55,15 @@ pub struct Document {
     pub owner: Option<UserInfo>,
     pub last_updated_by: Option<EditorInfo>,
 }
+
 impl Document {
-    pub fn new(source: Option<DataSourceReference>, id: String, category: String, name: String, url: String) -> Self {
+    pub fn new(
+        source: Option<DataSourceReference>,
+        id: String,
+        category: String,
+        name: String,
+        url: String,
+    ) -> Self {
         Self {
             id,
             created: None,

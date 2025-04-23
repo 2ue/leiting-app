@@ -24,13 +24,13 @@ import { useStartupStore } from "@/stores/startupStore";
 import { DataSource } from "@/types/commands";
 import { useThemeStore } from "@/stores/themeStore";
 import { Get } from "@/api/axiosRequest";
+import { useConnectStore } from "@/stores/connectStore";
 
 interface SearchChatProps {
   isTauri?: boolean;
   hasModules?: string[];
   defaultModule?: "search" | "chat";
 
-  hasFeature?: string[];
   showChatHistory?: boolean;
 
   theme?: "auto" | "light" | "dark";
@@ -39,36 +39,31 @@ interface SearchChatProps {
 
   hideCoco?: () => void;
   setIsPinned?: (value: boolean) => void;
-  querySearch: (input: string) => Promise<any>;
-  queryDocuments: (
-    from: number,
-    size: number,
-    queryStrings: any
-  ) => Promise<any>;
   onModeChange?: (isChatMode: boolean) => void;
   isMobile?: boolean;
+  assistantIDs?: string[];
 }
 
 function SearchChat({
   isTauri = true,
   hasModules = ["search", "chat"],
   defaultModule = "search",
-  hasFeature = ["think", "search", "think_active", "search_active"],
   theme,
   hideCoco,
-  querySearch,
-  queryDocuments,
   searchPlaceholder,
   chatPlaceholder,
   showChatHistory = true,
   setIsPinned,
   onModeChange,
   isMobile = false,
+  assistantIDs,
 }: SearchChatProps) {
+  const currentAssistant = useConnectStore((state) => state.currentAssistant);
+
   const customInitialState = {
     ...initialAppState,
-    isDeepThinkActive: hasFeature.includes("think_active"),
-    isSearchActive: hasFeature.includes("search_active"),
+    isDeepThinkActive: currentAssistant?._source?.type === "deep_think",
+    isSearchActive: currentAssistant?._source?.datasource?.enabled === true,
   };
 
   const [state, dispatch] = useReducer(appReducer, customInitialState);
@@ -180,26 +175,31 @@ function SearchChat({
         query?: string;
       }
     ): Promise<DataSource[]> => {
+      let response: any;
       if (isTauri) {
-        return platformAdapter.invokeBackend("get_datasources_by_server", {
+        response = platformAdapter.invokeBackend("get_datasources_by_server", {
           id: serverId,
           options,
         });
       } else {
-        const [error, response]: any = await Get("/datasource/_search");
+        const [error, res]: any = await Get("/datasource/_search");
         if (error) {
           console.error("_search", error);
           return [];
         }
-        const res = response?.hits?.hits?.map((item: any) => {
+        response = res?.hits?.hits?.map((item: any) => {
           return {
             ...item,
             id: item._source.id,
             name: item._source.name,
           };
         });
-        return res || [];
       }
+      let ids = currentAssistant?._source?.datasource?.ids;
+      if (Array.isArray(ids) && ids.length > 0 && !ids.includes("*")) {
+        response = response.filter((item: any) => ids.includes(item.id));
+      }
+      return response || [];
     },
     []
   );
@@ -308,7 +308,6 @@ function SearchChat({
           setIsSearchActive={toggleSearchActive}
           isDeepThinkActive={isDeepThinkActive}
           setIsDeepThinkActive={toggleDeepThinkActive}
-          hasFeature={hasFeature}
           getDataSourcesByServer={getDataSourcesByServer}
           setupWindowFocusListener={setupWindowFocusListener}
           checkScreenPermission={checkScreenPermission}
@@ -340,8 +339,6 @@ function SearchChat({
             input={input}
             isChatMode={isChatMode}
             changeInput={setInput}
-            querySearch={querySearch}
-            queryDocuments={queryDocuments}
             hideCoco={hideCoco}
             openSetting={openSetting}
             setWindowAlwaysOnTop={setWindowAlwaysOnTop}
@@ -357,20 +354,18 @@ function SearchChat({
             : "-top-[506px] opacity-0 pointer-events-none"
         } h-[calc(100%-90px)]`}
       >
-        {isTransitioned && isChatMode ? (
-          <Suspense fallback={<LoadingFallback />}>
-            <ChatAI
-              ref={chatAIRef}
-              key="ChatAI"
-              isTransitioned={isTransitioned}
-              changeInput={setInput}
-              isSearchActive={isSearchActive}
-              isDeepThinkActive={isDeepThinkActive}
-              getFileUrl={getFileUrl}
-              showChatHistory={showChatHistory}
-            />
-          </Suspense>
-        ) : null}
+        <Suspense fallback={<LoadingFallback />}>
+          <ChatAI
+            ref={chatAIRef}
+            key="ChatAI"
+            changeInput={setInput}
+            isSearchActive={isSearchActive}
+            isDeepThinkActive={isDeepThinkActive}
+            getFileUrl={getFileUrl}
+            showChatHistory={showChatHistory}
+            assistantIDs={assistantIDs}
+          />
+        </Suspense>
       </div>
 
       <UpdateApp checkUpdate={checkUpdate} relaunchApp={relaunchApp} />

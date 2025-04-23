@@ -25,7 +25,6 @@ import PrevSuggestion from "@/components/ChatMessage/PrevSuggestion";
 import { useAppStore } from "@/stores/appStore";
 
 interface ChatAIProps {
-  isTransitioned: boolean;
   isSearchActive?: boolean;
   isDeepThinkActive?: boolean;
   activeChatProp?: Chat;
@@ -36,6 +35,7 @@ interface ChatAIProps {
   isChatPage?: boolean;
   getFileUrl: (path: string) => string;
   showChatHistory?: boolean;
+  assistantIDs?: string[];
 }
 
 export interface ChatAIRef {
@@ -49,7 +49,6 @@ const ChatAI = memo(
   forwardRef<ChatAIRef, ChatAIProps>(
     (
       {
-        isTransitioned,
         changeInput,
         isSearchActive,
         isDeepThinkActive,
@@ -60,11 +59,10 @@ const ChatAI = memo(
         isChatPage = false,
         getFileUrl,
         showChatHistory,
+        assistantIDs,
       },
       ref
     ) => {
-      if (!isTransitioned) return null;
-
       useImperativeHandle(ref, () => ({
         init: init,
         cancelChat: () => cancelChat(activeChat),
@@ -76,6 +74,9 @@ const ChatAI = memo(
         useChatStore();
 
       const currentService = useConnectStore((state) => state.currentService);
+      const visibleStartPage = useConnectStore((state) => {
+        return state.visibleStartPage;
+      });
 
       const addError = useAppStore.getState().addError;
 
@@ -201,8 +202,12 @@ const ChatAI = memo(
         async (value: string) => {
           try {
             console.log("init", isLogin, curChatEnd, activeChat?._id);
-            if (!isLogin || !curChatEnd) {
+            if (!isLogin) {
               addError("Please login to continue chatting");
+              return;
+            }
+            if (!curChatEnd) {
+              addError("Please wait for the current conversation to complete");
               return;
             }
             setShowPrevSuggestion(false);
@@ -307,20 +312,6 @@ const ChatAI = memo(
         };
       }, [isSidebarOpenChat, handleOutsideClick]);
 
-      // const fetchChatHistory = useCallback(async () => {
-      //   const hits = await getChatHistory();
-      //   setChats(hits);
-      // }, [getChatHistory]);
-
-      const setIsLoginChat = useCallback(
-        (value: boolean) => {
-          setIsLogin(value);
-          value && currentService && !setIsSidebarOpen && getChatHistory();
-          !value && setChats([]);
-        },
-        [currentService, setIsSidebarOpen, getChatHistory]
-      );
-
       const toggleSidebar = useCallback(() => {
         setIsSidebarOpenChat(!isSidebarOpenChat);
         setIsSidebarOpen && setIsSidebarOpen(!isSidebarOpenChat);
@@ -388,8 +379,9 @@ const ChatAI = memo(
             reconnect={reconnect}
             isChatPage={isChatPage}
             isLogin={isLogin}
-            setIsLogin={setIsLoginChat}
+            setIsLogin={setIsLogin}
             showChatHistory={showChatHistory}
+            assistantIDs={assistantIDs}
           />
           {isLogin ? (
             <ChatContent
@@ -413,7 +405,9 @@ const ChatAI = memo(
             <ConnectPrompt />
           )}
 
-          {showPrevSuggestion ? <PrevSuggestion sendMessage={init} /> : null}
+          {showPrevSuggestion && !visibleStartPage && (
+            <PrevSuggestion sendMessage={init} />
+          )}
         </div>
       );
     }

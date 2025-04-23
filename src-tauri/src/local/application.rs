@@ -11,6 +11,8 @@ use std::path::PathBuf;
 use tauri::{AppHandle, Runtime};
 use tauri_plugin_fs_pro::{icon, metadata, name, IconOptions};
 
+const DATA_SOURCE_ID: &str = "Applications";
+
 #[tauri::command]
 pub fn get_default_search_paths() -> Vec<String> {
     #[cfg(target_os = "macos")]
@@ -232,7 +234,7 @@ impl SearchSource for ApplicationSearchSource {
                 .unwrap_or("My Computer".into())
                 .to_string_lossy()
                 .into(),
-            id: "local_applications".into(),
+            id: DATA_SOURCE_ID.into(),
         }
     }
 
@@ -279,18 +281,19 @@ impl SearchSource for ApplicationSearchSource {
                 let app_path_string = app_path.to_string_lossy().into_owned();
 
                 total_hits += 1;
+
                 let mut doc = Document::new(
-                    Some(DataSourceReference {
-                        r#type: Some(LOCAL_QUERY_SOURCE_TYPE.into()),
-                        name: Some("Applications".into()),
-                        id: Some(app_name.clone()),
-                        icon: None,
-                    }),
-                    app_path_string.clone(),
-                    "Application".to_string(),
-                    app_name.clone(),
-                    app_path_string.clone(),
-                );
+                  Some(DataSourceReference {
+                      r#type: Some(LOCAL_QUERY_SOURCE_TYPE.into()),
+                      name: Some(DATA_SOURCE_ID.into()),
+                      id: Some(DATA_SOURCE_ID.into()),
+                      icon: None,
+                  }),
+                  app_path_string.clone(),
+                  "Application".to_string(),
+                  app_name.clone(),
+                  app_path_string.clone(),
+              );
 
                 // Attach icon if available
                 if let Some(icon_path) = self.icons.get(app_name.as_str()) {

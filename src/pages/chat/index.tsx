@@ -291,7 +291,6 @@ export default function Chat({}: ChatProps) {
               ref={chatAIRef}
               key="ChatAI"
               activeChatProp={activeChat}
-              isTransitioned={true}
               isSearchActive={isSearchActive}
               isDeepThinkActive={isDeepThinkActive}
               setIsSidebarOpen={setIsSidebarOpen}

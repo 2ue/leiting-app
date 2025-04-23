@@ -20,6 +20,16 @@ function TypeIcon({
   const endpoint_http = useAppStore((state) => state.endpoint_http);
   const connectorSource = useFindConnectorIcon(item);
 
+  const isCalculator = item.id === "Calculator";
+
+  if (isCalculator) {
+    return (
+      <IconWrapper className={className} onClick={onClick}>
+        <img className={className} src="/assets/calculator.png" alt="icon" />
+      </IconWrapper>
+    );
+  }
+
   if (item?.source?.icon) {
     if (
       item?.source?.icon.startsWith("http://") ||

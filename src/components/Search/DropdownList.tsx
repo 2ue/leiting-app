@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, MouseEvent } from "react";
 import { CircleAlert, Bolt, X, ArrowBigRight } from "lucide-react";
 import { isNil } from "lodash-es";
-import { useUnmount } from "ahooks";
+import { useDebounceFn, useUnmount } from "ahooks";
+import { useTranslation } from "react-i18next";
 
 import { useSearchStore } from "@/stores/searchStore";
 import ThemedIcon from "@/components/Common/Icons/ThemedIcon";
@@ -9,8 +10,10 @@ import IconWrapper from "@/components/Common/Icons/IconWrapper";
 import TypeIcon from "@/components/Common/Icons/TypeIcon";
 import SearchListItem from "./SearchListItem";
 import { metaOrCtrlKey, isMetaOrCtrlKey } from "@/utils/keyboardUtils";
-import { OpenURLWithBrowser } from "@/utils/index";
+import { copyToClipboard, OpenURLWithBrowser } from "@/utils/index";
 import VisibleKey from "@/components/Common/VisibleKey";
+import Calculator from "./Calculator";
+import { useShortcutsStore } from "@/stores/shortcutsStore";
 
 type ISearchData = Record<string, any[]>;
 
@@ -28,12 +31,12 @@ function DropdownList({
   IsError,
   isChatMode,
 }: DropdownListProps) {
+  const { t } = useTranslation();
+
   let globalIndex = 0;
   const globalItemIndexMap: any[] = [];
 
-  const setSourceData = useSearchStore(
-    (state: { setSourceData: any }) => state.setSourceData
-  );
+  const setSourceData = useSearchStore((state) => state.setSourceData);
 
   const [showError, setShowError] = useState<boolean>(IsError);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -42,11 +45,18 @@ function DropdownList({
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const setSelectedSearchContent = useSearchStore((state) => {
-    return state.setSelectedSearchContent;
-  });
+  const setSelectedSearchContent = useSearchStore(
+    (state) => state.setSelectedSearchContent
+  );
+
+  const hideArrowRight = (item: any) => {
+    const categories = ["Calculator"];
+
+    return categories.includes(item.category);
+  };
 
   useUnmount(() => {
+    setSelectedItem(null);
     setSelectedSearchContent(void 0);
   });
 
@@ -66,15 +76,19 @@ function DropdownList({
     }
   }, [isChatMode]);
 
+  const { run } = useDebounceFn(() => setSelectedItem(0), { wait: 200 });
+
+  useEffect(() => {
+    setSelectedItem(null);
+
+    run();
+  }, [SearchData]);
+
+  const openPopover = useShortcutsStore((state) => state.openPopover);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      // console.log(
-      //   "handleKeyDown",
-      //   e.key,
-      //   showIndex,
-      //   e.key >= "0" && e.key <= "9" && showIndex
-      // );
-      if (!suggests.length) return;
+      if (!suggests.length || openPopover) return;
 
       if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -100,7 +114,11 @@ function DropdownList({
 
       if (e.key === "ArrowRight" && selectedItem !== null) {
         e.preventDefault();
+
         const item = globalItemIndexMap[selectedItem];
+
+        if (hideArrowRight(item)) return;
+
         goToTwoPage(item);
       }
 
@@ -109,6 +127,8 @@ function DropdownList({
         const item = globalItemIndexMap[selectedItem];
         if (item?.url) {
           OpenURLWithBrowser(item?.url);
+        } else {
+          copyToClipboard(item?.payload?.result?.value);
         }
       }
 
@@ -124,7 +144,7 @@ function DropdownList({
         }
       }
     },
-    [suggests, selectedItem, showIndex, globalItemIndexMap]
+    [suggests, selectedItem, showIndex, globalItemIndexMap, openPopover]
   );
 
   const handleKeyUp = useCallback((e: KeyboardEvent) => {
@@ -161,6 +181,16 @@ function DropdownList({
     setSourceData(item);
   }
 
+  const setVisibleContextMenu = useSearchStore(
+    (state) => state.setVisibleContextMenu
+  );
+
+  const handleContextMenu = (event: MouseEvent) => {
+    event.preventDefault();
+
+    setVisibleContextMenu(true);
+  };
+
   return (
     <div
       ref={containerRef}
@@ -171,8 +201,7 @@ function DropdownList({
       {showError ? (
         <div className="flex items-center gap-2 text-sm text-[#333] p-2">
           <CircleAlert className="text-[#FF0000] w-[14px] h-[14px]" />
-          Coco server is unavailable, only local results and available services
-          are displayed.
+          {t("search.list.failures")}
           <Bolt className="text-[#000] w-[14px] h-[14px] cursor-pointer" />
           <X
             className="text-[#666] w-[16px] h-[16px] cursor-pointer"
@@ -180,56 +209,78 @@ function DropdownList({
           />
         </div>
       ) : null}
-      {Object.entries(SearchData).map(([sourceName, items]) => (
-        <div key={sourceName}>
-          {Object.entries(SearchData).length < 5 ? (
-            <div className="p-2 text-xs text-[#999] dark:text-[#666] flex items-center gap-2.5 relative">
-              <TypeIcon item={items[0]?.document} className="w-4 h-4" />
-              {sourceName} - {items[0]?.source.name}
-              <div className="flex-1 border-b border-b-[#e6e6e6] dark:border-b-[#272626]"></div>
-              <IconWrapper
-                className="w-4 h-4 cursor-pointer"
-                onClick={(e: React.MouseEvent) => {
-                  e.stopPropagation();
-                  goToTwoPage(items[0]?.document);
-                }}
-              >
-                <ThemedIcon component={ArrowBigRight} className="w-4 h-4" />
-              </IconWrapper>
-              {showIndex && sourceName === selectedName ? (
-                <div className="absolute top-1 right-4">
-                  <VisibleKey shortcut="→" />
-                </div>
-              ) : null}
-            </div>
-          ) : null}
+      {Object.entries(SearchData).map(([sourceName, items]) => {
+        const showHeader = Object.entries(SearchData).length < 5;
 
-          {items.map((hit: any, index: number) => {
-            const isSelected = selectedItem === globalIndex;
-            const currentIndex = globalIndex;
-            const item = hit.document;
-            globalItemIndexMap.push(item);
-            globalIndex++;
-            return (
-              <SearchListItem
-                key={item.id + index}
-                item={item}
-                isSelected={isSelected}
-                currentIndex={currentIndex}
-                showIndex={showIndex}
-                onMouseEnter={() => setSelectedItem(currentIndex)}
-                onItemClick={() => {
-                  if (item?.url) {
-                    OpenURLWithBrowser(item?.url);
-                  }
-                }}
-                goToTwoPage={goToTwoPage}
-                itemRef={(el) => (itemRefs.current[currentIndex] = el)}
-              />
-            );
-          })}
-        </div>
-      ))}
+        return (
+          <div key={sourceName}>
+            {showHeader && (
+              <div className="p-2 text-xs text-[#999] dark:text-[#666] flex items-center gap-2.5 relative">
+                <TypeIcon item={items[0]?.document} className="w-4 h-4" />
+                {sourceName} - {items[0]?.source.name}
+                <div className="flex-1 border-b border-b-[#e6e6e6] dark:border-b-[#272626]"></div>
+                {!hideArrowRight({ category: sourceName }) && (
+                  <>
+                    <IconWrapper
+                      className="w-4 h-4 cursor-pointer"
+                      onClick={(e: React.MouseEvent) => {
+                        e.stopPropagation();
+                        goToTwoPage(items[0]?.document);
+                      }}
+                    >
+                      <ThemedIcon
+                        component={ArrowBigRight}
+                        className="w-4 h-4"
+                      />
+                    </IconWrapper>
+                    {showIndex && sourceName === selectedName && (
+                      <div className="absolute top-1 right-4">
+                        <VisibleKey shortcut="→" />
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+
+            {items.map((hit: any) => {
+              const isSelected = selectedItem === globalIndex;
+              const currentIndex = globalIndex;
+              const item = hit.document;
+              globalItemIndexMap.push(item);
+              globalIndex++;
+
+              return (
+                <div key={item.id} onContextMenu={handleContextMenu}>
+                  {hideArrowRight(item) ? (
+                    <div
+                      ref={(el) => (itemRefs.current[currentIndex] = el)}
+                      onMouseEnter={() => setSelectedItem(currentIndex)}
+                    >
+                      <Calculator item={item} isSelected={isSelected} />
+                    </div>
+                  ) : (
+                    <SearchListItem
+                      item={item}
+                      isSelected={isSelected}
+                      currentIndex={currentIndex}
+                      showIndex={showIndex}
+                      onMouseEnter={() => setSelectedItem(currentIndex)}
+                      onItemClick={() => {
+                        if (item?.url) {
+                          OpenURLWithBrowser(item?.url);
+                        }
+                      }}
+                      goToTwoPage={() => goToTwoPage(item)}
+                      itemRef={(el) => (itemRefs.current[currentIndex] = el)}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 }

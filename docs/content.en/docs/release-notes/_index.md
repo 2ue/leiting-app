@@ -24,14 +24,21 @@ Information about release notes of Coco Server is provided here.
 - feat: add application management to the plugin #374
 - feat: add keyboard-only operation to history list #385
 - feat: add error notification #386
+- feat: add support for AI assistant #394
+- feat: add support for calculator function #399
+- feat: auto selects the first item after searching #411
+- feat: web components assistant #422
+- feat: right-click menu support for search #423
+- feat: add chat mode launch page #424
 
 ### Bug fix
 
 - fix: fixed the problem of not being able to search in secondary directories #338
 - fix: active shadow setting #354
 - fix: chat history was not show up #377
-- fix: get attachments in chat sessioins
+- fix: get attachments in chat sessions
 - fix: filter http query_args and convert only supported values
+- fix：fixed several search & chat bugs #412
 
 ### Improvements
 
@@ -41,6 +48,8 @@ Information about release notes of Coco Server is provided here.
 - style: modify the style #370
 - style: search list details display #378
 - refactor: refactoring api error handling #382
+- chore: update assistant icon & think mode #397
+- build: build web components and publish #404
 
 ## 0.3.0 (2025-03-31)
 

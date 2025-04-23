@@ -64,7 +64,10 @@ pub async fn query_coco_fusion<R: Runtime>(
     from: u64,
     size: u64,
     query_strings: HashMap<String, String>,
+    query_timeout: u64,
 ) -> Result<MultiSourceQueryResponse, SearchError> {
+    let query_source_to_search = query_strings.get("querysource");
+
     let search_sources = app_handle.state::<SearchSourceRegistry>();
 
     let sources_future = search_sources.get_sources();
@@ -74,11 +77,19 @@ pub async fn query_coco_fusion<R: Runtime>(
     let sources_list = sources_future.await;
 
     // Time limit for each query
-    let timeout_duration = Duration::from_millis(500); //TODO, settings
+    let timeout_duration = Duration::from_secs(query_timeout);
 
     // Push all queries into futures
     for query_source in sources_list {
         let query_source_type = query_source.get_type().clone();
+
+        if let Some(query_source_to_search) = query_source_to_search {
+            // We should not search this data source
+            if &query_source_type.id != query_source_to_search {
+                continue;
+            }
+        }
+
         sources.insert(query_source_type.id.clone(), query_source_type);
 
         let query = SearchQuery::new(from, size, query_strings.clone());
@@ -89,7 +100,7 @@ pub async fn query_coco_fusion<R: Runtime>(
             timeout(timeout_duration, async {
                 query_source_clone.search(query).await
             })
-                .await
+            .await
         }));
     }
 
