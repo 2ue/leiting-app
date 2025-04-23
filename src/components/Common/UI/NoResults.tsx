@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { isMac } from "@/utils/platform";
 import { useShortcutsStore } from "@/stores/shortcutsStore";
-import noDataImg from "@/assets/leitingnut-tree.png";
+import noDataImg from "@/assets/coconut-tree.png";
 
 export const NoResults = () => {
   const { t } = useTranslation();

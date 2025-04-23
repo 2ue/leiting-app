@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { formatter } from "@/utils/index";
 import TypeIcon from "@/components/Common/Icons/TypeIcon";
-import defaultThumbnail from "@/assets/leitingnut-tree.png";
+import defaultThumbnail from "@/assets/coconut-tree.png";
 import ItemIcon from "@/components/Common/Icons/ItemIcon";
 import { RichCategories } from "./ListRight";
 

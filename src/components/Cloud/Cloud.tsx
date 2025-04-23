@@ -25,7 +25,7 @@ import { Connect } from "./Connect";
 import { OpenURLWithBrowser } from "@/utils";
 import { useAppStore } from "@/stores/appStore";
 import { useConnectStore } from "@/stores/connectStore";
-import bannerImg from "@/assets/images/leiting-cloud-banner.jpeg";
+import bannerImg from "@/assets/images/coco-cloud-banner.jpeg";
 import SettingsToggle from "@/components/Settings/SettingsToggle";
 import Tooltip from "@/components/Common/Tooltip";
 import {

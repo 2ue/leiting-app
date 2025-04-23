@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { useSearchStore } from "@/stores/searchStore";
 import { SearchHeader } from "./SearchHeader";
-import noDataImg from "@/assets/leitingnut-tree.png";
+import noDataImg from "@/assets/coconut-tree.png";
 import { metaOrCtrlKey } from "@/utils/keyboardUtils";
 import SearchListItem from "./SearchListItem";
 import { OpenURLWithBrowser } from "@/utils/index";
