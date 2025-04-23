@@ -15,7 +15,7 @@ For more details on Leiting Server, visit: [https://docs.infinilabs.com/leiting-
 
 Feel free to join the Discord server to discuss anything related to this project:
 
-👉 [Join the INFINI Community on Discord](https://discord.gg/4tKTMkkvVX)
+👉 [Join the LEITING Community on Discord](https://discord.gg/4tKTMkkvVX)
 
 
 ## License

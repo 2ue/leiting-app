@@ -124,7 +124,7 @@ fn get_default_server() -> Server {
         name: "Leiting Cloud".to_string(),
         endpoint: "https://leiting.infini.cloud".to_string(),
         provider: Provider {
-            name: "INFINI Labs".to_string(),
+            name: "LEITING".to_string(),
             icon: "https://leiting.infini.cloud/icon.png".to_string(),
             website: "http://infinilabs.com".to_string(),
             eula: "http://infinilabs.com/eula.txt".to_string(),

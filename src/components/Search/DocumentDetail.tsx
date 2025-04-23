@@ -68,7 +68,7 @@ export const DocumentDetail: React.FC<DocumentDetailProps> = ({ document }) => {
 
   // size: null
 
-  // source: {type: "connector", name: "INFINI Labs 官网", id: "cu4vj5o2sdb34a5pcbfg", icon: "http://localhost:9000/assets/icons/connector/hugo_site/icon.png"}
+  // source: {type: "connector", name: "LEITING 官网", id: "cu4vj5o2sdb34a5pcbfg", icon: "http://localhost:9000/assets/icons/connector/hugo_site/icon.png"}
 
   // subcategory: null
 

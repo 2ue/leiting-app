@@ -1,7 +1,7 @@
-import { Globe, Github } from "lucide-react";
+// import { Globe, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { OpenURLWithBrowser } from "@/utils";
+// import { OpenURLWithBrowser } from "@/utils";
 import logoLight from "@/assets/images/logo-text-light.svg";
 import logoDark from "@/assets/images/logo-text-dark.svg";
 import { useThemeStore } from "@/stores/themeStore";
@@ -24,7 +24,7 @@ export default function AboutView() {
       <div className="mt-8 font-medium text-gray-900 dark:text-gray-100">
         {t("settings.about.slogan")}
       </div>
-      <div className="flex justify-center items-center mt-10">
+      {/* <div className="flex justify-center items-center mt-10">
         <button
           onClick={() => OpenURLWithBrowser("https://leiting.rs")}
           className="w-6 h-6 mr-2.5 flex justify-center rounded-[6px] border-[1px] gray-200 dark:border-gray-700"
@@ -41,7 +41,7 @@ export default function AboutView() {
         >
           <Github className="w-3 text-blue-500" />
         </button>
-      </div>
+      </div> */}
       <div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
         {t("settings.about.version", {
           version: process.env.VERSION || "v1.0.0",

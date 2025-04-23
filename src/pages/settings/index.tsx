@@ -34,8 +34,8 @@ function SettingsPage() {
 
   const tabs = [
     { name: t("settings.tabs.general"), icon: Settings },
-    { name: t("settings.tabs.extensions"), icon: Puzzle },
-    { name: t("settings.tabs.connect"), icon: Server },
+    // { name: t("settings.tabs.extensions"), icon: Puzzle },
+    // { name: t("settings.tabs.connect"), icon: Server },
     { name: t("settings.tabs.advanced"), icon: Settings2 },
     { name: t("settings.tabs.about"), icon: Info },
   ];
@@ -124,14 +124,14 @@ function SettingsPage() {
                   <GeneralSettings />
                 </SettingsPanel>
               </TabPanel>
-              <TabPanel>
+              {/* <TabPanel>
                 <SettingsPanel title="">
                   <Extensions />
                 </SettingsPanel>
-              </TabPanel>
-              <TabPanel>
+              </TabPanel> */}
+              {/* <TabPanel>
                 <Cloud />
-              </TabPanel>
+              </TabPanel> */}
               <TabPanel>
                 <SettingsPanel title="">
                   <Advanced />

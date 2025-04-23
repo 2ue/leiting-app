@@ -2,7 +2,7 @@
 name = "leiting"
 version = "0.3.0"
 description = "Search, connect, collaborate – all in one place."
-authors = ["INFINI Labs"]
+authors = ["LEITING"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
