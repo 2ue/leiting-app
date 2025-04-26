@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { Settings, Puzzle, Settings2, Info, Server } from "lucide-react";
+import { Settings, Settings2, Info } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { listen } from "@tauri-apps/api/event";
 
 import SettingsPanel from "@/components/Settings/SettingsPanel";
 import GeneralSettings from "@/components/Settings/GeneralSettings";
 import AboutView from "@/components/Settings/AboutView";
-import Cloud from "@/components/Cloud/Cloud.tsx";
+// import Cloud from "@/components/Cloud/Cloud.tsx";
 import Footer from "@/components/Common/UI/SettingsFooter";
 import { useTray } from "@/hooks/useTray";
 import Advanced from "@/components/Settings/Advanced";
-import Extensions from "@/components/Settings/Extensions";
+// import Extensions from "@/components/Settings/Extensions";
 import { useAsyncEffect, useMount } from "ahooks";
 import { useApplicationsStore } from "@/stores/applicationsStore";
 import platformAdapter from "@/utils/platformAdapter";

@@ -351,7 +351,8 @@
   "tray": {
     "showLeiting": "Show Leiting",
     "settings": "Settings...",
-    "LeiTing Chat": "open chat",
+    "chat": "open LeiTing chat",
+    "toolbar": "open LeiTing bar",
     "quitLeiting": "Quit Leiting"
   },
   "update": {

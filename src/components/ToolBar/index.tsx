@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import { useDoubleClick } from '@reactuses/core';
 
@@ -17,7 +17,7 @@ const FloatingBall = () => {
   const [isEdgeHidden, setIsEdgeHidden] = useState(false);
 
   // 拖拽结束时检查是否需要吸附到边缘
-  const handleDragStop = (e, data) => {
+  const handleDragStop = (_: any, data: any) => {
     const { x, y } = data;
     const centerX = window.innerWidth / 2;
 
@@ -81,12 +81,12 @@ const FloatingBall = () => {
         onStop={handleDragStop}
       >
         <div
+          // @ts-ignore
           ref={floatBarRef}
-          className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300 ${
-            isEdgeHidden
-              ? 'w-4 h-16 bg-gray-700 rounded-none' // 吸附后的竖条样式，高度不变
-              : 'w-16 h-16 bg-blue-500 rounded-full shadow-lg' // 默认悬浮球样式
-          }`}
+          className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300 ${isEdgeHidden
+            ? 'w-4 h-16 bg-gray-700 rounded-none' // 吸附后的竖条样式，高度不变
+            : 'w-16 h-16 bg-blue-500 rounded-full shadow-lg' // 默认悬浮球样式
+            }`}
           onClick={toggleMenu} // 点击时展开/收起菜单
         >
           {!isEdgeHidden && <span className="text-white font-bold">雷霆</span>}

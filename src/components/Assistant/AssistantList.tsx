@@ -159,8 +159,8 @@ export function AssistantList({ assistantIDs = [] }: AssistantListProps) {
                 setIsOpen(false);
               }}
               className={`w-full flex items-center gap-2 rounded-lg p-1 py-1.5 mb-1 ${currentAssistant?._id === assistant._id
-                  ? "bg-[#F3F4F6] dark:bg-[#1F2937]"
-                  : "hover:bg-[#F3F4F6] dark:hover:bg-[#1F2937]"
+                ? "bg-[#F3F4F6] dark:bg-[#1F2937]"
+                : "hover:bg-[#F3F4F6] dark:hover:bg-[#1F2937]"
                 }
               }`}
             >

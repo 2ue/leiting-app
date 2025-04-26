@@ -7,7 +7,7 @@ import { exit } from "@tauri-apps/plugin-process";
 
 import { isMac } from "@/utils/platform";
 import { useAppStore } from "@/stores/appStore";
-import { show_leiting, show_settings, show_chat } from "@/commands";
+import { show_leiting, show_settings, show_chat, show_toolbar } from "@/commands";
 
 const TRAY_ID = "LEITING_TRAY";
 
@@ -68,6 +68,14 @@ export const useTray = () => {
         // accelerator: "CommandOrControl+,",
         action: () => {
           show_chat()
+        },
+      }),
+      PredefinedMenuItem.new({ item: "Separator" }),
+      MenuItem.new({
+        text: t("tray.toolbar"),
+        // accelerator: "CommandOrControl+,",
+        action: () => {
+          show_toolbar()
         },
       }),
       PredefinedMenuItem.new({ item: "Separator" }),

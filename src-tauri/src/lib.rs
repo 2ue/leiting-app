@@ -102,6 +102,7 @@ pub fn run() {
             hide_leiting,
             show_settings,
             show_chat,
+            show_toolbar,
             server::servers::get_server_token,
             server::servers::add_leiting_server,
             server::servers::remove_leiting_server,
@@ -428,8 +429,37 @@ fn open_chat(app: &tauri::AppHandle) {
             .build()
             .unwrap();
 
-        let webview_builder =
-            WebviewBuilder::new("chat", tauri::WebviewUrl::App("/".into()));
+        let webview_builder = WebviewBuilder::new("chat", tauri::WebviewUrl::App("/".into()));
+        let _webview = window
+            .add_child(
+                webview_builder,
+                tauri::LogicalPosition::new(0, 0),
+                window.inner_size().unwrap(),
+            )
+            .unwrap();
+    }
+}
+#[allow(dead_code)]
+fn open_toolbar(app: &tauri::AppHandle) {
+    use tauri::webview::WebviewBuilder;
+    println!("settings menu item was clicked");
+    let window = app.get_webview_window("toolbar");
+    if let Some(window) = window {
+        let _ = window.show();
+        let _ = window.unminimize();
+        let _ = window.set_focus();
+    } else {
+        let window = tauri::window::WindowBuilder::new(app, "toolbar")
+            .title("toolbar")
+            .fullscreen(false)
+            .resizable(false)
+            .minimizable(false)
+            .maximizable(false)
+            .inner_size(64.0, 64.0)
+            .build()
+            .unwrap();
+
+        let webview_builder = WebviewBuilder::new("toolbar", tauri::WebviewUrl::App("/".into()));
         let _webview = window
             .add_child(
                 webview_builder,
@@ -456,5 +486,10 @@ async fn show_settings(app_handle: AppHandle) {
 
 #[tauri::command]
 async fn show_chat(app_handle: AppHandle) {
-  open_chat(&app_handle);
+    open_chat(&app_handle);
+}
+
+#[tauri::command]
+async fn show_toolbar(app_handle: AppHandle) {
+    open_toolbar(&app_handle);
 }

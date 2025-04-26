@@ -31,3 +31,7 @@ export function show_settings(): Promise<void> {
 export function show_chat(): Promise<void> {
   return invoke('show_chat');
 }
+
+export function show_toolbar(): Promise<void> {
+  return invoke('show_toolbar');
+}
