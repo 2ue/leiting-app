@@ -139,7 +139,7 @@ checksum = "dcfed56ad506cb2c684a14971b8861fdc3baaaae314b9e5f9bb532cbe3ba7a4f"
 [[package]]
 name = "applications"
 version = "0.3.1"
-source = "git+https://github.com/infinilabs/applications-rs?rev=fb8f475993a2a774ce08d7a58f9f2ac264248a24#fb8f475993a2a774ce08d7a58f9f2ac264248a24"
+source = "git+https://gh-proxy.com/github.com/infinilabs/applications-rs?rev=fb8f475993a2a774ce08d7a58f9f2ac264248a24#fb8f475993a2a774ce08d7a58f9f2ac264248a24"
 dependencies = [
  "anyhow",
  "cocoa 0.25.0",
@@ -4332,7 +4332,7 @@ dependencies = [
 [[package]]
 name = "pizza-common"
 version = "0.1.0"
-source = "git+https://github.com/infinilabs/pizza-common?branch=main#60ff2901bd302777b8c754cfd0bc436fac377838"
+source = "git+https://gh-proxy.com/github.com/infinilabs/pizza-common?branch=main#60ff2901bd302777b8c754cfd0bc436fac377838"
 dependencies = [
  "bytes",
  "camino",
@@ -5892,7 +5892,7 @@ dependencies = [
 [[package]]
 name = "tauri-nspanel"
 version = "2.0.1"
-source = "git+https://github.com/ahkohd/tauri-nspanel?branch=v2#356843c8433f89feea4f0f666be8b8d73715a57a"
+source = "git+https://gh-proxy.com/github.com/ahkohd/tauri-nspanel?branch=v2#2a275c77f8cd5f7105134249339e0c5182729e2a"
 dependencies = [
  "bitflags 2.9.0",
  "block",
