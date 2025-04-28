@@ -455,8 +455,15 @@ fn open_toolbar(app: &tauri::AppHandle) {
             .resizable(false)
             .minimizable(false)
             .maximizable(false)
-            .inner_size(64.0, 64.0)
             .build()
+            .unwrap();
+        let screen_size = window.inner_size().unwrap();
+        print!("screen size: {:?}", screen_size);
+        // 设置窗口初始位置（距离右侧32px）
+        let x = screen_size.width as i32 - 32;
+        let y = screen_size.height as i32 - 32;
+        window
+            .set_position(tauri::PhysicalPosition::new(x, y))
             .unwrap();
 
         let webview_builder = WebviewBuilder::new("toolbar", tauri::WebviewUrl::App("/".into()));

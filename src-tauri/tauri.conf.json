@@ -63,11 +63,11 @@
         "height": 64,
         "decorations": false,
         "resizable": false,
-        "skipTaskbar": true,
         "alwaysOnTop": true,
         "transparent": true,
         "visible": false,
         "hiddenTitle": true,
+        "shadow": false,
         "windowEffects": {
           "effects": [],
           "radius": 100
@@ -165,7 +165,7 @@
     },
     "window": {},
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlDRjNDRUU0NTdBMzdCRTMKUldUamU2Tlg1TTd6bkUwZWM0d2Zjdk0wdXJmendWVlpMMmhKN25EcmprYmIydnJ3dmFUME9QYXkK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
       "endpoints": [
         "https://release.infinilabs.com/leiting/app/.latest.json?target={{target}}&arch={{arch}}&current_version={{current_version}}"
       ]
