@@ -444,6 +444,8 @@ fn open_toolbar(app: &tauri::AppHandle) {
     use tauri::webview::WebviewBuilder;
     println!("settings menu item was clicked");
     let window = app.get_webview_window("toolbar");
+    const TOOLBAR_SIZE: i32 = 64;
+    const MARGIN: i32 = 32;
     if let Some(window) = window {
         let _ = window.show();
         let _ = window.unminimize();
@@ -457,14 +459,18 @@ fn open_toolbar(app: &tauri::AppHandle) {
             .maximizable(false)
             .build()
             .unwrap();
-        let screen_size = window.inner_size().unwrap();
-        print!("screen size: {:?}", screen_size);
-        // 设置窗口初始位置（距离右侧32px）
-        let x = screen_size.width as i32 - 32;
-        let y = screen_size.height as i32 - 32;
-        window
-            .set_position(tauri::PhysicalPosition::new(x, y))
-            .unwrap();
+        // 获取当前显示器
+        let current_monitor = window.current_monitor().unwrap();
+        let current_monitor_unwrap = current_monitor.unwrap();
+        let screen_size = current_monitor_unwrap.size();
+
+        println!("screen size: {:?}", screen_size);
+
+        // 计算悬浮球窗口位置
+        // x: 距离右侧MARGIN像素
+        // y: 垂直居中
+        let x = screen_size.width as i32 - TOOLBAR_SIZE as i32 - MARGIN;
+        let y = (screen_size.height as i32 - TOOLBAR_SIZE as i32) / 2;
 
         let webview_builder = WebviewBuilder::new("toolbar", tauri::WebviewUrl::App("/".into()));
         let _webview = window
