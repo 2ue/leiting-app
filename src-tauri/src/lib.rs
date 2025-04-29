@@ -103,18 +103,18 @@ pub fn run() {
             show_settings,
             show_chat,
             show_toolbar,
-            server::servers::get_server_token,
-            server::servers::add_leiting_server,
-            server::servers::remove_leiting_server,
-            server::servers::list_leiting_servers,
-            server::servers::logout_leiting_server,
-            server::servers::refresh_leiting_server_info,
-            server::servers::enable_server,
-            server::servers::disable_server,
-            server::auth::handle_sso_callback,
-            server::profile::get_user_profiles,
-            server::datasource::get_datasources_by_server,
-            server::connector::get_connectors_by_server,
+            //server::servers::get_server_token,
+            //server::servers::add_leiting_server,
+            //server::servers::remove_leiting_server,
+            //server::servers::list_leiting_servers,
+            //server::servers::logout_leiting_server,
+            //server::servers::refresh_leiting_server_info,
+            //server::servers::enable_server,
+            //server::servers::disable_server,
+            //server::auth::handle_sso_callback,
+            //server::profile::get_user_profiles,
+            //server::datasource::get_datasources_by_server,
+            //server::connector::get_connectors_by_server,
             search::query_leiting_fusion,
             search::search_files,
             search::open_file,
@@ -469,8 +469,8 @@ fn open_toolbar(app: &tauri::AppHandle) {
         // 计算悬浮球窗口位置
         // x: 距离右侧MARGIN像素
         // y: 垂直居中
-        let x = screen_size.width as i32 - TOOLBAR_SIZE as i32 - MARGIN;
-        let y = (screen_size.height as i32 - TOOLBAR_SIZE as i32) / 2;
+        let _x = screen_size.width as i32 - TOOLBAR_SIZE as i32 - MARGIN;
+        let _y = (screen_size.height as i32 - TOOLBAR_SIZE as i32) / 2;
 
         let webview_builder = WebviewBuilder::new("toolbar", tauri::WebviewUrl::App("/".into()));
         let _webview = window
