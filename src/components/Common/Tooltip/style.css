@@ -5,7 +5,7 @@
 
 .tooltip-box {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.75);
+  /* background-color: rgba(0, 0, 0, 0.75); */
   color: #fff;
   padding: 6px 10px;
   border-radius: 4px;

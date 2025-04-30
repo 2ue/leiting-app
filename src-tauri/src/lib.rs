@@ -442,7 +442,7 @@ fn open_chat(app: &tauri::AppHandle) {
 #[allow(dead_code)]
 fn open_toolbar(app: &tauri::AppHandle) {
     use tauri::webview::WebviewBuilder;
-    println!("settings menu item was clicked");
+    println!("floating bar item was clicked");
     let window = app.get_webview_window("toolbar");
     const TOOLBAR_SIZE: i32 = 64;
     const MARGIN: i32 = 32;
@@ -450,28 +450,16 @@ fn open_toolbar(app: &tauri::AppHandle) {
         let _ = window.show();
         let _ = window.unminimize();
         let _ = window.set_focus();
+        println!("toolbar window found");
     } else {
         let window = tauri::window::WindowBuilder::new(app, "toolbar")
             .title("toolbar")
-            .fullscreen(false)
             .resizable(false)
             .minimizable(false)
             .maximizable(false)
+            // .set_ignore_cursor(true)
             .build()
             .unwrap();
-        // 获取当前显示器
-        let current_monitor = window.current_monitor().unwrap();
-        let current_monitor_unwrap = current_monitor.unwrap();
-        let screen_size = current_monitor_unwrap.size();
-
-        println!("screen size: {:?}", screen_size);
-
-        // 计算悬浮球窗口位置
-        // x: 距离右侧MARGIN像素
-        // y: 垂直居中
-        let _x = screen_size.width as i32 - TOOLBAR_SIZE as i32 - MARGIN;
-        let _y = (screen_size.height as i32 - TOOLBAR_SIZE as i32) / 2;
-
         let webview_builder = WebviewBuilder::new("toolbar", tauri::WebviewUrl::App("/".into()));
         let _webview = window
             .add_child(

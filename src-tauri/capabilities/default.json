@@ -5,7 +5,8 @@
   "windows": [
     "main",
     "chat",
-    "settings"
+    "settings",
+    "toolbar"
   ],
   "permissions": [
     "core:default",
@@ -74,6 +75,18 @@
     "core:window:allow-set-theme",
     "process:default",
     "updater:default",
-    "windows-version:default"
-  ]
+    "windows-version:default",
+    "core:window:allow-set-title",
+    "core:window:allow-set-title-bar-style",
+    "core:window:allow-set-position",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-set-ignore-cursor-events"
+  ],
+  "tauri": {
+    "allowlist": {
+      "window": {
+        "startDragging": true
+      }
+    }
+  }
 }

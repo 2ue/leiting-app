@@ -32,6 +32,7 @@
           "effects": [],
           "radius": 6
         },
+        "focus": true,
         "visibleOnAllWorkspaces": false,
         "alwaysOnTop": true
       },
@@ -57,7 +58,7 @@
       },
       {
         "label": "toolbar",
-        "title": "toolbar",
+        "title": "",
         "url": "/toolbar",
         "width": 64,
         "height": 64,
@@ -66,12 +67,7 @@
         "alwaysOnTop": true,
         "transparent": true,
         "visible": false,
-        "hiddenTitle": true,
-        "shadow": false,
-        "windowEffects": {
-          "effects": [],
-          "radius": 100
-        }
+        "hiddenTitle": true
       },
       {
         "label": "chat",
