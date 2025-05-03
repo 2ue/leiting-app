@@ -1,6 +1,6 @@
 import {
   useEffect,
-  useRef,
+  // useRef,
   useCallback,
   useReducer,
   Suspense,
@@ -12,7 +12,7 @@ import { useMount } from "ahooks";
 
 import Search from "@/components/Search/Search";
 import InputBox from "@/components/Search/InputBox";
-import ChatAI, { ChatAIRef } from "@/components/Assistant/Chat";
+// import ChatAI, { ChatAIRef } from "@/components/Assistant/Chat";
 import UpdateApp from "@/components/UpdateApp";
 import { isLinux, isWin } from "@/utils/platform";
 import { appReducer, initialAppState } from "@/reducers/appReducer";
@@ -112,7 +112,7 @@ function SearchChat({
     };
   }, []);
 
-  const chatAIRef = useRef<ChatAIRef>(null);
+  // const chatAIRef = useRef<ChatAIRef>(null);
 
   const changeMode = useCallback(async (value: boolean) => {
     dispatch({ type: "SET_CHAT_MODE", payload: value });
@@ -123,18 +123,18 @@ function SearchChat({
     async (value: string) => {
       dispatch({ type: "SET_INPUT", payload: value });
       if (isChatMode) {
-        chatAIRef.current?.init(value);
+        // chatAIRef.current?.init(value);
       }
     },
     [isChatMode]
   );
 
   const cancelChat = useCallback(() => {
-    chatAIRef.current?.cancelChat();
+    // chatAIRef.current?.cancelChat();
   }, []);
 
   const reconnect = useCallback(() => {
-    chatAIRef.current?.reconnect();
+    // chatAIRef.current?.reconnect();
   }, []);
 
   const setInput = useCallback((value: string) => {
@@ -290,8 +290,8 @@ function SearchChat({
       <div
         data-tauri-drag-region={isTauri}
         className={`p-2 absolute w-full flex justify-center transition-all duration-500 ${isTransitioned
-            ? "top-[calc(100%-82px)] h-[82px] border-t"
-            : "top-0 h-[82px] border-b"
+          ? "top-[calc(100%-82px)] h-[82px] border-t"
+          : "top-0 h-[82px] border-b"
           } border-[#E6E6E6] dark:border-[#272626]`}
       >
         <InputBox
@@ -344,7 +344,7 @@ function SearchChat({
         </Suspense>
       </div>
 
-      <div
+      {/* <div
         data-tauri-drag-region={isTauri}
         className={`absolute w-full transition-all duration-500 select-auto ${isTransitioned
             ? "top-0 opacity-100 pointer-events-auto"
@@ -363,7 +363,7 @@ function SearchChat({
             assistantIDs={assistantIDs}
           />
         </Suspense>
-      </div>
+      </div> */}
 
       <UpdateApp checkUpdate={checkUpdate} relaunchApp={relaunchApp} />
     </div>

@@ -1,6 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 // import Draggable from 'react-draggable';
-import { useDoubleClick } from '@reactuses/core';
 import LeitingLogo from '@/assets/app-icon.png';
 import { Window, PhysicalSize, PhysicalPosition, currentMonitor } from '@tauri-apps/api/window'
 import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
@@ -39,6 +38,9 @@ const FloatingBall = () => {
       windowView.setDecorations(false);
       windowView.setTitleBarStyle('transparent');
       windowView.setBackgroundColor('transparent');
+      windowView.onDragDropEvent(e => {
+        console.log('onDragDropEvent', e);
+      })
     }
     initWindow();
   }, [])
