@@ -1,6 +1,7 @@
-html,
-body {
+* {
   border: none !important;
+  background-color: transparent;
+  overflow: hidden;
 }
 .suspendButtonTs {
   position: fixed;

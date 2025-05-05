@@ -18,8 +18,9 @@ export type AppAction =
 
 const getCachedChatMode = (): boolean => {
   try {
-    const cached = localStorage.getItem('leiting-chat-mode');
-    return cached === 'true';
+    // const cached = localStorage.getItem('leiting-chat-mode');
+    // return cached === 'true';
+    return false;
   } catch {
     return false;
   }
