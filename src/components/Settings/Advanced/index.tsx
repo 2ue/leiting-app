@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Shortcuts from "./components/Shortcuts";
 import SettingsItem from "../SettingsItem";
-import { AppWindowMac, MessageSquareMore, Search, Unplug } from "lucide-react";
+import { Search, Unplug } from "lucide-react";
 import { useStartupStore } from "@/stores/startupStore";
 import { useEffect } from "react";
 import { emit } from "@tauri-apps/api/event";
@@ -9,24 +9,24 @@ import { useConnectStore } from "@/stores/connectStore";
 
 const Advanced = () => {
   const { t } = useTranslation();
-  const defaultStartupWindow = useStartupStore((state) => {
-    return state.defaultStartupWindow;
-  });
-  const setDefaultStartupWindow = useStartupStore((state) => {
-    return state.setDefaultStartupWindow;
-  });
+  // const defaultStartupWindow = useStartupStore((state) => {
+  //   return state.defaultStartupWindow;
+  // });
+  // const setDefaultStartupWindow = useStartupStore((state) => {
+  //   return state.setDefaultStartupWindow;
+  // });
   const defaultContentForSearchWindow = useStartupStore((state) => {
     return state.defaultContentForSearchWindow;
   });
   const setDefaultContentForSearchWindow = useStartupStore((state) => {
     return state.setDefaultContentForSearchWindow;
   });
-  const defaultContentForChatWindow = useStartupStore((state) => {
-    return state.defaultContentForChatWindow;
-  });
-  const setDefaultContentForChatWindow = useStartupStore((state) => {
-    return state.setDefaultContentForChatWindow;
-  });
+  // const defaultContentForChatWindow = useStartupStore((state) => {
+  //   return state.defaultContentForChatWindow;
+  // });
+  // const setDefaultContentForChatWindow = useStartupStore((state) => {
+  //   return state.setDefaultContentForChatWindow;
+  // });
   const connectionTimeout = useConnectStore((state) => {
     return state.connectionTimeout;
   });

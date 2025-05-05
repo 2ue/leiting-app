@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 // import Draggable from 'react-draggable';
 import LeitingLogo from '@/assets/app-icon.png';
 import { Window, PhysicalSize, PhysicalPosition, currentMonitor } from '@tauri-apps/api/window'
-import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
+// import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
 import './index.css';
 
 const windowx = new Window('toolbar')
-const windowView = new WebviewWindow('toolbar');
-const monitor = await currentMonitor();
+// const windowView = new WebviewWindow('toolbar');
 // windowx.setPosition(new PhysicalPosition(1830, 200));
 // windowx.setFullscreen(true);
 // windowx.setIgnoreCursorEvents(true);
@@ -19,6 +18,16 @@ const monitor = await currentMonitor();
 // windowx.setDecorations(false);
 
 
+async function initWindow() {
+  const monitor = await currentMonitor();
+  const sizexy = await monitor?.size ?? { width: 0, height: 0 };
+  console.log('windowx.outerSize()', sizexy.width - 64 - 32, (sizexy.height - 64) / 2);
+  windowx.setSize(new PhysicalSize(64, 64));
+  windowx.setPosition(new PhysicalPosition(sizexy.width - 64 - 32, (sizexy.height - 64) / 2));
+  windowx.onDragDropEvent(e => {
+    console.log('onDragDropEvent', e);
+  })
+}
 const FloatingBall = () => {
   // const floatBarRef = useRef();
   // useDoubleClick({
@@ -30,18 +39,6 @@ const FloatingBall = () => {
   // });
 
   useEffect(() => {
-    async function initWindow() {
-      const sizexy = await monitor?.size ?? { width: 0, height: 0 };
-      console.log('windowx.outerSize()', sizexy.width - 64 - 32, (sizexy.height - 64) / 2);
-      windowx.setSize(new PhysicalSize(64, 64));
-      windowx.setPosition(new PhysicalPosition(sizexy.width - 64 - 32, (sizexy.height - 64) / 2));
-      windowView.setDecorations(false);
-      windowView.setTitleBarStyle('transparent');
-      windowView.setBackgroundColor('transparent');
-      windowView.onDragDropEvent(e => {
-        console.log('onDragDropEvent', e);
-      })
-    }
     initWindow();
   }, [])
 
@@ -52,7 +49,7 @@ const FloatingBall = () => {
         data-tauri-drag-region
         style={{ overflow: 'hidden' }}
         className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300
-          w-16 h-16 bg-blue-500 rounded-full shadow-lg // 默认悬浮球样式
+          w-16 h-16 rounded-full // 默认悬浮球样式
           }`}
       >
         {/* <span data-tauri-drag-region className="text-white font-bold">雷霆</span> */}

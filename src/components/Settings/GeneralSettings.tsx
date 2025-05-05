@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import {
   Command,
-  Monitor,
-  Palette,
-  Moon,
-  Sun,
+  // Monitor,
+  // Palette,
+  // Moon,
+  // Sun,
   Power,
   Tags,
   // Trash2,

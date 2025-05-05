@@ -52,11 +52,11 @@ function SearchChat({
   hideLeiting,
   searchPlaceholder,
   chatPlaceholder,
-  showChatHistory = true,
+  // showChatHistory = true,
   setIsPinned,
   onModeChange,
   isMobile = false,
-  assistantIDs,
+  // assistantIDs,
 }: SearchChatProps) {
   const currentAssistant = useConnectStore((state) => state.currentAssistant);
 
@@ -153,9 +153,9 @@ function SearchChat({
     <div className="flex items-center justify-center h-full">loading...</div>
   );
 
-  const getFileUrl = useCallback((path: string) => {
-    return platformAdapter.convertFileSrc(path);
-  }, []);
+  // const getFileUrl = useCallback((path: string) => {
+  //   return platformAdapter.convertFileSrc(path);
+  // }, []);
 
   const openSetting = useCallback(() => {
     return platformAdapter.emitEvent("open_settings", "");

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, useCallback, MouseEvent } from "react";
-import { CircleAlert, Bolt, X, ArrowBigRight } from "lucide-react";
+import { ArrowBigRight } from "lucide-react";
 import { isNil } from "lodash-es";
 import { useDebounceFn, useUnmount } from "ahooks";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 import { useSearchStore } from "@/stores/searchStore";
 import ThemedIcon from "@/components/Common/Icons/ThemedIcon";
@@ -10,7 +10,7 @@ import IconWrapper from "@/components/Common/Icons/IconWrapper";
 import TypeIcon from "@/components/Common/Icons/TypeIcon";
 import SearchListItem from "./SearchListItem";
 import { metaOrCtrlKey, isMetaOrCtrlKey } from "@/utils/keyboardUtils";
-import { copyToClipboard, OpenURLWithBrowser } from "@/utils/index";
+import { copyToClipboard, OpenURLWithBrowser } from "@/utils";
 import VisibleKey from "@/components/Common/VisibleKey";
 import Calculator from "./Calculator";
 import { useShortcutsStore } from "@/stores/shortcutsStore";
@@ -28,21 +28,21 @@ interface DropdownListProps {
 function DropdownList({
   suggests,
   SearchData,
-  IsError,
+  // IsError,
   isChatMode,
 }: DropdownListProps) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   let globalIndex = 0;
   const globalItemIndexMap: any[] = [];
 
   const setSourceData = useSearchStore((state) => state.setSourceData);
 
-  const [showError, setShowError] = useState<boolean>(IsError);
+  // const [showError, setShowError] = useState<boolean>(IsError);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [selectedName, setSelectedName] = useState<string>("");
   const [showIndex, setShowIndex] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const setSelectedSearchContent = useSearchStore(
@@ -198,17 +198,17 @@ function DropdownList({
       className="h-full w-full p-2 flex flex-col overflow-y-auto custom-scrollbar focus:outline-none"
       tabIndex={0}
     >
-      {showError ? (
-        <div className="flex items-center gap-2 text-sm text-[#333] p-2">
-          <CircleAlert className="text-[#FF0000] w-[14px] h-[14px]" />
-          {t("search.list.failures")}
-          <Bolt className="text-[#000] w-[14px] h-[14px] cursor-pointer" />
-          <X
-            className="text-[#666] w-[16px] h-[16px] cursor-pointer"
-            onClick={() => setShowError(false)}
-          />
-        </div>
-      ) : null}
+      {/*{showError ? (*/}
+      {/*  <div className="flex items-center gap-2 text-sm text-[#333] p-2">*/}
+      {/*    <CircleAlert className="text-[#FF0000] w-[14px] h-[14px]" />*/}
+      {/*    {t("search.list.failures")}*/}
+      {/*    <Bolt className="text-[#000] w-[14px] h-[14px] cursor-pointer" />*/}
+      {/*    <X*/}
+      {/*      className="text-[#666] w-[16px] h-[16px] cursor-pointer"*/}
+      {/*      onClick={() => setShowError(false)}*/}
+      {/*    />*/}
+      {/*  </div>*/}
+      {/*) : null}*/}
       {Object.entries(SearchData).map(([sourceName, items]) => {
         const showHeader = Object.entries(SearchData).length < 5;
 
@@ -254,7 +254,7 @@ function DropdownList({
                 <div key={item.id} onContextMenu={handleContextMenu}>
                   {hideArrowRight(item) ? (
                     <div
-                      ref={(el) => (itemRefs.current[currentIndex] = el)}
+                      ref={(el: any) => (itemRefs.current[currentIndex] = el)}
                       onMouseEnter={() => setSelectedItem(currentIndex)}
                     >
                       <Calculator item={item} isSelected={isSelected} />

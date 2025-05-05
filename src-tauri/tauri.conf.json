@@ -66,7 +66,7 @@
         "resizable": false,
         "alwaysOnTop": true,
         "transparent": true,
-        "visible": false,
+        "visible": true,
         "hiddenTitle": true
       },
       {
