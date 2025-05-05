@@ -85,13 +85,13 @@ pub struct ServerAccessToken {
 }
 
 impl ServerAccessToken {
-    pub fn new(id: String, access_token: String, expired_at: u32) -> Self {
-        Self {
-            id,
-            access_token,
-            expired_at: expired_at,
-        }
-    }
+    // pub fn new(id: String, access_token: String, expired_at: u32) -> Self {
+    //     Self {
+    //         id,
+    //         access_token,
+    //         expired_at: expired_at,
+    //     }
+    // }
 }
 
 impl PartialEq for ServerAccessToken {

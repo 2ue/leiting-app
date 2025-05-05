@@ -21,7 +21,7 @@ use tauri::{
     AppHandle, Emitter, Manager, PhysicalPosition, Runtime, WebviewWindow, Window, WindowEvent,
 };
 use tauri_plugin_autostart::MacosLauncher;
-use tokio::runtime::Runtime as RT;
+//use tokio::runtime::Runtime as RT;
 
 /// Tauri store name
 pub(crate) const LEITING_TAURI_STORE: &str = "leiting_tauri_store";
@@ -103,18 +103,18 @@ pub fn run() {
             show_settings,
             show_chat,
             show_toolbar,
-            //server::servers::get_server_token,
-            //server::servers::add_leiting_server,
-            //server::servers::remove_leiting_server,
-            //server::servers::list_leiting_servers,
-            //server::servers::logout_leiting_server,
-            //server::servers::refresh_leiting_server_info,
-            //server::servers::enable_server,
-            //server::servers::disable_server,
-            //server::auth::handle_sso_callback,
-            //server::profile::get_user_profiles,
-            //server::datasource::get_datasources_by_server,
-            //server::connector::get_connectors_by_server,
+            server::servers::get_server_token,
+            server::servers::add_leiting_server,
+            server::servers::remove_leiting_server,
+            server::servers::list_leiting_servers,
+            server::servers::logout_leiting_server,
+            server::servers::refresh_leiting_server_info,
+            server::servers::enable_server,
+            server::servers::disable_server,
+            // server::auth::handle_sso_callback,
+            // server::profile::get_user_profiles,
+            server::datasource::get_datasources_by_server,
+            server::connector::get_connectors_by_server,
             search::query_leiting_fusion,
             search::search_files,
             search::open_file,
@@ -152,13 +152,13 @@ pub fn run() {
             // let app_handle = app.handle().clone();
 
             // Create a single Tokio runtime instance
-            let rt = RT::new().expect("Failed to create Tokio runtime");
+            //let rt = RT::new().expect("Failed to create Tokio runtime");
 
             // Use the runtime to spawn the async initialization tasks
-            let init_app_handle = app.handle().clone();
-            rt.spawn(async move {
-                init(&init_app_handle).await; // Pass a reference to `app_handle`
-            });
+            //let init_app_handle = app.handle().clone();
+            // rt.spawn(async move {
+            //     init(&init_app_handle).await; // Pass a reference to `app_handle`
+            // });
 
             shortcut::enable_shortcut(&app);
 
