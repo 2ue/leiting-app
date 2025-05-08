@@ -8335,4 +8335,4 @@ dependencies = [
  "static_assertions",
  "syn 2.0.100",
  "winnow 0.7.4",
- ]
+]

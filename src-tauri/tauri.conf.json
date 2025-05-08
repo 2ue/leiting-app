@@ -67,7 +67,11 @@
         "alwaysOnTop": true,
         "transparent": true,
         "visible": true,
-        "hiddenTitle": true
+        "hiddenTitle": true,
+        "skipTaskbar": true,
+        "focus": false,
+        "shadow": false,
+        "visibleOnAllWorkspaces": true
       },
       {
         "label": "chat",
@@ -161,9 +165,9 @@
     },
     "window": {},
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEdW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDk5NjRFNzQ3RDdBRUVENDEKUldSQjdhN1hSK2RrbVQyWnlydjRWWG1QbVR2cFp4ekpMcEp4Uzd6RWUyT1lrZzVudm1mei83UEcKFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
       "endpoints": [
-        "https://release.infinilabs.com/leiting/app/.latest.json?target={{target}}&arch={{arch}}&current_version={{current_version}}"
+        "https://116.168.196.8:8484/release/latest.json"
       ]
     },
     "websocket": {},
