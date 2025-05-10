@@ -10,7 +10,7 @@ import lightIcon from "./imgs/light-icon.png";
 import darkIcon from "./imgs/dark-icon.png";
 import { useThemeStore } from "@/stores/themeStore";
 import { useUpdateStore } from "@/stores/updateStore";
-import { OpenURLWithBrowser } from "@/utils/index";
+// import { OpenURLWithBrowser } from "@/utils/index";
 
 interface State {
   loading?: boolean;
@@ -136,7 +136,7 @@ const UpdateApp = ({ checkUpdate, relaunchApp }: UpdateAppProps) => {
               )}
             </div>
 
-            <div
+            {/* <div
               className="text-xs text-[#0072FF] cursor-pointer"
               onClick={() => {
                 OpenURLWithBrowser(
@@ -145,7 +145,7 @@ const UpdateApp = ({ checkUpdate, relaunchApp }: UpdateAppProps) => {
               }}
             >
               v{updateInfo?.version} {t("update.releaseNotes")}
-            </div>
+            </div> */}
 
             <Button
               className={clsx(

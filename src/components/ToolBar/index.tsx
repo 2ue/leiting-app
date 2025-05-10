@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 // import Draggable from 'react-draggable';
 import LeitingLogo from '@/assets/app-icon.png';
-import { Window, PhysicalSize, PhysicalPosition, currentMonitor } from '@tauri-apps/api/window'
-// import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
+import { PhysicalSize, PhysicalPosition, currentMonitor } from '@tauri-apps/api/window'
+import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
 import './index.css';
 
-const windowx = new Window('toolbar')
+// const windowx = new Window('toolbar')
 // const windowView = new WebviewWindow('toolbar');
 // windowx.setPosition(new PhysicalPosition(1830, 200));
 // windowx.setFullscreen(true);
@@ -17,17 +17,6 @@ const windowx = new Window('toolbar')
 // console.log('xxxxx', windowx);
 // windowx.setDecorations(false);
 
-
-async function initWindow() {
-  const monitor = await currentMonitor();
-  const sizexy = await monitor?.size ?? { width: 0, height: 0 };
-  console.log('windowx.outerSize()', sizexy.width - 64 - 32, (sizexy.height - 64) / 2);
-  windowx.setSize(new PhysicalSize(64, 64));
-  windowx.setPosition(new PhysicalPosition(sizexy.width - 64 - 32, (sizexy.height - 64) / 2));
-  windowx.onDragDropEvent(e => {
-    console.log('onDragDropEvent', e);
-  })
-}
 const FloatingBall = () => {
   // const floatBarRef = useRef();
   // useDoubleClick({
@@ -37,6 +26,15 @@ const FloatingBall = () => {
   //     windowx.close();
   //   }
   // });
+
+  async function initWindow() {
+    const windowx = await WebviewWindow.getByLabel('toolbar');
+    const monitor = await currentMonitor();
+    const sizexy = await monitor?.size ?? { width: 0, height: 0 };
+    console.log('windowx.outerSize()', sizexy.width - 64 - 32, (sizexy.height - 64) / 2);
+    windowx!.setSize(new PhysicalSize(64, 64));
+    windowx!.setPosition(new PhysicalPosition(sizexy.width - 64 - 32, (sizexy.height - 64) / 2));
+  }
 
   useEffect(() => {
     initWindow();

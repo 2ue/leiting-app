@@ -21,20 +21,12 @@
         "decorations": false,
         "minimizable": false,
         "maximizable": false,
-        "skipTaskbar": true,
         "resizable": false,
-        "shadow": true,
         "transparent": true,
         "fullscreen": false,
         "center": true,
         "visible": true,
-        "windowEffects": {
-          "effects": [],
-          "radius": 6
-        },
-        "focus": true,
-        "visibleOnAllWorkspaces": false,
-        "alwaysOnTop": true
+        "visibleOnAllWorkspaces": false
       },
       {
         "label": "settings",
@@ -62,16 +54,14 @@
         "url": "/toolbar",
         "width": 64,
         "height": 64,
+        "transparent": true,
         "decorations": false,
         "resizable": false,
-        "alwaysOnTop": true,
-        "transparent": true,
         "visible": true,
         "hiddenTitle": true,
-        "skipTaskbar": true,
-        "focus": false,
-        "shadow": false,
-        "visibleOnAllWorkspaces": true
+        "minimizable": false,
+        "maximizable": false,
+        "skipTaskbar": true
       },
       {
         "label": "chat",
@@ -80,7 +70,6 @@
         "width": 800,
         "height": 600,
         "center": true,
-        "transparent": true,
         "maximizable": false,
         "skipTaskbar": false,
         "hiddenTitle": true,
@@ -165,9 +154,9 @@
     },
     "window": {},
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEdW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDk5NjRFNzQ3RDdBRUVENDEKUldSQjdhN1hSK2RrbVQyWnlydjRWWG1QbVR2cFp4ekpMcEp4Uzd6RWUyT1lrZzVudm1mei83UEcKFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
       "endpoints": [
-        "https://116.168.196.8:8484/release/latest.json"
+        "https://lt.2ue.xyz/latest.json"
       ]
     },
     "websocket": {},
