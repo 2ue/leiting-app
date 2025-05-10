@@ -1,0 +1,183 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "Leiting-AI",
+  "version": "../package.json",
+  "identifier": "rs.leiting.app",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Leiting",
+        "url": "/ui",
+        "height": 560,
+        "width": 640,
+        "decorations": false,
+        "minimizable": false,
+        "maximizable": false,
+        "resizable": false,
+        "transparent": true,
+        "fullscreen": false,
+        "center": true,
+        "visible": true,
+        "visibleOnAllWorkspaces": false
+      },
+      {
+        "label": "settings",
+        "title": "Leiting Settings",
+        "url": "/ui/settings",
+        "width": 800,
+        "height": 600,
+        "center": true,
+        "transparent": true,
+        "maximizable": false,
+        "skipTaskbar": false,
+        "dragDropEnabled": false,
+        "hiddenTitle": true,
+        "visible": false,
+        "windowEffects": {
+          "effects": [
+            "sidebar"
+          ],
+          "state": "active"
+        }
+      },
+      {
+        "label": "toolbar",
+        "title": "",
+        "url": "/toolbar",
+        "width": 64,
+        "height": 64,
+        "transparent": true,
+        "decorations": false,
+        "resizable": false,
+        "visible": true,
+        "hiddenTitle": true,
+        "minimizable": false,
+        "maximizable": false,
+        "skipTaskbar": true
+      },
+      {
+        "label": "chat",
+        "title": "chat",
+        "url": "http://129.226.167.149:36058/#/chat",
+        "width": 800,
+        "height": 600,
+        "center": true,
+        "maximizable": false,
+        "skipTaskbar": false,
+        "hiddenTitle": true,
+        "visible": false,
+        "windowEffects": {
+          "effects": [
+            "sidebar"
+          ],
+          "state": "active"
+        }
+      }
+    ],
+    "security": {
+      "csp": null,
+      "dangerousDisableAssetCspModification": true,
+      "assetProtocol": {
+        "enable": true,
+        "scope": {
+          "allow": [
+            "**/*"
+          ],
+          "requireLiteralLeadingDot": false
+        }
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "createUpdaterArtifacts": true,
+    "targets": [
+      "nsis",
+      "dmg",
+      "app",
+      "appimage",
+      "deb",
+      "rpm"
+    ],
+    "category": "Utility",
+    "shortDescription": "Leiting AI",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico",
+      "icons/icon.png",
+      "icons/Square30x30Logo.png",
+      "icons/Square44x44Logo.png",
+      "icons/Square71x71Logo.png",
+      "icons/Square89x89Logo.png",
+      "icons/Square107x107Logo.png",
+      "icons/Square142x142Logo.png",
+      "icons/Square150x150Logo.png",
+      "icons/Square284x284Logo.png",
+      "icons/Square310x310Logo.png",
+      "icons/StoreLogo.png"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "hardenedRuntime": true,
+      "dmg": {
+        "appPosition": {
+          "x": 180,
+          "y": 180
+        },
+        "applicationFolderPosition": {
+          "x": 480,
+          "y": 180
+        }
+      }
+    },
+    "resources": [
+      "assets",
+      "icons"
+    ]
+  },
+  "plugins": {
+    "features": {
+      "protocol": [
+        "all"
+      ]
+    },
+    "window": {},
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
+      "endpoints": [
+        "https://lt.2ue.xyz/latest.json"
+      ]
+    },
+    "websocket": {},
+    "shell": {},
+    "globalShortcut": {},
+    "deep-link": {
+      "schema": "leiting",
+      "mobile": [
+        {
+          "host": "app.infini.cloud",
+          "pathPrefix": [
+            "/open"
+          ]
+        }
+      ],
+      "desktop": {
+        "schemes": [
+          "leiting"
+        ]
+      }
+    },
+    "os": {}
+  }
+}

@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base variables */
+:root {
+  --spacing-base: 12px;
+  --modal-width: 560px;
+  --modal-height: 600px;
+  --searchbox-height: 56px;
+  --hit-height: 56px;
+  --footer-height: 44px;
+  --icon-stroke-width: 1.4;
+  --background: #ffffff;
+  --foreground: #09090b;
+  --border: #e3e3e7;
+  --leiting-primary-color: rgb(149, 5, 153);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --leiting-primary-color: rgb(149, 5, 153);
+  --leiting-text-color: rgb(28, 30, 33);
+  --leiting-muted-color: rgb(150, 159, 175);
+  --leiting-modal-container-background: rgba(101, 108, 133, 0.8);
+  --leiting-modal-background: rgb(245, 246, 247);
+  --leiting-modal-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.5),
+    0 3px 8px 0 rgba(85, 90, 100, 1);
+  --leiting-searchbox-background: rgb(235, 237, 240);
+  --leiting-searchbox-focus-background: #fff;
+  --leiting-hit-color: rgb(68, 73, 80);
+  --leiting-hit-active-color: #fff;
+  --leiting-hit-background: #fff;
+  --leiting-hit-shadow: 0 1px 3px 0 rgb(212, 217, 225);
+  --leiting-key-gradient: linear-gradient(
+    -225deg,
+    rgb(213, 219, 228) 0%,
+    rgb(248, 248, 248) 100%
+  );
+  --leiting-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230),
+    inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --leiting-footer-background: #fff;
+  --leiting-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232),
+    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+  --leiting-icon-color: rgb(21, 21, 21);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --leiting-primary-color: rgb(149, 5, 153);
+  --background: #09090b;
+  --foreground: #f9f9f9;
+  --border: #27272a;
+  --leiting-text-color: rgb(245, 246, 247);
+  --leiting-modal-container-background: rgba(9, 10, 17, 0.8);
+  --leiting-modal-background: rgb(21, 23, 42);
+  --leiting-modal-shadow: inset 1px 1px 0 0 rgb(44, 46, 64),
+    0 3px 8px 0 rgb(0, 3, 9);
+  --leiting-searchbox-background: rgb(9, 10, 17);
+  --leiting-searchbox-focus-background: #000;
+  --leiting-hit-color: rgb(190, 195, 201);
+  --leiting-hit-shadow: none;
+  --leiting-hit-background: rgb(9, 10, 17);
+  --leiting-key-gradient: linear-gradient(
+    -26.5deg,
+    rgb(86, 88, 114) 0%,
+    rgb(49, 53, 91) 100%
+  );
+  --leiting-key-shadow: inset 0 -2px 0 0 rgb(40, 45, 85),
+    inset 0 0 1px 1px rgb(81, 87, 125), 0 2px 2px 0 rgba(3, 4, 9, 0.3);
+  --leiting-footer-background: rgb(30, 33, 54);
+  --leiting-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
+    0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+  --leiting-muted-color: rgb(127, 132, 151);
+  --leiting-icon-color: rgb(255, 255, 255);
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply box-border border-[--border] outline-none;
+  }
+
+  html {
+    @apply h-full overscroll-none select-none;
+  }
+
+  body,
+  #root {
+    @apply h-full text-gray-900 antialiased;
+  }
+
+  .dark body,
+  .dark #root {
+    @apply text-gray-100;
+  }
+
+  .input-body {
+    @apply rounded-md overflow-hidden;
+  }
+
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .settings-input {
+    @apply block w-full rounded-md border-gray-300 dark:border-gray-600
+        bg-white dark:bg-gray-700
+        text-gray-900 dark:text-gray-100
+        shadow-sm focus:border-blue-500 focus:ring-blue-500
+        transition-colors duration-200;
+  }
+
+  .settings-select {
+    @apply text-sm rounded-md border-gray-300 dark:border-gray-600
+        bg-white dark:bg-gray-700
+        text-gray-900 dark:text-gray-100
+        shadow-sm focus:border-blue-500 focus:ring-blue-500
+        transition-colors duration-200;
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  /* Scrollbar styles */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+
+  .dark .custom-scrollbar {
+    scrollbar-color: #475569 transparent;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #475569;
+  }
+
+  /* Background styles */
+  .bg-100 {
+    background-size: 100% 100%;
+  }
+
+  /* Error page styles */
+  #error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #f79c42, #f2d600);
+    font-family: "Arial", sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .error-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 20px;
+  }
+
+  .error-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f2d600;
+  }
+
+  .error-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: #fff;
+  }
+
+  .error-details {
+    font-size: 16px;
+    color: #ffcc00;
+    font-style: italic;
+  }
+
+  .error-content button {
+    background-color: #f2d600;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .error-content button:hover {
+    background-color: #f79c42;
+  }
+
+  /* leiting styles */
+  .leiting-modal-footer-commands-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 0;
+    padding: 2px;
+    background: var(--leiting-key-gradient);
+    box-shadow: var(--leiting-key-shadow);
+    color: var(--leiting-muted-color);
+  }
+
+  /* User selection styles */
+  .user-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
