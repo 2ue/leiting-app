@@ -17,6 +17,7 @@ import './index.css';
 // console.log('xxxxx', windowx);
 // windowx.setDecorations(false);
 
+const barSize = 48;
 const FloatingBall = () => {
   // const floatBarRef = useRef();
   // useDoubleClick({
@@ -31,9 +32,9 @@ const FloatingBall = () => {
     const windowx = await WebviewWindow.getByLabel('toolbar');
     const monitor = await currentMonitor();
     const sizexy = await monitor?.size ?? { width: 0, height: 0 };
-    console.log('windowx.outerSize()', sizexy.width - 64 - 32, (sizexy.height - 64) / 2);
-    windowx!.setSize(new PhysicalSize(64, 64));
-    windowx!.setPosition(new PhysicalPosition(sizexy.width - 64 - 32, (sizexy.height - 64) / 2));
+    // console.log('windowx.outerSize()', sizexy.width - barSize - barSize / 2, (sizexy.height - barSize) / 2);
+    windowx!.setSize(new PhysicalSize(barSize, barSize));
+    windowx!.setPosition(new PhysicalPosition(sizexy.width - barSize - barSize / 2, (sizexy.height - barSize) / 2));
   }
 
   useEffect(() => {
@@ -41,17 +42,15 @@ const FloatingBall = () => {
   }, [])
 
   return (
-    <div className="relative" style={{ borderRadius: 100, height: 64, width: 64, overflow: 'hidden' }} data-tauri-drag-region>
+    <div className="relative" style={{ borderRadius: 100, height: barSize, width: barSize, overflow: 'hidden' }} data-tauri-drag-region>
       {/* 悬浮球 */}
       <div
         data-tauri-drag-region
         style={{ overflow: 'hidden' }}
-        className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300
-          w-16 h-16 rounded-full // 默认悬浮球样式
-          }`}
+        className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300 w-12 h-12`}
       >
         {/* <span data-tauri-drag-region className="text-white font-bold">雷霆</span> */}
-        <img data-tauri-drag-region style={{ width: 64, height: 64 }} src={LeitingLogo} alt="" />
+        <img data-tauri-drag-region style={{ width: barSize, height: barSize }} src={LeitingLogo} alt="" />
       </div>
     </div>
   );
