@@ -70,14 +70,14 @@ export const useTray = () => {
           show_chat()
         },
       }),
-      PredefinedMenuItem.new({ item: "Separator" }),
-      MenuItem.new({
-        text: t("tray.toolbar"),
-        // accelerator: "CommandOrControl+,",
-        action: () => {
-          show_toolbar()
-        },
-      }),
+      // PredefinedMenuItem.new({ item: "Separator" }),
+      // MenuItem.new({
+      //   text: t("tray.toolbar"),
+      //   // accelerator: "CommandOrControl+,",
+      //   action: () => {
+      //     show_toolbar()
+      //   },
+      // }),
       PredefinedMenuItem.new({ item: "Separator" }),
       MenuItem.new({
         text: t("tray.quitLeiting"),
