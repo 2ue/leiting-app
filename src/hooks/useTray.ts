@@ -7,7 +7,7 @@ import { exit } from "@tauri-apps/plugin-process";
 
 import { isMac } from "@/utils/platform";
 import { useAppStore } from "@/stores/appStore";
-import { show_leiting, show_settings, show_chat, show_toolbar } from "@/commands";
+import { show_leiting, show_settings, show_chat } from "@/commands";
 
 const TRAY_ID = "LEITING_TRAY";
 
