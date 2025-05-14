@@ -70,6 +70,21 @@
     "core:window:allow-set-theme",
     "process:default",
     "updater:default",
-    "windows-version:default"
-  ]
+    "windows-version:default",
+    "core:window:allow-set-title",
+    "core:window:allow-set-title-bar-style",
+    "core:window:allow-set-position",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-set-ignore-cursor-events",
+    "core:window:allow-set-decorations",
+    "core:window:allow-set-resizable",
+    "core:window:deny-internal-toggle-maximize"
+  ],
+  "tauri": {
+    "allowlist": {
+      "window": {
+        "startDragging": true
+      }
+    }
+  }
 }

@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2.0.0",
-  "productName": "Coco-AI",
+  "productName": "Leiting-AI",
   "version": "../package.json",
-  "identifier": "rs.coco.app",
+  "identifier": "rs.leiting.app",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -14,21 +14,19 @@
     "windows": [
       {
         "label": "main",
-        "title": "Coco AI",
+        "title": "Leiting",
         "url": "/ui",
-        "height": 590,
-        "width": 680,
+        "height": 560,
+        "width": 640,
         "decorations": false,
         "minimizable": false,
         "maximizable": false,
         "skipTaskbar": true,
         "resizable": false,
-        "acceptFirstMouse": true,
-        "shadow": true,
         "transparent": true,
         "fullscreen": false,
-        "center": false,
-        "visible": false,
+        "center": true,
+        "visible": true,
         "windowEffects": {
           "effects": [],
           "radius": 6
@@ -38,10 +36,10 @@
       },
       {
         "label": "settings",
-        "title": "Coco AI Settings",
+        "title": "Leiting Settings",
         "url": "/ui/settings",
-        "width": 1000,
-        "height": 700,
+        "width": 800,
+        "height": 600,
         "center": true,
         "transparent": true,
         "maximizable": false,
@@ -60,13 +58,11 @@
         "label": "chat",
         "title": "chat",
         "url": "http://129.226.167.149:36058/#/chat",
-        "width": 1000,
-        "height": 700,
+        "width": 800,
+        "height": 600,
         "center": true,
-        "transparent": true,
         "maximizable": false,
         "skipTaskbar": false,
-        "dragDropEnabled": false,
         "hiddenTitle": true,
         "visible": false,
         "windowEffects": {
@@ -103,7 +99,7 @@
       "rpm"
     ],
     "category": "Utility",
-    "shortDescription": "Coco AI",
+    "shortDescription": "Leiting AI",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -149,16 +145,16 @@
     },
     "window": {},
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlDRjNDRUU0NTdBMzdCRTMKUldUamU2Tlg1TTd6bkUwZWM0d2Zjdk0wdXJmendWVlpMMmhKN25EcmprYmIydnJ3dmFUME9QYXkK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM0MjgyRkYzOEM2RjU4ODQKUldTRVdHK004eThveEcwdEFWSjRjNG9HblZKcGVvMVRoYUkwWDNzOUN0OE1OcmNBbUM5aFRCdWYK",
       "endpoints": [
-        "https://release.infinilabs.com/coco/app/.latest.json?target={{target}}&arch={{arch}}&current_version={{current_version}}"
+        "https://lt.2ue.xyz/latest.json"
       ]
     },
     "websocket": {},
     "shell": {},
     "globalShortcut": {},
     "deep-link": {
-      "schema": "coco",
+      "schema": "leiting",
       "mobile": [
         {
           "host": "app.infini.cloud",
@@ -169,7 +165,7 @@
       ],
       "desktop": {
         "schemes": [
-          "coco"
+          "leiting"
         ]
       }
     },

@@ -1,16 +1,16 @@
 [package]
-name = "coco"
-version = "0.3.0"
+name = "leiting"
+version = "0.7.0"
 description = "Search, connect, collaborate – all in one place."
-authors = ["INFINI Labs"]
-edition = "2021"
+authors = ["LEITING"]
+edition = "2025"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
 # The `_lib` suffix may seem redundant but it is necessary
 # to make the lib name unique and wouldn't conflict with the bin name.
 # This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
-name = "coco_lib"
+name = "leiting_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
@@ -22,7 +22,7 @@ desktop = []
 cargo-clippy = []
 
 [dependencies]
-pizza-common = { git = "https://github.com/infinilabs/pizza-common", branch = "main" }
+pizza-common = { git = "https://gh-proxy.com/github.com/infinilabs/pizza-common", branch = "main" }
 
 tauri = { version = "2", features = ["protocol-asset", "macos-private-api", "tray-icon", "image-ico", "image-png", "unstable"] }
 tauri-plugin-shell = "2"
@@ -43,7 +43,7 @@ tauri-plugin-drag = "2"
 tauri-plugin-macos-permissions = "2"
 tauri-plugin-fs-pro = "2"
 tauri-plugin-screenshots = "2"
-applications = { git = "https://github.com/infinilabs/applications-rs", rev = "fb8f475993a2a774ce08d7a58f9f2ac264248a24" }
+applications = { git = "https://gh-proxy.com/github.com/infinilabs/applications-rs", rev = "fb8f475993a2a774ce08d7a58f9f2ac264248a24" }
 
 tokio-native-tls = "0.3"  # For wss connections
 tokio = { version = "1", features = ["full"] }
@@ -79,7 +79,7 @@ chinese-number = "0.7"
 num2words = "1"
 
 [target."cfg(target_os = \"macos\")".dependencies]
-tauri-nspanel = { git = "https://github.com/ahkohd/tauri-nspanel", branch = "v2" }
+tauri-nspanel = { git = "https://gh-proxy.com/github.com/ahkohd/tauri-nspanel", branch = "v2" }
 
 [target."cfg(any(target_os = \"macos\", windows, target_os = \"linux\"))".dependencies]
 tauri-plugin-single-instance = { version = "2.0.0", features = ["deep-link"] }

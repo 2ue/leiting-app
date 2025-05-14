@@ -8,11 +8,11 @@
   <string>Request microphone access for WebRTC</string>
 
 	<key>CFBundleIdentifier</key>
-	<string>rs.coco.app</string>
+	<string>rs.leiting.app</string>
 	<key>CFBundleExecutable</key>
-    <string>coco</string>
+    <string>leiting</string>
 	<key>NSPrefPaneIconLabel</key>
-	<string>coco-ai</string>
+	<string>leiting-ai</string>
 
 	<key>LSUIElement</key>
     <true/>
@@ -24,19 +24,19 @@
   <array>
     <dict>
       <key>CFBundleURLName</key>
-      <string>rs.coco.app</string>
+      <string>rs.leiting.app</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>coco</string>
+        <string>leiting</string>
       </array>
     </dict>
   </array>
   
   <key>NSMicrophoneUsageDescription</key>
-  <string>Coco AI needs access to your microphone for voice input and audio recording features.</string>
+  <string>Leiting AI needs access to your microphone for voice input and audio recording features.</string>
   <key>NSCameraUsageDescription</key>
-  <string>Coco AI requires camera access for scanning documents and capturing images.</string>
+  <string>Leiting AI requires camera access for scanning documents and capturing images.</string>
   <key>NSSpeechRecognitionUsageDescription</key>
-  <string>Coco AI uses speech recognition to convert your voice into text for a hands-free experience.</string>
+  <string>Leiting AI uses speech recognition to convert your voice into text for a hands-free experience.</string>
 </dict>
 </plist>

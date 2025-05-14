@@ -36,10 +36,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: "macos-latest"
-            target: "aarch64-apple-darwin"
-          - platform: "macos-latest"
-            target: "x86_64-apple-darwin"
+          # - platform: "macos-latest"
+          #   target: "aarch64-apple-darwin"
+          # - platform: "macos-latest"
+          #   target: "x86_64-apple-darwin"
 
           - platform: "windows-latest"
             target: "x86_64-pc-windows-msvc"
@@ -48,8 +48,8 @@ jobs:
           - platform: "windows-latest"
             target: "aarch64-pc-windows-msvc"
 
-          - platform: "ubuntu-22.04"
-            target: "x86_64-unknown-linux-gnu"
+#          - platform: "ubuntu-22.04"
+#            target: "x86_64-unknown-linux-gnu"
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -97,15 +97,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ""
-          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
-          APPLE_CERTIFICATE_PASSWORD: ""
-          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          # APPLE_CERTIFICATE_PASSWORD: ""
+          # APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          # APPLE_ID: ${{ secrets.APPLE_ID }}
+          # APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          # APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         with:
           tagName: ${{ github.ref_name }}
-          releaseName: Coco ${{ needs.create-release.outputs.APP_VERSION }}
+          releaseName: Leiting ${{ needs.create-release.outputs.APP_VERSION }}
           releaseBody: ""
           releaseDraft: true
           prerelease: false
