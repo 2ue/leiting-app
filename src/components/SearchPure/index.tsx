@@ -12,7 +12,7 @@ import { useMount } from "ahooks";
 
 import Search from "@/components/Search/Search";
 import InputBox from "@/components/Search/InputBox";
-import ChatAI, { ChatAIRef } from "@/components/Assistant/Chat";
+import { ChatAIRef } from "@/components/Assistant/Chat";
 import UpdateApp from "@/components/UpdateApp";
 import { isLinux, isWin } from "@/utils/platform";
 import { appReducer, initialAppState } from "@/reducers/appReducer";
@@ -52,11 +52,11 @@ function SearchChat({
   hideCoco,
   searchPlaceholder,
   chatPlaceholder,
-  showChatHistory = true,
+  // showChatHistory = true,
   setIsPinned,
   onModeChange,
   isMobile = false,
-  assistantIDs,
+  // assistantIDs,
 }: SearchChatProps) {
   const currentAssistant = useConnectStore((state) => state.currentAssistant);
 
@@ -153,9 +153,9 @@ function SearchChat({
     <div className="flex items-center justify-center h-full">loading...</div>
   );
 
-  const getFileUrl = useCallback((path: string) => {
-    return platformAdapter.convertFileSrc(path);
-  }, []);
+  // const getFileUrl = useCallback((path: string) => {
+  //   return platformAdapter.convertFileSrc(path);
+  // }, []);
 
   const openSetting = useCallback(() => {
     return platformAdapter.emitEvent("open_settings", "");

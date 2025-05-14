@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import { useKeyPress } from "ahooks";
 
-import ChatSwitch from "@/components/Common/ChatSwitch";
+// import ChatSwitch from "@/components/Common/ChatSwitch";
 import AutoResizeTextarea from "./AutoResizeTextarea";
 import { useChatStore } from "@/stores/chatStore";
 import StopIcon from "@/icons/Stop";
@@ -63,7 +63,7 @@ interface ChatInputProps {
 export default function ChatInput({
   onSend,
   disabled,
-  changeMode,
+  // changeMode,
   isChatMode,
   inputValue,
   changeInput,

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
 import { useDoubleClick } from '@reactuses/core';
 
@@ -17,7 +17,8 @@ const FloatingBall = () => {
   const [isEdgeHidden, setIsEdgeHidden] = useState(false);
 
   // 拖拽结束时检查是否需要吸附到边缘
-  const handleDragStop = (e, data) => {
+  const handleDragStop = (e: any, data: any) => {
+    console.log('e', e);
     const { x, y } = data;
     const centerX = window.innerWidth / 2;
 
@@ -81,6 +82,7 @@ const FloatingBall = () => {
         onStop={handleDragStop}
       >
         <div
+          // @ts-ignore
           ref={floatBarRef}
           className={`fixed flex items-center justify-center cursor-pointer z-50 transition-all duration-300 ${
             isEdgeHidden
