@@ -3,12 +3,12 @@
     "general": "通用设置",
     "startup": {
       "title": "启动项",
-      "description": "登录时自动启动 Coco",
+      "description": "登录时自动启动 Leiting",
       "toggle": "开机自启"
     },
     "hotkey": {
       "title": "快捷键",
-      "description": "打开 Coco 的全局快捷键"
+      "description": "打开 Leiting 的全局快捷键"
     },
     "appearance": {
       "title": "外观",
@@ -34,12 +34,12 @@
       "edit": "编辑"
     },
     "about": {
-      "logo": "Coco 标志",
+      "logo": "Leiting 标志",
       "slogan": "搜索、连接、协作 — 一站式解决方案",
       "website": "访问官网",
       "github": "访问 GitHub",
       "version": "版本 {{version}}",
-      "copyright": "©{{year}} INFINI Labs，保留所有权利。"
+      "copyright": "©{{year}} LEITING，保留所有权利。"
     },
     "advanced": {
       "title": "高级设置",
@@ -51,7 +51,7 @@
         "title": "启动设置",
         "defaultStartupWindow": {
           "title": "默认启动窗口",
-          "description": "设置 Coco 是以搜索模式还是聊天模式打开。",
+          "description": "设置 Leiting 是以搜索模式还是聊天模式打开。",
           "select": {
             "searchMode": "搜索模式",
             "chatMode": "聊天模式"
@@ -129,7 +129,7 @@
         },
         "fixedWindow": {
           "title": "固定窗口",
-          "description": "将 Coco 窗口固定在桌面最前端显示的快捷按键。"
+          "description": "将 Leiting 窗口固定在桌面最前端显示的快捷按键。"
         },
         "serviceList": {
           "title": "服务列表",
@@ -207,12 +207,12 @@
       "failures": "部分服务暂时不可用，请检查相关设置。"
     },
     "footer": {
-      "logoAlt": "Coco 图标",
+      "logoAlt": "Leiting 图标",
       "version": "{{version}}",
       "updateAvailable": "有可用更新",
       "select": "选择",
       "open": "打开",
-      "powered": "由 Coco AI 提供支持"
+      "powered": "由 Leiting AI 提供支持"
     },
     "input": {
       "searchPlaceholder": "搜索任何内容...",
@@ -235,7 +235,7 @@
     "main": {
       "noDataAlt": "无数据图片",
       "noResults": "暂无结果",
-      "askCoco": "询问 Coco AI"
+      "askLeiting": "询问 Leiting AI"
     },
     "header": {
       "found": "找到",
@@ -259,13 +259,13 @@
       "newChat": "新建对话",
       "connectionError": "无法连接到服务器",
       "reconnect": "重新连接",
-      "greetings": "嗨！我是 Coco，很高兴认识你。我可以利用互联网和你的数据源来回答你的问题。我今天能为你提供什么帮助？",
+      "greetings": "嗨！我是 Leiting，很高兴认识你。我可以利用互联网和你的数据源来回答你的问题。我今天能为你提供什么帮助？",
       "timedout": "请求超时，请稍后再试。",
       "noServers": "暂无可用服务器",
       "addServer": "添加服务器",
       "error": "请求错误，请稍后再试。",
       "logo_alt": "登录图标",
-      "welcome": "欢迎使用 Coco AI",
+      "welcome": "欢迎使用 Leiting AI",
       "connect_tip": "要开始对话，请连接服务并登录您的账户。",
       "connect": "连接"
     },
@@ -277,8 +277,8 @@
       "searchTooltip": "启用搜索模式"
     },
     "message": {
-      "logo": "Coco AI 图标",
-      "aiName": "Coco AI",
+      "logo": "Leiting AI 图标",
+      "aiName": "Leiting AI",
       "thinkingButton": "查看思考过程",
       "steps": {
         "query_intent": "理解查询",
@@ -325,10 +325,10 @@
     "privacyPolicy": "用户协议 | 隐私政策",
     "connect": {
       "back": "返回",
-      "title": "连接到您的 Coco-Server",
-      "description": "运行您自己的私有 coco-server 实例可以确保对数据的完全控制，使其在您的环境中保持安全且仅可访问。享受增强的隐私保护、更好的性能和与内部系统的无缝集成。",
+      "title": "连接到您的 Leiting-Server",
+      "description": "运行您自己的私有 leiting-server 实例可以确保对数据的完全控制，使其在您的环境中保持安全且仅可访问。享受增强的隐私保护、更好的性能和与内部系统的无缝集成。",
       "serverAddress": "服务器地址",
-      "serverPlaceholder": "例如：https://coco.infini.cloud/",
+      "serverPlaceholder": "例如：https://leiting.infini.cloud/",
       "connecting": "连接中...",
       "connect": "连接",
       "closeError": "关闭错误提示"
@@ -342,7 +342,7 @@
       "serverLogo": "服务器图标",
       "serverOnline": "服务器在线",
       "serverOffline": "服务器离线",
-      "yourServers": "您的 Coco-Servers",
+      "yourServers": "您的 Leiting-Servers",
       "addServer": "添加新服务器"
     },
     "enable_server": "启用服务",
@@ -350,14 +350,15 @@
     "manualCopyLink": "如果链接没有自动打开，请手动复制并粘贴到浏览器中"
   },
   "tray": {
-    "showCoco": "显示 Coco",
+    "showLeiting": "显示 Leiting",
     "settings": "偏好设置",
     "chat": "打开雷霆AI对话",
-    "quitCoco": "退出 Coco"
+    "toolbar": "打开雷霆Bar",
+    "quitLeiting": "退出 Leiting"
   },
   "update": {
-    "optional_description": "Coco AI 有新的可用更新。",
-    "force_description1": "Coco Al 需要更新。",
+    "optional_description": "Leiting AI 有新的可用更新。",
+    "force_description1": "Leiting Al 需要更新。",
     "force_description2": "请安装最新版本后继续使用。",
     "releaseNotes": "更新日志",
     "button": {
@@ -366,7 +367,7 @@
     "skip_version": "跳过此版本"
   },
   "error": {
-    "message": "抱歉，Coco 应用出现了错误。请联系管理员。"
+    "message": "抱歉，Leiting 应用出现了错误。请联系管理员。"
   },
   "history_list": {
     "search": {
