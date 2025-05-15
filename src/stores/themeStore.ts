@@ -17,7 +17,7 @@ export const useThemeStore = create<IThemeStore>()(
   persist(
     (set) => ({
       themes: ["dark", "light", "auto"],
-      activeTheme: "auto",
+      activeTheme: "light",
       setTheme: (activeTheme: AppTheme) => set(() => ({ activeTheme })),
       isDark: false,
       setIsDark: (isDark: boolean) => set(() => ({ isDark })),

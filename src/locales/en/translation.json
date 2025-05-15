@@ -34,12 +34,12 @@
       "edit": "Edit"
     },
     "about": {
-      "logo": "Coco Logo",
+      "logo": "Leiting Logo",
       "slogan": "Search, Connect, Collaborate—All in one place",
       "website": "Visit Website",
       "github": "Visit GitHub",
       "version": "Version {{version}}",
-      "copyright": "©{{year}} INFINI Labs, All Rights Reserved."
+      "copyright": "©{{year}} LEITING, All Rights Reserved."
     },
     "advanced": {
       "title": "Advanced Settings",
@@ -51,7 +51,7 @@
         "title": "Startup Settings",
         "defaultStartupWindow": {
           "title": "Default Startup Window",
-          "description": "Set whether Coco opens in Search or Chat mode.",
+          "description": "Set whether Leiting opens in Search or Chat mode.",
           "select": {
             "searchMode": "Search Mode",
             "chatMode": "Chat Mode"

@@ -1,6 +1,6 @@
 [package]
 name = "leiting"
-version = "0.7.0"
+version = "0.9.0"
 description = "Search, connect, collaborate – all in one place."
 authors = ["LEITING"]
 edition = "2021"

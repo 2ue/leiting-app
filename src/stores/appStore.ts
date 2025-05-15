@@ -122,7 +122,7 @@ export const useAppStore = create<IAppStore>()(
           endpoint_websocket,
         });
       },
-      language: "en",
+      language: "zh",
       setLanguage: (language: string) => set({ language }),
       isPinned: false,
       setIsPinned: (isPinned: boolean) => set({ isPinned }),
