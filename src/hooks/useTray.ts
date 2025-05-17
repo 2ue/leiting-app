@@ -13,13 +13,13 @@ const TRAY_ID = "LEITING_TRAY";
 
 export const useTray = () => {
   const { t, i18n } = useTranslation();
-  const showCocoShortcuts = useAppStore((state) => state.showCocoShortcuts);
+  const showLeitingShortcuts = useAppStore((state) => state.showLeitingShortcuts);
 
   useUpdateEffect(() => {
-    if (showCocoShortcuts.length === 0) return;
+    if (showLeitingShortcuts.length === 0) return;
 
     updateTrayMenu();
-  }, [i18n.language, showCocoShortcuts]);
+  }, [i18n.language, showLeitingShortcuts]);
 
   const getTrayById = () => {
     return TrayIcon.getById(TRAY_ID);

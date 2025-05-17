@@ -111,12 +111,12 @@ export default function GeneralSettings() {
 
   const [shortcut, setShortcut] = useState<Shortcut>([]);
 
-  const setShowCocoShortcuts = useAppStore((state) => {
-    return state.setShowCocoShortcuts;
+  const setshowLeitingShortcuts = useAppStore((state) => {
+    return state.setshowLeitingShortcuts;
   });
 
   useEffect(() => {
-    setShowCocoShortcuts(shortcut);
+    setshowLeitingShortcuts(shortcut);
   }, [shortcut]);
 
   async function getCurrentShortcut() {

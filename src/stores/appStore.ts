@@ -58,8 +58,8 @@ export type IAppStore = {
   setIsPinned: (isPinned: boolean) => void;
   initializeListeners: () => void;
 
-  showCocoShortcuts: string[];
-  setShowCocoShortcuts: (showCocoShortcuts: string[]) => void;
+  showLeitingShortcuts: string[];
+  setshowLeitingShortcuts: (showLeitingShortcuts: string[]) => void;
 
   isTauri: boolean;
   setIsTauri: (isTauri: boolean) => void;
@@ -132,11 +132,11 @@ export const useAppStore = create<IAppStore>()(
           set({ endpoint, endpoint_http, endpoint_websocket });
         });
       },
-      showCocoShortcuts: [],
-      setShowCocoShortcuts: (showCocoShortcuts: string[]) => {
-        console.log("set showCocoShortcuts", showCocoShortcuts);
+      showLeitingShortcuts: [],
+      setshowLeitingShortcuts: (showLeitingShortcuts: string[]) => {
+        console.log("set showLeitingShortcuts", showLeitingShortcuts);
 
-        return set({ showCocoShortcuts });
+        return set({ showLeitingShortcuts });
       },
       isTauri: true,
       setIsTauri: (isTauri: boolean) => set({ isTauri }),
