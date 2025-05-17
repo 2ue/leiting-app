@@ -20,7 +20,7 @@ export const NoResults = () => {
         {t("search.main.noResults")}
       </div>
       <div className={`flex mobile:hidden mt-10 text-sm  text-[#333] dark:text-[#D8D8D8]`}>
-        {t("search.main.askCoco")}
+        {t("search.main.askLeiting")}
         {isMac ? (
           <span className="ml-3 w-5 h-5 rounded-[6px] border border-[#D8D8D8] flex justify-center items-center">
             <Command className="w-3 h-3" />

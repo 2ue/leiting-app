@@ -59,7 +59,7 @@ export type IAppStore = {
   initializeListeners: () => void;
 
   showLeitingShortcuts: string[];
-  setshowLeitingShortcuts: (showLeitingShortcuts: string[]) => void;
+  setShowLeitingShortcuts: (showLeitingShortcuts: string[]) => void;
 
   isTauri: boolean;
   setIsTauri: (isTauri: boolean) => void;
@@ -133,7 +133,7 @@ export const useAppStore = create<IAppStore>()(
         });
       },
       showLeitingShortcuts: [],
-      setshowLeitingShortcuts: (showLeitingShortcuts: string[]) => {
+      setShowLeitingShortcuts: (showLeitingShortcuts: string[]) => {
         console.log("set showLeitingShortcuts", showLeitingShortcuts);
 
         return set({ showLeitingShortcuts });
