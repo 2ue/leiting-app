@@ -1,4 +1,10 @@
-
+* {
+  /*border: none !important;*/
+  /*background-color: transparent;*/
+  /*overflow: hidden;*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+}
 .suspendButtonTs {
   position: fixed;
   top: 0;
@@ -6,10 +12,8 @@
   width: 4rem;
   height: 4rem;
   border-radius: 2rem;
-  box-shadow: 0px 0px 5px rgba(#000, .4);
   user-select: none;
   z-index: 1;
-  touch-action: 'none !important';
 }
 
 .suspendButtonTs img {
@@ -21,5 +25,5 @@
 }
 
 .suspendButtonTs-animate {
-  transition-duration: .1s;
+  transition-duration: 0.1s;
 }

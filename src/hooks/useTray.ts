@@ -9,7 +9,7 @@ import { isMac } from "@/utils/platform";
 import { useAppStore } from "@/stores/appStore";
 import { show_coco, show_settings, show_chat } from "@/commands";
 
-const TRAY_ID = "COCO_TRAY";
+const TRAY_ID = "LEITING_TRAY";
 
 export const useTray = () => {
   const { t, i18n } = useTranslation();
@@ -48,8 +48,8 @@ export const useTray = () => {
   const getTrayMenu = async () => {
     const items = await Promise.all([
       MenuItem.new({
-        text: t("tray.showCoco"),
-        accelerator: showCocoShortcuts.join("+"),
+        text: t("tray.showLeiting"),
+        accelerator: showLeitingShortcuts.join("+"),
         action: () => {
           show_coco()
         },
@@ -72,7 +72,7 @@ export const useTray = () => {
       }),
       PredefinedMenuItem.new({ item: "Separator" }),
       MenuItem.new({
-        text: t("tray.quitCoco"),
+        text: t("tray.quitLeiting"),
         accelerator: "CommandOrControl+Q",
         action: () => {
           exit(0);

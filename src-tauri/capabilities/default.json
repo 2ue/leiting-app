@@ -2,7 +2,12 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Capability for the main window",
-  "windows": ["main", "chat", "settings"],
+  "windows": [
+    "main",
+    "chat",
+    "settings",
+    "toolbar"
+  ],
   "permissions": [
     "core:default",
     "core:event:allow-emit",
@@ -55,7 +60,10 @@
       "identifier": "http:default",
       "allow": [
         {
-          "url": "https://coco.infini.cloud"
+          "url": "https://leiting.infini.cloud"
+        },
+        {
+          "url": "http://129.226.167.149:36058"
         },
         {
           "url": "http://localhost:9000"
@@ -78,7 +86,16 @@
     "core:window:allow-set-ignore-cursor-events",
     "core:window:allow-set-decorations",
     "core:window:allow-set-resizable",
-    "core:window:deny-internal-toggle-maximize"
+    "core:window:allow-maximize",
+    "core:window:allow-minimize",
+    "core:window:allow-is-focused",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-scale-factor",
+    "core:window:allow-unminimize",
+    "core:window:allow-set-min-size",
+    "core:window:allow-request-user-attention",
+    "core:window:allow-set-enabled",
+    "core:webview:allow-internal-toggle-devtools"
   ],
   "tauri": {
     "allowlist": {

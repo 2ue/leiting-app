@@ -17,7 +17,7 @@ const RESERVED_SHORTCUTS = [
   ["Control", "X"],
   ["Control", "A"],
   ["Control", "Z"],
-  // Coco
+  // Leiting
   ["Command", "I"],
   ["Command", "T"],
   ["Command", "N"],

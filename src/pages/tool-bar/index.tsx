@@ -2,7 +2,7 @@ import ToolBar from '../../components/ToolBar/index';
 
 function App() {
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="h-screen">
       <ToolBar />
     </div>
   );
