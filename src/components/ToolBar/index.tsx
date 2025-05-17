@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import LeitingLogo from './app-icon.png';
+// import Draggable from 'react-draggable';
+import LeitingLogo from '@/assets/app-icon.png';
 import { PhysicalSize, PhysicalPosition, currentMonitor } from '@tauri-apps/api/window'
 import { WebviewWindow } from '@tauri-apps/api/webviewWindow'
 import './index.css';
