@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { Settings, Puzzle, Settings2, Info, Server } from "lucide-react";
+import { Settings, Settings2, Info } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { listen } from "@tauri-apps/api/event";
 
 import SettingsPanel from "@/components/Settings/SettingsPanel";
 import GeneralSettings from "@/components/Settings/GeneralSettings";
 import AboutView from "@/components/Settings/AboutView";
-import Cloud from "@/components/Cloud/Cloud.tsx";
+// import Cloud from "@/components/Cloud/Cloud.tsx";
 import Footer from "@/components/Common/UI/SettingsFooter";
 import { useTray } from "@/hooks/useTray";
 import Advanced from "@/components/Settings/Advanced";
-import Extensions from "@/components/Settings/Extensions";
+// import Extensions from "@/components/Settings/Extensions";
 import { useAsyncEffect, useMount } from "ahooks";
 import { useApplicationsStore } from "@/stores/applicationsStore";
 import platformAdapter from "@/utils/platformAdapter";
@@ -34,8 +34,8 @@ function SettingsPage() {
 
   const tabs = [
     { name: t("settings.tabs.general"), icon: Settings },
-    { name: t("settings.tabs.extensions"), icon: Puzzle },
-    { name: t("settings.tabs.connect"), icon: Server },
+    // { name: t("settings.tabs.extensions"), icon: Puzzle },
+    // { name: t("settings.tabs.connect"), icon: Server },
     { name: t("settings.tabs.advanced"), icon: Settings2 },
     { name: t("settings.tabs.about"), icon: Info },
   ];
@@ -90,7 +90,7 @@ function SettingsPage() {
       <div className="min-h-screen pb-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
         <div className="max-w-6xl mx-auto p-4">
           {/* <div className="flex items-center justify-center mb-2">
-              <h1 className="text-xl font-bold">Coco Settings</h1>
+              <h1 className="text-xl font-bold">Leiting Settings</h1>
             </div> */}
 
           <TabGroup
@@ -105,11 +105,10 @@ function SettingsPage() {
                   key={tab.name}
                   className={({ selected }) =>
                     `w-full rounded-lg py-2.5 text-sm font-medium leading-5
-                      ${
-                        selected
-                          ? "bg-white dark:bg-gray-700 shadow text-gray-900 dark:text-white"
-                          : "text-gray-700 dark:text-gray-400 hover:bg-white/[0.12] hover:text-gray-900 dark:hover:text-white"
-                      }
+                      ${selected
+                      ? "bg-white dark:bg-gray-700 shadow text-gray-900 dark:text-white"
+                      : "text-gray-700 dark:text-gray-400 hover:bg-white/[0.12] hover:text-gray-900 dark:hover:text-white"
+                    }
                       flex items-center justify-center space-x-2 focus:outline-none`
                   }
                 >
@@ -125,14 +124,14 @@ function SettingsPage() {
                   <GeneralSettings />
                 </SettingsPanel>
               </TabPanel>
-              <TabPanel>
+              {/* <TabPanel>
                 <SettingsPanel title="">
                   <Extensions />
                 </SettingsPanel>
-              </TabPanel>
-              <TabPanel>
+              </TabPanel> */}
+              {/* <TabPanel>
                 <Cloud />
-              </TabPanel>
+              </TabPanel> */}
               <TabPanel>
                 <SettingsPanel title="">
                   <Advanced />
