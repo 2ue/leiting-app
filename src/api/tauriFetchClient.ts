@@ -33,7 +33,7 @@ export const tauriFetch = async <T = any>({
   body,
   timeout = 30,
   parseAs = "json",
-  baseURL = clientEnv.COCO_SERVER_URL
+  baseURL = clientEnv.LEITING_SERVER_URL
 }: FetchRequestConfig): Promise<FetchResponse<T>> => {
   const addLog = useLogStore.getState().addLog;
 
