@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import Shortcuts from "./components/Shortcuts";
 import SettingsItem from "../SettingsItem";
-import { AppWindowMac, MessageSquareMore, Search, Unplug } from "lucide-react";
+import { Search, Unplug } from "lucide-react";
 import { useStartupStore } from "@/stores/startupStore";
 import { useEffect } from "react";
 import { emit } from "@tauri-apps/api/event";
@@ -9,24 +9,24 @@ import { useConnectStore } from "@/stores/connectStore";
 
 const Advanced = () => {
   const { t } = useTranslation();
-  const defaultStartupWindow = useStartupStore((state) => {
-    return state.defaultStartupWindow;
-  });
-  const setDefaultStartupWindow = useStartupStore((state) => {
-    return state.setDefaultStartupWindow;
-  });
+  // const defaultStartupWindow = useStartupStore((state) => {
+  //   return state.defaultStartupWindow;
+  // });
+  // const setDefaultStartupWindow = useStartupStore((state) => {
+  //   return state.setDefaultStartupWindow;
+  // });
   const defaultContentForSearchWindow = useStartupStore((state) => {
     return state.defaultContentForSearchWindow;
   });
   const setDefaultContentForSearchWindow = useStartupStore((state) => {
     return state.setDefaultContentForSearchWindow;
   });
-  const defaultContentForChatWindow = useStartupStore((state) => {
-    return state.defaultContentForChatWindow;
-  });
-  const setDefaultContentForChatWindow = useStartupStore((state) => {
-    return state.setDefaultContentForChatWindow;
-  });
+  // const defaultContentForChatWindow = useStartupStore((state) => {
+  //   return state.defaultContentForChatWindow;
+  // });
+  // const setDefaultContentForChatWindow = useStartupStore((state) => {
+  //   return state.setDefaultContentForChatWindow;
+  // });
   const connectionTimeout = useConnectStore((state) => {
     return state.connectionTimeout;
   });
@@ -56,25 +56,25 @@ const Advanced = () => {
   }, []);
 
   const startupList = [
-    {
-      icon: AppWindowMac,
-      title: "settings.advanced.startup.defaultStartupWindow.title",
-      description: "settings.advanced.startup.defaultStartupWindow.description",
-      value: defaultStartupWindow,
-      items: [
-        {
-          label:
-            "settings.advanced.startup.defaultStartupWindow.select.searchMode",
-          value: "searchMode",
-        },
-        {
-          label:
-            "settings.advanced.startup.defaultStartupWindow.select.chatMode",
-          value: "chatMode",
-        },
-      ],
-      onChange: setDefaultStartupWindow,
-    },
+    // {
+    //   icon: AppWindowMac,
+    //   title: "settings.advanced.startup.defaultStartupWindow.title",
+    //   description: "settings.advanced.startup.defaultStartupWindow.description",
+    //   value: defaultStartupWindow,
+    //   items: [
+    //     {
+    //       label:
+    //         "settings.advanced.startup.defaultStartupWindow.select.searchMode",
+    //       value: "searchMode",
+    //     },
+    //     {
+    //       label:
+    //         "settings.advanced.startup.defaultStartupWindow.select.chatMode",
+    //       value: "chatMode",
+    //     },
+    //   ],
+    //   onChange: setDefaultStartupWindow,
+    // },
     {
       icon: Search,
       title: "settings.advanced.startup.defaultContentForSearchWindow.title",
@@ -90,26 +90,26 @@ const Advanced = () => {
       ],
       onChange: setDefaultContentForSearchWindow,
     },
-    {
-      icon: MessageSquareMore,
-      title: "settings.advanced.startup.defaultContentForChatWindow.title",
-      description:
-        "settings.advanced.startup.defaultContentForChatWindow.description",
-      value: defaultContentForChatWindow,
-      items: [
-        {
-          label:
-            "settings.advanced.startup.defaultContentForChatWindow.select.newChat",
-          value: "newChat",
-        },
-        {
-          label:
-            "settings.advanced.startup.defaultContentForChatWindow.select.oldChat",
-          value: "oldChat",
-        },
-      ],
-      onChange: setDefaultContentForChatWindow,
-    },
+    // {
+    //   icon: MessageSquareMore,
+    //   title: "settings.advanced.startup.defaultContentForChatWindow.title",
+    //   description:
+    //     "settings.advanced.startup.defaultContentForChatWindow.description",
+    //   value: defaultContentForChatWindow,
+    //   items: [
+    //     {
+    //       label:
+    //         "settings.advanced.startup.defaultContentForChatWindow.select.newChat",
+    //       value: "newChat",
+    //     },
+    //     {
+    //       label:
+    //         "settings.advanced.startup.defaultContentForChatWindow.select.oldChat",
+    //       value: "oldChat",
+    //     },
+    //   ],
+    //   onChange: setDefaultContentForChatWindow,
+    // },
   ];
 
   return (

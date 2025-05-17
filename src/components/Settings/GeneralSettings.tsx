@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import {
   Command,
-  Monitor,
-  Palette,
-  Moon,
-  Sun,
+  // Monitor,
+  // Palette,
+  // Moon,
+  // Sun,
   Power,
   Tags,
   // Trash2,
@@ -49,11 +49,10 @@ export function ThemeOption({
       onClick={() => {
         emit("theme-changed", theme);
       }}
-      className={`p-4 rounded-lg border-2 ${
-        isSelected
-          ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-          : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
-      } flex flex-col items-center justify-center space-y-2 transition-all`}
+      className={`p-4 rounded-lg border-2 ${isSelected
+        ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+        : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+        } flex flex-col items-center justify-center space-y-2 transition-all`}
       title={title}
     >
       <Icon className={`w-6 h-6 ${isSelected ? "text-blue-500" : ""}`} />
@@ -111,12 +110,12 @@ export default function GeneralSettings() {
 
   const [shortcut, setShortcut] = useState<Shortcut>([]);
 
-  const setshowLeitingShortcuts = useAppStore((state) => {
-    return state.setshowLeitingShortcuts;
+  const setShowLeitingShortcuts = useAppStore((state) => {
+    return state.setShowLeitingShortcuts;
   });
 
   useEffect(() => {
-    setshowLeitingShortcuts(shortcut);
+    setShowLeitingShortcuts(shortcut);
   }, [shortcut]);
 
   async function getCurrentShortcut() {
@@ -229,14 +228,14 @@ export default function GeneralSettings() {
             </div>
           </SettingsItem>
 
-          <SettingsItem
+          {/* <SettingsItem
             icon={Palette}
             title={t("settings.appearance.title")}
             description={t("settings.appearance.description")}
           >
             <div></div>
-          </SettingsItem>
-          <div className="grid grid-cols-3 gap-4">
+          </SettingsItem> */}
+          {/* <div className="grid grid-cols-3 gap-4">
             <ThemeOption
               icon={Sun}
               title={t("settings.appearance.light")}
@@ -252,7 +251,7 @@ export default function GeneralSettings() {
               title={t("settings.appearance.auto")}
               theme="auto"
             />
-          </div>
+          </div> */}
 
           <SettingsItem
             icon={Globe}
