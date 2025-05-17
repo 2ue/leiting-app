@@ -96,7 +96,7 @@ export const ChatMessage = memo(function ChatMessage({
         <Markdown
           content={messageContent || response?.message_chunk || ""}
           loading={isTyping}
-          onDoubleClickCapture={() => {}}
+          onDoubleClickCapture={() => { }}
         />
         {isTyping && (
           <div className="inline-block w-1.5 h-5 ml-0.5 -mb-0.5 bg-[#666666] dark:bg-[#A3A3A3] rounded-sm animate-typing" />
@@ -132,14 +132,12 @@ export const ChatMessage = memo(function ChatMessage({
       )}
     >
       <div
-        className={`px-4 flex gap-4 ${
-          isAssistant ? "w-full" : "flex-row-reverse"
-        }`}
+        className={`px-4 flex gap-4 ${isAssistant ? "w-full" : "flex-row-reverse"
+          }`}
       >
         <div
-          className={`w-full space-y-2 ${
-            isAssistant ? "text-left" : "text-right"
-          }`}
+          className={`w-full space-y-2 ${isAssistant ? "text-left" : "text-right"
+            }`}
         >
           <div className="w-full flex items-center gap-1 font-semibold text-sm text-[#333] dark:text-[#d8d8d8]">
             {isAssistant ? (
@@ -158,7 +156,7 @@ export const ChatMessage = memo(function ChatMessage({
                 )}
               </div>
             ) : null}
-            {isAssistant ? currentAssistant?._source?.name || "Coco AI" : ""}
+            {isAssistant ? currentAssistant?._source?.name || "Leiting AI" : ""}
           </div>
           <div className="w-full prose dark:prose-invert prose-sm max-w-none">
             <div className="w-full pl-7 text-[#333] dark:text-[#d8d8d8] leading-relaxed">

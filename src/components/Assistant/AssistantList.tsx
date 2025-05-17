@@ -114,7 +114,7 @@ export function AssistantList({ assistantIDs = [] }: AssistantListProps) {
           )}
         </div>
         <div className="max-w-[100px] truncate">
-          {currentAssistant?._source?.name || "Coco AI"}
+          {currentAssistant?._source?.name || "Leiting AI"}
         </div>
         <VisibleKey
           aria-controls={isOpen ? AI_ASSISTANT_PANEL_ID : ""}
@@ -124,9 +124,8 @@ export function AssistantList({ assistantIDs = [] }: AssistantListProps) {
           }}
         >
           <ChevronDownIcon
-            className={`size-4 text-gray-500 dark:text-gray-400 transition-transform ${
-              isOpen ? "rotate-180" : ""
-            }`}
+            className={`size-4 text-gray-500 dark:text-gray-400 transition-transform ${isOpen ? "rotate-180" : ""
+              }`}
           />
         </VisibleKey>
       </button>
@@ -145,9 +144,8 @@ export function AssistantList({ assistantIDs = [] }: AssistantListProps) {
             >
               <VisibleKey shortcut="R" onKeyPress={handleRefresh}>
                 <RefreshCw
-                  className={`h-4 w-4 text-[#0287FF] transition-transform duration-1000 ${
-                    isRefreshing ? "animate-spin" : ""
-                  }`}
+                  className={`h-4 w-4 text-[#0287FF] transition-transform duration-1000 ${isRefreshing ? "animate-spin" : ""
+                    }`}
                 />
               </VisibleKey>
             </button>
@@ -160,11 +158,10 @@ export function AssistantList({ assistantIDs = [] }: AssistantListProps) {
                 setCurrentAssistant(assistant);
                 setIsOpen(false);
               }}
-              className={`w-full flex items-center gap-2 rounded-lg p-1 py-1.5 mb-1 ${
-                currentAssistant?._id === assistant._id
-                  ? "bg-[#F3F4F6] dark:bg-[#1F2937]"
-                  : "hover:bg-[#F3F4F6] dark:hover:bg-[#1F2937]"
-              }
+              className={`w-full flex items-center gap-2 rounded-lg p-1 py-1.5 mb-1 ${currentAssistant?._id === assistant._id
+                ? "bg-[#F3F4F6] dark:bg-[#1F2937]"
+                : "hover:bg-[#F3F4F6] dark:hover:bg-[#1F2937]"
+                }
               }`}
             >
               {assistant._source?.icon?.startsWith("font_") ? (
