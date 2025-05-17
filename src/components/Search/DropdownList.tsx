@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, MouseEvent } from "react";
-import { CircleAlert, Bolt, X, ArrowBigRight } from "lucide-react";
+import { ArrowBigRight } from "lucide-react";
 import { isNil } from "lodash-es";
 import { useDebounceFn, useUnmount } from "ahooks";
 // import { useTranslation } from "react-i18next";
